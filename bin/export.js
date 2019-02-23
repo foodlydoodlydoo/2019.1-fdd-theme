@@ -5,11 +5,8 @@ var archiver = require('archiver');
 
 const folders = [
   'admin',
-  'bin',
   'helpers',
   'includes',
-  'languages',
-  'page-templates',
   'skin',
   'template-parts',
   'theme',
@@ -60,9 +57,10 @@ archive.on('error', function(err) {
   throw err;
 });
 
-// Append all files
-archive.glob('*');
- 
+// Append all valid files
+archive.glob('*.php');
+archive.glob('*.css');
+
 // append files from a sub-directory, putting its contents at the root of archive
 for (let folder of folders) {
   archive.directory(folder, folder);
