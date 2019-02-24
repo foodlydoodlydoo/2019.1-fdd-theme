@@ -9,6 +9,6 @@
 
 <footer class="footer">
   <div class="footer__container">
-  <!-- insert content here -->
+  This is about to be at the bottom of the page.
   </div>
 </footer>
