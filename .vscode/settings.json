@@ -1,3 +1,4 @@
 {
-  "phpcs.standard": "Infinum"
+  "phpcs.standard": "Infinum",
+  "phpcs.autoConfigSearch": false
 }
