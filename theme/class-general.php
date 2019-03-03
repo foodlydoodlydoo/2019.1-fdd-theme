@@ -8,6 +8,21 @@
 
 namespace Fdd\Theme;
 
+function get_attachment_metadata_remove_large_size($data, $postid) {
+  // As the 'large' size is the default to be picked for new core/image block,
+  // this will make the editor fall back to full-size!
+  // See https://github.com/WordPress/gutenberg/issues/8663#issuecomment-469041359
+  if (array_key_exists('sizes', $data)) {
+    unset($data["sizes"]['large']);
+  }
+
+  /*
+  $msg = print_r($data, true);
+  error_log($msg);
+   */
+  return $data;
+}
+
 /**
  * Class General
  */
@@ -20,6 +35,7 @@ class General {
    */
   public function add_theme_support() {
     add_theme_support('title-tag', 'html5', 'responsive-embeds');
+    add_filter('wp_get_attachment_metadata', 'Fdd\Theme\get_attachment_metadata_remove_large_size', 100, 2);
   }
 
 }
