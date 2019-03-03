@@ -19,7 +19,7 @@ class General {
    * @since 1.0.0
    */
   public function add_theme_support() {
-    add_theme_support( 'title-tag', 'html5' );
+    add_theme_support('title-tag', 'html5', 'responsive-embeds');
   }
 
 }
