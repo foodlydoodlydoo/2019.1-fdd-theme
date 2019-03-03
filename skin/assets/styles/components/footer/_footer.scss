@@ -1,5 +1,9 @@
 
 .footer {
+  clear: both;
+  padding: 2rem;
+  margin: auto;
+
   &__container {
     @include site-container();
   }

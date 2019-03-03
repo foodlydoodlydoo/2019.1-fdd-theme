@@ -52,7 +52,10 @@
 // @import 'components/sections/';
 
 // Template parts
-// @import 'components/parts';
+@import 'components/parts/media';
+
+// Sections
+@import 'components/footer/footer';
 
 // Single
 @import 'components/single';
