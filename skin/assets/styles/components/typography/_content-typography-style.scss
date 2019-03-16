@@ -9,7 +9,7 @@ $content-style: (
 
 /* stylelint-disable selector-no-type */
 .content-style {
-  @include text-size(default);
+  @include text-size(small);
   line-height: 1.5;
   color: map-get($content-style, 'text-color');
 
