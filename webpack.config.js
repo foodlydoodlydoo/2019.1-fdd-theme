@@ -4,7 +4,6 @@ const DEV = process.env.NODE_ENV !== 'production';
 const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
@@ -78,27 +77,6 @@ const allPlugins = [
     $: 'jquery',
     jQuery: 'jquery',
   }),
-
-  // Use BrowserSync.
-  new BrowserSyncPlugin(
-    {
-      host: 'localhost',
-      port: 3000,
-      proxy: proxyUrl,
-      files: [
-        {
-          match: [
-            '**/*.php',
-            `${themePublicPath}*.css`,
-          ],
-        },
-      ],
-      notify: true,
-    },
-    {
-      reload: false,
-    },
-  ),
 
   // Copy from one target to new destination.
   new CopyWebpackPlugin([
