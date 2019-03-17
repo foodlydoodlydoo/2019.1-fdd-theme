@@ -10,7 +10,7 @@ $content-style: (
 /* stylelint-disable selector-no-type */
 .content-style {
   @media screen and (min-width: $fdd-wide-width-pixels) {
-    @include text-size(small);
+    @include text-size(medium);
   }
   @media screen and (max-width: $fdd-wide-width-pixels - 1px) {
     @include text-size(medium);
