@@ -1,7 +1,7 @@
 //Some stuff here is out of BEM because it is used inside WP as helpers or modifiers
 // Text sizes are refines via mixins as utility helpers
 $content-style: (
-  'text-color': $base-dark-color,
+  'text-color': $base-fdd-text-color,
   'default-padding': 35px,
   'table-bg-color': $base-white-color,
   'table-border-color': $base-silver-color,
@@ -9,7 +9,12 @@ $content-style: (
 
 /* stylelint-disable selector-no-type */
 .content-style {
-  @include text-size(small);
+  @media screen and (min-width: $fdd-wide-width-pixels) {
+    @include text-size(small);
+  }
+  @media screen and (max-width: $fdd-wide-width-pixels - 1px) {
+    @include text-size(medium);
+  }
   line-height: 1.5;
   color: map-get($content-style, 'text-color');
 
