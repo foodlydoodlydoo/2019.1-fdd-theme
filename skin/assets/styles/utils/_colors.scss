@@ -17,8 +17,10 @@ $base-primary-color: $base-rouge-color;
 
 $global-input-focus-color: rgba($base-black-color, 0.2);
 
+$base-fdd-text-color:    rgba(38,38,38,0.6);
+
 // Defaults
-$base-text-color: $base-dark-color;
+$base-text-color: $base-fdd-text-color;
 $base-bg-color: $base-white-color;
 
 // Text color helper
