@@ -40,10 +40,14 @@ class Theme extends Config {
    */
   public function enqueue_scripts() {
     // jQuery.
+
+    // W/A for https: //github.com/infinum/wp-boilerplate/issues/130
+    /*
     wp_deregister_script('jquery-migrate');
     wp_deregister_script('jquery');
     wp_register_script('jquery', General_Helper::get_manifest_assets_data('jquery.min.js'), array(), '3.3.1');
     wp_enqueue_script('jquery');
+     */
 
     // JS.
     wp_register_script(static::THEME_NAME . '-scripts-vendors', General_Helper::get_manifest_assets_data('vendors.js'), array(), static::THEME_VERSION, true);
