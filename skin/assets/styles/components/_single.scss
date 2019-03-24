@@ -1,23 +1,3 @@
 // .single {
 
 // }
-
-@mixin centered__title {
-  width: 100%;
-  text-align: center;
-  padding: .5em 0 1em 0;
-}
-
-@mixin left_aligned__title {
-  @media screen and (min-width: $fdd-wide-width-pixels) {
-    padding-left: $fdd-left-padding-wide-screen;
-  }
-  @media screen and (max-width: $fdd-wide-width-pixels - 1px) {
-    padding-left: $fdd-left-padding-small-screen;
-  }
-}
-
-.single__title {
-  // @include centered__title;
-  @include left_aligned__title;
-}
