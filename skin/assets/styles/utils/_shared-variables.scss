@@ -10,19 +10,19 @@ $base-content-width: $base-content-full-width + ($base-content-padding*2);
 //Typography
 $typography-map: (
   mobile: (
-    giant:          72px,
-    huge:           42px,
-    biggest:        30px,
-    bigger:         28px,
-    big:            26px,
-    largest:        24px,
-    larger:         22px,
-    large:          20px,
-    default:        18px,
-    medium:         16px,
-    small:          14px,
-    smaller:        12px,
-    tiny:           11px
+    giant:          30px,
+    huge:           28px,
+    biggest:        26px,
+    bigger:         24px,
+    big:            22px,
+    largest:        20px,
+    larger:         18px,
+    large:          16px,
+    default:        14px,
+    medium:         12px,
+    small:          11px,
+    smaller:        10px,
+    tiny:           9px,
   )
 );
 
@@ -64,5 +64,5 @@ $input-height-map: (
 );
 
 $fdd-wide-width-pixels: 980px;
-$fdd-left-padding-wide-screen: 2%;
-$fdd-left-padding-small-screen: 5%;
+$fdd-outer-padding-wide-screen: 2%;
+$fdd-outer-padding-small-screen: 5%;

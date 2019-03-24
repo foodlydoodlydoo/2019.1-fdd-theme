@@ -10,10 +10,10 @@ $content-style: (
 /* stylelint-disable selector-no-type */
 .content-style {
   @media screen and (min-width: $fdd-wide-width-pixels) {
-    @include text-size(medium);
+    @include text-size(default);
   }
   @media screen and (max-width: $fdd-wide-width-pixels - 1px) {
-    @include text-size(medium);
+    @include text-size(large);
   }
   line-height: 1.5;
   color: map-get($content-style, 'text-color');
