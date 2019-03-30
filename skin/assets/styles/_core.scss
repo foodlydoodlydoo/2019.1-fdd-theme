@@ -20,3 +20,10 @@ body { /* stylelint-disable-line selector-no-type */
     overflow: hidden;
   }
 }
+
+// This is used as the last element in page block to provide tailing element for sticky positioning
+.fdd-heel {
+  height: 2em;
+  height: 500px; // FOR TESTING PURPOSES ONLY
+  clear: both;
+}
