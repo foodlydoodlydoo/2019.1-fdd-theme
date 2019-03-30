@@ -10,8 +10,8 @@ $base-content-width: $base-content-full-width + ($base-content-padding*2);
 //Typography
 $typography-map: (
   mobile: (
-    giant:          30px,
-    huge:           28px,
+    giant:          40px,
+    huge:           32px,
     biggest:        26px,
     bigger:         24px,
     big:            22px,
@@ -62,6 +62,8 @@ $input-height-map: (
     )
   )
 );
+
+$fdd-title-color: black;
 
 $fdd-wide-width-pixels: 980px;
 $fdd-outer-padding-wide-screen: 2%;
