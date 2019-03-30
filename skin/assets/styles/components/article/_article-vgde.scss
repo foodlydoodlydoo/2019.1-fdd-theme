@@ -1,0 +1,33 @@
+body.home {
+  .fdd-category-grid {
+    > .article-grid {
+      position: sticky;
+      top: 0;
+      width: 50%;
+      clear: left;
+      float: left;
+      padding: 0 $fdd-outer-padding-wide-screen;
+      a img {
+        max-width: 100%;
+        min-height: 90vh;
+        object-fit: cover;
+      }
+    }
+    .right {
+      width: 50%;
+      float: right;
+      padding: 0 $fdd-outer-padding-wide-screen 0 0;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      .article-grid {
+        width: 50% - $fdd-outer-padding-wide-screen;
+        float: right;
+        a img {
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+body.home {
+  .fdd-category {
+    width: 100%;
+    display: block;
+    border-top: 1px $fdd-title-color solid;
+    .fdd-category-name {
+      @include text-size(giant);
+      color: $fdd-title-color;
+      margin: .2em $fdd-outer-padding-wide-screen;
+    }
+    .fdd-category-grid {
+      margin: 60px 0;
+    }
+  }
+}

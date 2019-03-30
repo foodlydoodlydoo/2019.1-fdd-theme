@@ -7,18 +7,21 @@
 
 get_header();
 
-if ( have_posts() ) {
-  while ( have_posts() ) {
-    the_post();
-    get_template_part( 'template-parts/listing/articles/grid' );
+$categories = [
+  'recipes',
+  'food-art',
+];
+
+foreach ($categories as $category_slug) {
+  $category = get_category_by_slug($category_slug);
+  query_posts("cat=$category->term_id");
+
+  if (have_posts()) {
+    get_template_part('template-parts/listing/categories/vgde');
+    the_posts_pagination();
+  } else {
+    get_template_part('template-parts/listing/articles/empty');
   }
-
-  the_posts_pagination();
-
-} else {
-
-  get_template_part( 'template-parts/listing/articles/empty' );
-
-};
+}
 
 get_footer();
