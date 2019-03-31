@@ -1,3 +1,85 @@
+$first-article-height-wide: 90vh;
+$first-article-height-narrow: 50vh;
+
+$first-article-text-color: white;
+$article-underline-height: 3px;
+
+// [global]
+
+body.home {
+  .fdd-category-grid {
+    .article-grid__underline {
+      width: 2em;
+      height: $article-underline-height;
+      clear: both;
+    }
+    header {
+      font-family: Forum;
+    }
+    > .article-grid {
+      .article-grid-wrapper {
+        position: relative;
+        width: 100%;
+        .article-grid__content {
+          bottom: 0;
+          position: absolute;
+          width: 100%;
+          padding: 6em 15%;
+          background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
+          header {
+            color: $first-article-text-color;
+            text-align: center;
+            margin-left: 0;
+            margin-right: 0;
+            display: block;
+            .article-grid__underline {
+              background: $first-article-text-color;
+              margin-left: auto;
+              margin-right: auto;
+            }
+          }
+        }
+      }
+    }
+    .oldish {
+      padding: 0;
+      .article-grid {
+        .article-grid-wrapper {
+          position: relative;
+          width: 100%;
+          img {
+            width: 100%;
+            object-fit: cover;
+          }
+          .article-grid__content {
+            bottom: -3.5em;
+            position: absolute;
+            width: 90%;
+            margin-left: 10%;
+            padding-left: 2em;
+            background: white;
+            .article-grid__underline {
+              background: #bbbbbb;
+              margin-top: 2em; // affects bottom positioning of __content
+              margin-left: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// [/global]
+
+
+
+/**********************************************************
+ Wide screen
+ **********************************************************/
+
+@media screen and (min-width: $fdd-wide-width-pixels) {
+
 body.home {
   .fdd-category-grid {
     > .article-grid {
@@ -7,27 +89,136 @@ body.home {
       clear: left;
       float: left;
       padding: 0 $fdd-outer-padding-wide-screen;
-      a img {
-        max-width: 100%;
-        min-height: 90vh;
-        object-fit: cover;
+      .article-grid-wrapper {
+        position: relative;
+        max-height: $first-article-height-wide;
+        img {
+          max-width: 100%;
+          min-height: $first-article-height-wide;
+          object-fit: cover;
+        }
+        .article-grid__content {
+          header {
+            @include text-size(bigger);
+          }
+        }
       }
     }
-    .right {
+    .oldish {
       width: 50%;
       float: right;
+      /*
       padding: 0 $fdd-outer-padding-wide-screen 0 0;
       display: flex;
       justify-content: space-between;
+      flex-direction: row;
       flex-wrap: wrap;
+      */
       .article-grid {
-        width: 50% - $fdd-outer-padding-wide-screen;
-        float: right;
-        a img {
-          width: 100%;
-          object-fit: cover;
+        width: 50% - $fdd-outer-padding-wide-screen / 2;
+        padding-right: $fdd-outer-padding-wide-screen;
+        float: left;
+        margin-bottom: 110px;
+        .article-grid-wrapper {
+          .article-grid__content {
+            header {
+              @include text-size(large);
+            }
+          }
         }
       }
     }
   }
+}
+
+} // media screen and (max-width: $fdd-wide-width-pixels - 1px)
+
+/**********************************************************
+ Narrow screen
+ **********************************************************/
+
+@media screen and (max-width: $fdd-wide-width-pixels - 1px) {
+
+body.home {
+  .fdd-category-grid {
+    > .article-grid {
+      width: 100%;
+      padding: 0;
+      .article-grid-wrapper {
+        position: relative;
+        max-height: $first-article-height-narrow;
+        img {
+          width: 100%;
+          max-height: $first-article-height-narrow;
+          object-fit: cover;
+        }
+        .article-grid__content {
+          header {
+            @include text-size(big);
+          }
+        }
+      }
+    }
+    .oldish {
+      width: 100%;
+      padding: 7em $fdd-home-outer-padding-narrow-screen - $fdd-outer-padding-narrow-screen 0 $fdd-home-outer-padding-narrow-screen;
+      .article-grid {
+        width: 50% - $fdd-outer-padding-narrow-screen;
+        margin-right: $fdd-outer-padding-narrow-screen;
+        margin-bottom: 110px;
+        float: left;
+        .article-grid-wrapper {
+          .article-grid__content {
+            header {
+              @include text-size(large);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+} // media screen and (max-width: $fdd-wide-width-pixels - 1px)
+
+
+/**********************************************************
+  Super-narrow screen
+ **********************************************************/
+
+@media screen and (max-width: $fdd-narrow-width-pixels - 1px) {
+
+  body.home {
+  .fdd-category-grid {
+    .oldish {
+      width: 100%;
+      padding: 7em $fdd-home-outer-padding-narrow-screen 0;
+      .article-grid {
+        width: 100%;
+        .article-grid-wrapper {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: flex-end;
+          img {
+            width: 40%;
+            object-fit: cover;
+            height: 100%;
+          }
+          .article-grid__content {
+            position: static;
+            width: 60%;
+            margin: 0;
+            padding: 0 0 0 10%;
+            .article-grid__underline {
+              background: #bbbbbb;
+              margin-top: 2em; // affects bottom positioning of __content
+              margin-left: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 }
