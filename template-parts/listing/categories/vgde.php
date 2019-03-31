@@ -10,7 +10,7 @@ global $category;
 use Fdd\Theme\vgde\ArticleWrapping;
 
 ?>
-<div class="fdd-category">
+<div id="<?php echo esc_html($category->slug); ?>" class="fdd-category">
 
 <div class="fdd-category-name">
   <?php echo esc_html($category->name); ?>
@@ -28,6 +28,9 @@ while (have_posts()) {
     $wrapper->before_article('post_order_in_category');
     get_template_part('template-parts/listing/articles/vgde');
     $wrapper->after_article();
+    if ($wrapper->at_limit(9)) {
+      break 2;
+    }
   }
 }
 

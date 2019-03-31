@@ -14,7 +14,7 @@ class ArticleWrapping {
 
   public function before_article($post_order_var_name) {
     if ($this->$order == 1) {
-      echo '<div class="right">';
+      echo '<div class="oldish">';
     }
     // Makes visible in the template
     set_query_var($post_order_var_name, $post_order);
@@ -22,6 +22,10 @@ class ArticleWrapping {
 
   public function after_article() {
     ++$this->$order;
+  }
+
+  public function at_limit($limit) {
+    return $this->$order >= $limit;
   }
 
   public function after_grid() {

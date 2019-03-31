@@ -10,6 +10,7 @@ get_header();
 $categories = [
   'recipes',
   'food-art',
+  'behind-the-scenes',
 ];
 
 foreach ($categories as $category_slug) {
@@ -19,8 +20,6 @@ foreach ($categories as $category_slug) {
   if (have_posts()) {
     get_template_part('template-parts/listing/categories/vgde');
     the_posts_pagination();
-  } else {
-    get_template_part('template-parts/listing/articles/empty');
   }
 }
 
