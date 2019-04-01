@@ -1,3 +1,8 @@
-// .single {
-
-// }
+.single {
+  header {
+    h1.single__title {
+      @include fdd-single-article-heading();
+      font-size: 47px;
+    }
+  }
+}

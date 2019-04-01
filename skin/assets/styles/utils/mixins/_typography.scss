@@ -97,3 +97,62 @@
     -moz-osx-font-smoothing: auto;
   }
 }
+
+
+// FDD specific
+
+@mixin font_sans($weight: 300) {
+  //font-family: 'Noto Serif KR', serif;
+  //font-family: 'Prata', serif;
+  //font-family: 'Antic Didone', serif;
+  font-family: 'Oranienbaum', serif;
+  font-weight: $weight;
+}
+
+@mixin font_serif($weight: 300) {
+  font-family: 'Palanquin', sans-serif;
+  font-family: 'Gafata', sans-serif;
+  //font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: $weight;
+}
+
+@mixin font_home_page_title($weight: 300) {
+  font-family: 'Assistant', sans-serif;
+  font-family: 'Noto Serif KR', serif;
+  font-weight: $weight;
+}
+
+@mixin base-font-family-set() {
+  @include font_serif();
+}
+
+@mixin fdd-home-category-name($size: inherited) {
+  @if $size != inherited {
+    @include text-size($size);
+  }
+  @include font_sans;
+}
+
+@mixin fdd-home-front-article-heading($size: inherited) {
+  @if $size != inherited {
+    @include text-size($size);
+  }
+  @include font_home_page_title(300);
+  //text-transform: uppercase;
+}
+
+@mixin fdd-home-oldish-article-heading($size: inherited) {
+  @if $size != inherited {
+    @include text-size($size);
+  }
+  @include font_home_page_title(300);
+}
+
+@mixin fdd-single-article-heading($size: false) {
+  @if $size {
+    @include text-size($size);
+  }
+  @include font_sans();
+  //text-transform: uppercase;
+  color: $fdd-title-color;
+}
