@@ -87,6 +87,14 @@ body.home {
  Wide screen
  **********************************************************/
 
+$masonry-style: ttb; // ltr|ttb
+
+@mixin oldish-masonry-ttb($gap: $fdd-outer-padding-wide-screen) {
+  columns: 2;
+  column-fill: balance;
+  column-gap: $gap;
+}
+
 @media screen and (min-width: $fdd-wide-width-pixels) {
 
 body.home {
@@ -116,17 +124,20 @@ body.home {
     .oldish {
       width: 50%;
       float: right;
-      /*
-      padding: 0 $fdd-outer-padding-wide-screen 0 0;
-      display: flex;
-      justify-content: space-between;
-      flex-direction: row;
-      flex-wrap: wrap;
-      */
-      .article-grid {
-        width: 50% - $fdd-outer-padding-wide-screen / 2;
+      @if ($masonry-style == ttb) {
+        @include oldish-masonry-ttb();
         padding-right: $fdd-outer-padding-wide-screen;
-        float: left;
+      }
+      .article-grid {
+        @if ($masonry-style == ttb) {
+          break-inside: avoid;
+          width: 100%;
+        }
+        @if ($masonry-style == ltr) {
+          padding-right: $fdd-outer-padding-wide-screen;
+          width: 50% - $fdd-outer-padding-wide-screen / 2;
+          float: left;
+        }
         margin-bottom: 1em;
         .article-grid-wrapper {
           img {
@@ -176,12 +187,21 @@ body.home {
     }
     .oldish {
       width: 100%;
+      @if ($masonry-style == ttb) {
+        @include oldish-masonry-ttb();
+      }
       padding: 7em $fdd-home-outer-padding-narrow-screen - $fdd-outer-padding-narrow-screen 0 $fdd-home-outer-padding-narrow-screen;
       .article-grid {
-        width: 50% - $fdd-outer-padding-narrow-screen;
-        margin-right: $fdd-outer-padding-narrow-screen;
-        margin-bottom: 110px;
-        float: left;
+        @if ($masonry-style == ttb) {
+          break-inside: avoid;
+          width: 100%;
+        }
+        @if ($masonry-style == ltr) {
+          width: 50% - $fdd-outer-padding-narrow-screen;
+          margin-right: $fdd-outer-padding-narrow-screen;
+          float: left;
+        }
+        margin-bottom: 1em;
         .article-grid-wrapper {
           .article-grid__content {
             header {
@@ -206,10 +226,12 @@ body.home {
   body.home {
   .fdd-category-grid {
     .oldish {
+      columns: auto;
       width: 100%;
       padding: 7em $fdd-home-outer-padding-narrow-screen 0;
       .article-grid {
         width: 100%;
+        margin-bottom: 40px;
         .article-grid-wrapper {
           display: flex;
           flex-wrap: wrap;
