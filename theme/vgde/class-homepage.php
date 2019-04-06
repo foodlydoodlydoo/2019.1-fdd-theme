@@ -10,7 +10,11 @@ namespace Fdd\Theme\vgde;
 
 class ArticleWrapping {
 
-  private $order = 0;
+  private $order;
+
+  function __construct() {
+    $this->$order = 0;
+  }
 
   public function before_article($post_order_var_name) {
     if ($this->$order == 1) {
