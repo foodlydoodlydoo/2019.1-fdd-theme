@@ -17,7 +17,7 @@ class ArticleWrapping {
       echo '<div class="oldish">';
     }
     // Makes visible in the template
-    set_query_var($post_order_var_name, $post_order);
+    set_query_var($post_order_var_name, $this->$order);
   }
 
   public function after_article() {
