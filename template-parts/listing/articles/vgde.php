@@ -22,6 +22,9 @@ $image = Images::get_post_image($post_order_in_category == 0 ? 'full_width' : 'm
     <h2 class="article-grid__heading">
       <?php esc_html(the_title());?>
     </h2>
+    <div class="article-grid__excert">
+      <?php the_excerpt();?>
+    </div>
     <div class="article-grid__underline"></div>
   </header>
 </div>

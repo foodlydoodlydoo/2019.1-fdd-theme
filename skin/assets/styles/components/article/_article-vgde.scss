@@ -22,7 +22,7 @@ body.home {
           position: absolute;
           width: 100%;
           padding: 6em 15%;
-          background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
+          background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
           header {
             @include fdd-home-front-article-heading();
             color: $first-article-text-color;
@@ -30,6 +30,10 @@ body.home {
             margin-left: 0;
             margin-right: 0;
             display: block;
+            .article-grid__excert {
+              @include font_home_page_excerpt(90%);
+              line-height: 1.4;
+            }
             .article-grid__underline {
               background: $first-article-text-color;
               margin-left: auto;
@@ -50,14 +54,18 @@ body.home {
             object-fit: cover;
           }
           .article-grid__content {
-            bottom: -3.5em;
-            position: absolute;
+            top: -3.2em;
+            position: relative;
             width: 90%;
             margin-left: 10%;
-            padding-left: 2em;
+            padding: 0.3em 0.5em 0 2em;
             background: white;
             header {
               @include fdd-home-oldish-article-heading();
+            }
+            .article-grid__excert {
+              @include font_home_page_excerpt(110%);
+              line-height: 1.5;
             }
             .article-grid__underline {
               background: #bbbbbb;
@@ -119,8 +127,14 @@ body.home {
         width: 50% - $fdd-outer-padding-wide-screen / 2;
         padding-right: $fdd-outer-padding-wide-screen;
         float: left;
-        margin-bottom: 110px;
+        margin-bottom: 1em;
         .article-grid-wrapper {
+          img {
+            width: 100%;
+            min-height: 23.75vw;
+            max-height: 23.75vw * 5 / 4;
+            object-fit: cover;
+          }
           .article-grid__content {
             header {
               @include text-size(large);
