@@ -125,8 +125,9 @@ body.home {
         position: relative;
         max-height: $first-article-height-wide;
         img {
-          max-width: 100%;
+          width: 100%;
           min-height: $first-article-height-wide;
+          max-height: $first-article-height-wide;
           object-fit: cover;
         }
         .article-grid__content {
@@ -192,6 +193,7 @@ body.home {
         img {
           width: 100%;
           max-height: $first-article-height-narrow;
+          min-height: $first-article-height-narrow;
           object-fit: cover;
         }
         .article-grid__content {
@@ -219,6 +221,11 @@ body.home {
         }
         margin-bottom: 1em;
         .article-grid-wrapper {
+          img {
+            max-height: 50vw;
+            min-height: 50vw;
+            object-fit: cover;
+          }
           .article-grid__content {
             header {
               @include text-size(large);
