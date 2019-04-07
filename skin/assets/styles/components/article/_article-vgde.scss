@@ -156,6 +156,12 @@ body.home {
         }
         margin-bottom: 1em;
         .article-grid-wrapper {
+          .article-grid__figure {
+            img {
+              min-height: 21vw;
+              object-fit: cover;
+            }
+          }
           .article-grid__content {
             header {
               @include text-size(large);
