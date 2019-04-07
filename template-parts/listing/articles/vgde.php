@@ -32,8 +32,7 @@ if (false && $post_order_in_category > 0) {
 <div class="article-grid__content">
   <header>
     <h2 class="article-grid__heading">
-      <?php esc_html(the_title());
-print("[$post_order_in_category]");?>
+      <?php esc_html(the_title()); /* print("[$post_order_in_category]"); */?>
     </h2>
     <div class="article-grid__excerpt">
       <?php the_excerpt();?>
