@@ -12,7 +12,9 @@ body { /* stylelint-disable-line selector-no-type */
   @include font-smoothing;
   @include base-font-family-set();
   color: $base-text-color;
+  /* // interferes with mix-blend-mode: liminosity and static positioned images, Firefox bug
   background-color: $base-bg-color;
+  */
   position: relative;
   overflow-x: hidden;
 
