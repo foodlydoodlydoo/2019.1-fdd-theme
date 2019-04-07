@@ -7,7 +7,7 @@
 
 use Fdd\Theme\Utils\Images;
 
-$image = Images::get_post_image($post_order_in_category == 0 ? 'full_width' : 'homepage-oldish-480');
+$image = Images::get_post_image($post_order_in_category == 0 ? 'full_width' : 'homepage-oldish-640');
 
 ?>
 
