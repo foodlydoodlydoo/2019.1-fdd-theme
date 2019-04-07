@@ -8,6 +8,22 @@ $article-underline-height: 3px;
 
 body.home {
   .fdd-category-grid {
+    .article-grid-wrapper:hover {
+      .article-grid__figure {
+        background-color: #5bff00;
+        background-color: rgb(36, 214, 23);
+        background-color: rgba(158, 238, 113, 0.98);
+      }
+    }
+    .article-grid__figure {
+      transition: background-color .3s ease 0s;
+      line-height: 0;
+      img {
+        mix-blend-mode: multiply;
+        mix-blend-mode: color-burn;
+        mix-blend-mode: luminosity;
+      }
+    }
     .article-grid__underline {
       width: 2em;
       height: $article-underline-height;
@@ -30,7 +46,7 @@ body.home {
             margin-left: 0;
             margin-right: 0;
             display: block;
-            .article-grid__excert {
+            .article-grid__excerpt {
               @include font_home_page_excerpt(90%);
               line-height: 1.4;
             }
@@ -63,7 +79,7 @@ body.home {
             header {
               @include fdd-home-oldish-article-heading();
             }
-            .article-grid__excert {
+            .article-grid__excerpt {
               @include font_home_page_excerpt(110%);
               line-height: 1.5;
             }
@@ -190,7 +206,7 @@ body.home {
       @if ($masonry-style == ttb) {
         @include oldish-masonry-ttb();
       }
-      padding: 7em $fdd-home-outer-padding-narrow-screen - $fdd-outer-padding-narrow-screen 0 $fdd-home-outer-padding-narrow-screen;
+      padding: 7em $fdd-home-outer-padding-narrow-screen 0 $fdd-home-outer-padding-narrow-screen;
       .article-grid {
         @if ($masonry-style == ttb) {
           break-inside: avoid;
@@ -231,25 +247,34 @@ body.home {
       padding: 7em $fdd-home-outer-padding-narrow-screen 0;
       .article-grid {
         width: 100%;
-        margin-bottom: 40px;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        &:not(:last-child) {
+          border-bottom: $base-primary-color 1px solid;
+        }
         .article-grid-wrapper {
           display: flex;
           flex-wrap: wrap;
-          align-items: flex-end;
-          img {
-            width: 40%;
-            object-fit: cover;
-            height: 100%;
+          align-items: flex-start;
+          .article-grid__figure {
+            width: 45%;
+            img {
+              object-fit: cover;
+              height: 100%;
+            }
           }
           .article-grid__content {
             position: static;
-            width: 60%;
+            width: 55%;
             margin: 0;
             padding: 0 0 0 10%;
+            header h2 {
+              margin-top: 0;
+              @include text-size(large);
+              line-height: 1.5;
+            }
             .article-grid__underline {
-              background: #bbbbbb;
-              margin-top: 2em; // affects bottom positioning of __content
-              margin-left: 0;
+              display: none;
             }
           }
         }
