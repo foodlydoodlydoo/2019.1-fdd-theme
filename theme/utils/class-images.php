@@ -27,31 +27,37 @@ class Images {
    *
    * @since 1.0.0
    */
-  public static function get_post_image( $size, $post_id = null, $no_image = null ) {
+  public static function get_post_image($size, $post_id = null, $no_image = null) {
     global $post;
 
-    if ( ! $post_id ) {
+    if (!$post_id) {
       $post_id = $post->ID;
     }
 
-    if ( has_post_thumbnail( $post_id ) ) {
-      $attachemnt_id = get_post_thumbnail_id( $post_id );
-      $image         = wp_get_attachment_image_src( $attachemnt_id, $size );
+    if (has_post_thumbnail($post_id)) {
+      $attachemnt_id = get_post_thumbnail_id($post_id);
+      $image = wp_get_attachment_image_src($attachemnt_id, $size);
+      $srcset = wp_get_attachment_image_srcset($attachemnt_id, $size);
+      $sizes = wp_get_attachment_image_sizes($attachemnt_id, $size);
 
       $image_array = [
-          'image'  => $image[0],
-          'width'  => $image[1],
-          'height' => $image[2],
+        'image' => $image[0],
+        'width' => $image[1],
+        'height' => $image[2],
+        'srcset' => $srcset,
+        'sizes' => $sizes,
       ];
     } else {
-      $no_img      = General_Helper::get_manifest_assets_data( 'images/no-image-' . $size . '.jpg' );
+      $no_img = General_Helper::get_manifest_assets_data('images/no-image-' . $size . '.jpg');
       $image_array = [
-          'image'  => $no_img,
-          'width'  => '',
-          'height' => '',
+        'image' => $no_img,
+        'width' => '',
+        'height' => '',
+        'srcset' => '',
+        'sizes' => '',
       ];
 
-      if ( ! empty( $no_image ) ) {
+      if (!empty($no_image)) {
         $image_array['image'] = $no_image;
       }
     }
@@ -68,16 +74,16 @@ class Images {
    *
    * @since 1.0.0
    */
-  public static function get_image_from_array( $size, $image_array ) {
-    if ( ! empty( $image_array ) ) {
+  public static function get_image_from_array($size, $image_array) {
+    if (!empty($image_array)) {
       $img = $image_array['sizes'];
-      $src = $img[ $size ];
+      $src = $img[$size];
     } else {
-      $src = General_Helper::get_manifest_assets_data( 'images/no-image-' . $size . '.jpg' );
+      $src = General_Helper::get_manifest_assets_data('images/no-image-' . $size . '.jpg');
     }
 
     return [
-        'image' => $src,
+      'image' => $src,
     ];
   }
 
