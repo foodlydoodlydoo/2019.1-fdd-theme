@@ -47,7 +47,7 @@ body.home {
             margin-right: 0;
             display: block;
             .article-grid__excerpt {
-              @include font_home_page_excerpt(90%);
+              @include font-home-page-excerpt(90%);
               line-height: 1.4;
             }
             .article-grid__underline {
@@ -67,7 +67,6 @@ body.home {
           width: 100%;
           img {
             width: 100%;
-            object-fit: cover;
           }
           .article-grid__content {
             top: -3.2em;
@@ -80,7 +79,7 @@ body.home {
               @include fdd-home-oldish-article-heading();
             }
             .article-grid__excerpt {
-              @include font_home_page_excerpt(110%);
+              @include font-home-page-excerpt(110%);
               line-height: 1.5;
             }
             .article-grid__underline {
@@ -147,6 +146,7 @@ body.home {
       .article-grid {
         @if ($masonry-style == ttb) {
           break-inside: avoid;
+          display: inline-block;
           width: 100%;
         }
         @if ($masonry-style == ltr) {
@@ -156,12 +156,6 @@ body.home {
         }
         margin-bottom: 1em;
         .article-grid-wrapper {
-          img {
-            width: 100%;
-            min-height: 23.75vw;
-            max-height: 23.75vw * 5 / 4;
-            object-fit: cover;
-          }
           .article-grid__content {
             header {
               @include text-size(large);

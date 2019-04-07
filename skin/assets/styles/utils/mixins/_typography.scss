@@ -99,59 +99,55 @@
 }
 
 
-// FDD specific
+// FDD specific, keep in sync with fdd-block/common.scss
 
-@mixin font_sans($weight: 300) {
+@mixin font-narrow-serif($weight: 300) {
   font-family: 'Oranienbaum', serif;
   font-weight: $weight;
 }
 
-@mixin font_serif($weight: 300) {
-  font-family: 'Gafata', sans-serif;
-  font-weight: $weight;
-}
-
-@mixin font_home_page_title($weight: 300) {
+@mixin font-home-page-title($weight: 300) {
   font-family: 'Noto Serif KR', serif;
   font-weight: $weight;
 }
 
-@mixin font_home_page_excerpt($size: 100%) {
+@mixin font-home-page-excerpt($size: 100%) {
   font-family: 'Spectral', serif;
   font-weight: 200;
   font-style: italic;
   font-size: $size;
 }
 
-@mixin base-font-family-set() {
-  @include font_serif();
+@mixin base-font-family-set($weight: 300) {
+  font-family: 'Gafata', sans-serif;
+  font-weight: $weight;
 }
 
 @mixin fdd-home-category-name($size: inherited) {
   @if $size != inherited {
     @include text-size($size);
   }
-  @include font_sans;
+  @include font-narrow-serif;
 }
 
 @mixin fdd-home-front-article-heading($size: inherited) {
   @if $size != inherited {
     @include text-size($size);
   }
-  @include font_home_page_title(300);
+  @include font-home-page-title(300);
 }
 
 @mixin fdd-home-oldish-article-heading($size: inherited) {
   @if $size != inherited {
     @include text-size($size);
   }
-  @include font_home_page_title(300);
+  @include font-home-page-title(300);
 }
 
 @mixin fdd-single-article-heading($size: false) {
   @if $size {
     @include text-size($size);
   }
-  @include font_sans();
+  @include font-narrow-serif();
   color: $fdd-title-color;
 }

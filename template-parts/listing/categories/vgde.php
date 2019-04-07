@@ -24,7 +24,7 @@ $wrapper = new ArticleWrapping;
 while (have_posts()) {
   the_post();
 
-  for ($i = 0; $i < 5; ++$i) {
+  for ($i = 0; $i < 3; ++$i) {
     $wrapper->before_article('post_order_in_category');
     get_template_part('template-parts/listing/articles/vgde');
     $wrapper->after_article();

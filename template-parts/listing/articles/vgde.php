@@ -7,7 +7,7 @@
 
 use Fdd\Theme\Utils\Images;
 
-$image = Images::get_post_image($post_order_in_category == 0 ? 'full_width' : 'medium');
+$image = Images::get_post_image($post_order_in_category == 0 ? 'full_width' : 'homepage-oldish-480');
 
 ?>
 
@@ -16,8 +16,11 @@ $image = Images::get_post_image($post_order_in_category == 0 ? 'full_width' : 'm
 <div class="article-grid-wrapper">
 
 <div class="article-grid__figure">
-<img src="<?php echo esc_url($image['image']); ?>" style="<?php
-if (0 && $post_order_in_category > 0) {
+<img src="<?php echo esc_attr($image['image']); ?>"
+     srcset="<?php echo esc_attr($image['srcset']); ?>"
+     sizes="<?php echo esc_attr($image['sizes']); ?>"
+     style="<?php
+if (false && $post_order_in_category > 0) {
   $_height = random_int(250, 500);
   echo "min-height: " . $_height . "px;";
   echo "max-height: " . $_height . "px;";
