@@ -15,6 +15,9 @@ body.home {
         background-color: rgba(158, 238, 113, 0.98);
       }
     }
+    .article-grid__content header {
+      line-height: 1.6;
+    }
     .article-grid__figure {
       transition: background-color .3s ease 0s;
       line-height: 0;
