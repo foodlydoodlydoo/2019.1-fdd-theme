@@ -82,7 +82,7 @@ body.home {
               @include fdd-home-oldish-article-heading();
             }
             .article-grid__excerpt {
-              @include fdd-home-article-excerpt(110%);
+              @include fdd-home-article-excerpt(18px);
               line-height: 1.5;
             }
             .article-grid__underline {
