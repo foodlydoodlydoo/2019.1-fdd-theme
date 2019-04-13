@@ -50,7 +50,7 @@ body.home {
             margin-right: 0;
             display: block;
             .article-grid__excerpt {
-              @include font-home-page-excerpt(90%);
+              @include fdd-home-article-excerpt(90%);
               line-height: 1.4;
             }
             .article-grid__underline {
@@ -82,7 +82,7 @@ body.home {
               @include fdd-home-oldish-article-heading();
             }
             .article-grid__excerpt {
-              @include font-home-page-excerpt(110%);
+              @include fdd-home-article-excerpt(110%);
               line-height: 1.5;
             }
             .article-grid__underline {
