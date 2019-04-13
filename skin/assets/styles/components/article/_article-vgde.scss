@@ -107,7 +107,7 @@ body.home {
 
 $masonry-style: ttb; // ltr|ttb
 
-@mixin oldish-masonry-ttb($gap: $fdd-outer-padding-wide-screen) {
+@mixin oldish-masonry-ttb($gap: $fdd-outer-padding-wide-screen / 2) {
   columns: 2;
   column-fill: balance;
   column-gap: $gap;
@@ -123,7 +123,7 @@ body.home {
       width: 50%;
       clear: left;
       float: left;
-      padding: 0 $fdd-outer-padding-wide-screen;
+      padding: 0 $fdd-outer-padding-wide-screen / 2 0 $fdd-outer-padding-wide-screen;
       .article-grid-wrapper {
         position: relative;
         max-height: $first-article-height-wide;
@@ -209,7 +209,7 @@ body.home {
     .oldish {
       width: 100%;
       @if ($masonry-style == ttb) {
-        @include oldish-masonry-ttb();
+        @include oldish-masonry-ttb($fdd-outer-padding-wide-screen);
       }
       padding: 7em $fdd-home-outer-padding-narrow-screen 0 $fdd-home-outer-padding-narrow-screen;
       .article-grid {
