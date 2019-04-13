@@ -5,7 +5,7 @@
 }
 
 html { // stylelint-disable-line selector-no-type
-  @include text-size(default);
+  @include text-size(large);
 }
 
 body { /* stylelint-disable-line selector-no-type */
