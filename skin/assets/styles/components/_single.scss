@@ -4,5 +4,9 @@
       @include fdd-single-article-heading();
       font-size: 47px;
     }
+    .single__excerpt {
+      @include fdd-single-article-excerpt();
+      font-size: 24px;
+    }
   }
 }

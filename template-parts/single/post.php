@@ -29,6 +29,9 @@ $category_slugs = join(' ', array_reduce(get_the_category(), 'extract_category_s
     <h1 class="single__title">
       <?php the_title();?>
     </h1>
+    <div class="single__excerpt">
+      <?php the_excerpt();?>
+    </div>
   </header>
   <div class="single__content content-style content-media-style">
     <?php the_content();?>
