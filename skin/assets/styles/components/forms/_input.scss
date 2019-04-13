@@ -10,8 +10,8 @@ $input: (
 .textarea {
   @extend %input-reset;
 
+  @include font-standard-sans();
   @include text-size(biggest);
-  font-family: $base-font-family;
   border: 1px solid map-get($input, 'border-color');
   display: flex;
   padding: 10px 20px;
