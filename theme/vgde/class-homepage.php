@@ -46,7 +46,9 @@ class ArticleWrappingCategory {
   }
 
   public function before_article($post_order_var_name) {
-    echo '<div class="oldish">';
+    if ($this->order == 0) {
+      echo '<div class="oldish">';
+    }
     // Makes visible in the template
     set_query_var($post_order_var_name, $this->order + 1);
   }
