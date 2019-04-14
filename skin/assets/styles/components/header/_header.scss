@@ -2,6 +2,7 @@
   @include font-standard-sans();
   padding: 0 $fdd-outer-padding-wide-screen;
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
 
@@ -19,24 +20,26 @@
     font-size: $header-font-size;
     font-weight: bold;
     display: inline-block;
+    margin-right: $fdd-outer-padding-wide-screen;
     height: $header-font-size + $header-top-bottom-padding * 2 + $header-menu-item-hover-border + 1;
   }
 
   ul.main-navigation {
     list-style-type: none;
-    display: inline;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
     margin: 0;
-    padding: 0 0 0 40px;
+    padding: 0;
+    width: 36%; // Empiric
     li {
       display: inline-block;
       padding: $header-top-bottom-padding 0;
-      margin: 0 20px;
-    }
-    @mixin header__item-focused () {
-      border-bottom: $header-menu-item-hover-border solid black;
+      margin: 0;
     }
     li:hover, li.main-navigation__item--active {
-      @include header__item-focused();
+      border-bottom: $header-menu-item-hover-border solid black;
+      margin-bottom: -$header-menu-item-hover-border;
     }
   }
 }
