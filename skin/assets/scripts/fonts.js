@@ -7,7 +7,6 @@ WebFont.load({
     families: [
       /** unused */
 
-      //'Open Sans:400',
       //'Open Sans:300',
       //'Open Sans Condensed:300',
       //'Prata',
@@ -15,14 +14,15 @@ WebFont.load({
       //'Assistant:300',
       //'Noto Serif TC:200',
       //'Rasa',
+      // 'Gafata:400',
 
       /** used */
 
       'Noto Serif KR:300',
       'Spectral:200i',
-      'Gafata:400',
       'Abel',
       'Oranienbaum',
+      'Open Sans:400',
     ],
   },
 });
