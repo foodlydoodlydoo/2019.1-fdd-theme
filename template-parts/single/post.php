@@ -26,6 +26,7 @@ $category_slugs = join(' ', array_reduce(get_the_category(), 'extract_category_s
 <section class="single <?php echo $category_slugs; ?>" id="<?php echo esc_attr($post->ID); ?>">
   <!--div class="single__image" data-normal="<?php echo esc_url($image['image']); ?>"></div-->
   <header>
+    <div class="single__pre_title"></div>
     <h1 class="single__title">
       <?php the_title();?>
     </h1>
