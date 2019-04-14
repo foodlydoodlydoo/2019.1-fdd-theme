@@ -5,9 +5,11 @@
  * @package Fdd\Template_Parts\Listing\Articles
  */
 
+use Fdd\Theme\Utils\Excerpt;
 use Fdd\Theme\Utils\Images;
 
 $image = Images::get_post_image($post_order_in_category == 0 ? 'full_width' : 'homepage-oldish-640');
+$excerpt = Excerpt::get_excerpt(get_the_excerpt(), 9999);
 
 ?>
 
@@ -35,7 +37,7 @@ if (false && $post_order_in_category > 0) {
       <?php esc_html(the_title()); /* print("[$post_order_in_category]"); */?>
     </h2>
     <div class="article-grid__excerpt">
-      <?php the_excerpt();?>
+      <?php echo $excerpt; ?>
     </div>
     <div class="article-grid__underline"></div>
   </header>

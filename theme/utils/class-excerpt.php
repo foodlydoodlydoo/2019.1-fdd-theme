@@ -22,35 +22,35 @@ class Excerpt {
    *
    * @since 1.0.0
    */
-  public static function get_excerpt( $source = null, $limit = null ) {
+  public static function get_excerpt($source = null, $limit = null) {
 
-    if ( empty( $source ) ) {
+    if (empty($source)) {
       return false;
     }
 
-    if ( empty( $limit ) ) {
+    if (empty($limit)) {
       $limit = 140;
     }
 
     // Remove shortcode.
-    $output = preg_replace( ' (\[.*?\])', '', $source );
-    $output = strip_shortcodes( $output );
+    $output = preg_replace(' (\[.*?\])', '', $source);
+    $output = strip_shortcodes($output);
 
     // Remove html tags.
-    $output = wp_strip_all_tags( $output );
+    $output = wp_strip_all_tags($output);
 
     // Reduce string to limit.
-    $output = substr( $output, 0, $limit );
+    $output = substr($output, 0, $limit);
 
     // Remove any whitespace character.
-    $output = trim( preg_replace( '/\s+/', ' ', $output ) );
+    $output = trim(preg_replace('/\s+/', ' ', $output));
 
     // Check if strings are equal if not remove text until first space.
-    if ( strcmp( $source, $output ) !== 0 ) {
-      $output = substr( $output, 0, strripos( $output, ' ' ) );
+    if (strcmp($source, $output) !== 0) {
+      $output = substr($output, 0, strripos($output, ' '));
     }
 
-    $output = '<p>' . $output . '...</p>';
+    $output = '<p>' . $output . '</p>';
     return $output;
   }
 
