@@ -6,7 +6,7 @@ $article-underline-height: 3px;
 
 // [global]
 
-body.home {
+body.home, body.category {
   .fdd-category-grid {
     .article-grid-wrapper:hover {
       .article-grid__figure {
@@ -115,7 +115,7 @@ $masonry-style: ttb; // ltr|ttb
 
 @media screen and (min-width: $fdd-wide-width-pixels) {
 
-body.home {
+body.home, body.category {
   .fdd-category-grid {
     > .article-grid {
       position: sticky;
@@ -185,7 +185,7 @@ body.home {
 
 @media screen and (max-width: $fdd-wide-width-pixels - 1px) {
 
-body.home {
+body.home, body.category {
   .fdd-category-grid {
     > .article-grid {
       width: 100%;
@@ -249,7 +249,7 @@ body.home {
 
 @media screen and (max-width: $fdd-narrow-width-pixels - 1px) {
 
-  body.home {
+  body.home, body.category {
   .fdd-category-grid {
     .oldish {
       columns: auto;

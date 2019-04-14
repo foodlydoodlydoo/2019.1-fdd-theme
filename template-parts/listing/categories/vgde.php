@@ -5,10 +5,6 @@
  * @package Fdd
  */
 
-global $category;
-
-use Fdd\Theme\vgde\ArticleWrapping;
-
 ?>
 <div id="<?php echo esc_html($category->slug); ?>" class="fdd-category">
 
@@ -19,7 +15,8 @@ use Fdd\Theme\vgde\ArticleWrapping;
 <div class="fdd-category-grid">
 <?php
 
-$wrapper = new ArticleWrapping;
+$wrapper_class = "Fdd\\Theme\\vgde\\$wrapper_class";
+$wrapper = new $wrapper_class;
 
 while (have_posts()) {
   the_post();
@@ -28,7 +25,7 @@ while (have_posts()) {
     $wrapper->before_article('post_order_in_category');
     get_template_part('template-parts/listing/articles/vgde');
     $wrapper->after_article();
-    if ($wrapper->at_limit(9)) {
+    if ($wrapper->at_limit($article_limit)) {
       break 2;
     }
   }

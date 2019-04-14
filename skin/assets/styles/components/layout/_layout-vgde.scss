@@ -1,4 +1,4 @@
-body.home {
+body.home, body.category {
   .fdd-category {
     width: 100%;
     display: block;
@@ -23,7 +23,7 @@ body.home {
 
 @media screen and (min-width: $fdd-wide-width-pixels) {
 
-body.home {
+body.home, body.category {
   .fdd-category {
     .fdd-category-name {
       margin: 0 $fdd-outer-padding-wide-screen;
@@ -43,7 +43,7 @@ body.home {
 
 @media screen and (max-width: $fdd-wide-width-pixels - 1px) {
 
-body.home {
+body.home, body.category {
   .fdd-category {
     .fdd-category-name {
       margin: 0 $fdd-home-outer-padding-narrow-screen;
