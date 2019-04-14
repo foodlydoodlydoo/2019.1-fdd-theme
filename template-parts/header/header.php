@@ -17,7 +17,8 @@ $logo_img = General_Helper::get_manifest_assets_data('foodly-doodly-doo-logo-m.p
 ?>
 <div class="header">
   <a class="header__logo-link" href="<?php echo esc_url(home_url()); ?>" title="<?php echo esc_attr($blog_name); ?>">
-    <img class="header__logo-img" src="<?php echo esc_url($logo_img); ?>" title="<?php echo esc_attr($header_logo_info); ?>" alt="<?php echo esc_attr($header_logo_info); ?>" />
+    <!--img class="header__logo-img" src="<?php echo esc_url($logo_img); ?>" title="<?php echo esc_attr($header_logo_info); ?>" alt="<?php echo esc_attr($header_logo_info); ?>" /-->
+    <div class="header__logo">FOODLYdoodlyDoo.com</div>
   </a>
   <?php
 echo esc_html($main_menu->bem_menu('header_main_nav', 'main-navigation'));

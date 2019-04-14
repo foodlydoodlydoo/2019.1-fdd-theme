@@ -1,6 +1,42 @@
 .header {
+  @include font-standard-sans();
+  padding: 0 $fdd-outer-padding-wide-screen;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+
   img {
     width: 20%;
     padding: 30px;
+  }
+
+  $header-font-size: 28px;
+  $header-top-bottom-padding: $header-font-size;
+  $header-menu-item-hover-border: 5px;
+  
+  .header__logo {
+    padding: $header-top-bottom-padding 0;
+    font-size: $header-font-size;
+    font-weight: bold;
+    display: inline-block;
+    height: $header-font-size + $header-top-bottom-padding * 2 + $header-menu-item-hover-border + 1;
+  }
+
+  ul.main-navigation {
+    list-style-type: none;
+    display: inline;
+    margin: 0;
+    padding: 0 0 0 40px;
+    li {
+      display: inline-block;
+      padding: $header-top-bottom-padding 0;
+      margin: 0 20px;
+    }
+    @mixin header__item-focused () {
+      border-bottom: $header-menu-item-hover-border solid black;
+    }
+    li:hover, li.main-navigation__item--active {
+      @include header__item-focused();
+    }
   }
 }
