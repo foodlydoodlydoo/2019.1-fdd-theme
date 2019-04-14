@@ -21,6 +21,7 @@ WebFont.load({
       'Noto Serif KR:300',
       'Spectral:200i',
       'Gafata:400',
+      'Abel',
       'Oranienbaum',
     ],
   },
