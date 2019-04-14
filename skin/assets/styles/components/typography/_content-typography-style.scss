@@ -15,7 +15,7 @@ $content-style: (
   @media screen and (max-width: $fdd-wide-width-pixels - 1px) {
     @include text-size(large);
   }
-  line-height: 1.5;
+  line-height: 1.7; // was 1.5!
   color: map-get($content-style, 'text-color');
 
   p,
@@ -104,7 +104,7 @@ $content-style: (
     margin-left: 22px;
 
     li {
-      padding-bottom: 4px;
+      padding-bottom: 0; // was 4px!
 
       &:last-child {
         padding-bottom: 0;
