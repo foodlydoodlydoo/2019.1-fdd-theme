@@ -34,8 +34,8 @@
     width: 36%; // Empiric
     li {
       display: inline-block;
-      padding: $header-top-bottom-padding 0;
-      margin: 0;
+      padding:  0;
+      margin: $header-top-bottom-padding 0;
     }
     li:hover, li.main-navigation__item--active {
       border-bottom: $header-menu-item-hover-border solid black;
