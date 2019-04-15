@@ -1,3 +1,5 @@
+$header-sticky-bottom-line: true;
+
 .header {
   @include font-standard-sans();
   padding: 0 $fdd-outer-padding-wide-screen;
@@ -5,6 +7,17 @@
   flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
+  @if ($header-sticky-bottom-line) {
+    border-bottom: 1px solid black;
+  }
+
+  @if ($fdd-sticky-menu == true) {
+    position: sticky;
+    top: -25px;
+    background: white;
+    z-index: 100;
+    height: 70px;
+  }
 
   img {
     width: 20%;
@@ -16,12 +29,18 @@
   $header-menu-item-hover-border: 5px;
   
   .header__logo {
-    padding: $header-top-bottom-padding 0;
+    @if ($fdd-sticky-menu == true) {
+      padding: $header-top-bottom-padding / 2 0;
+      margin-top: $header-top-bottom-padding / 2; // has impact on the whole header content
+    }
+    @if ($fdd-sticky-menu == false) {
+      padding: $header-top-bottom-padding 0;
+      height: $header-font-size + $header-top-bottom-padding * 2 + $header-menu-item-hover-border + 1;
+    }
     font-size: $header-font-size;
     font-weight: bold;
     display: inline-block;
     margin-right: $fdd-outer-padding-wide-screen;
-    height: $header-font-size + $header-top-bottom-padding * 2 + $header-menu-item-hover-border + 1;
   }
 
   ul.main-navigation {
@@ -35,12 +54,47 @@
     li {
       display: inline-block;
       padding:  0;
-      margin: $header-top-bottom-padding 0;
+      @if ($fdd-sticky-menu == false) {
+        margin: $header-top-bottom-padding 0;
+      }
+      @if ($fdd-sticky-menu == true) {
+        margin: 7px 0; // Empiric
+      }
       text-transform: lowercase;
     }
     li:hover, li.main-navigation__item--active {
       border-bottom: $header-menu-item-hover-border solid black;
       margin-bottom: -$header-menu-item-hover-border;
     }
+  }
+}
+
+@if ($header-sticky-bottom-line == false) {
+  .header__bottom-border {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: black;
+  }
+}
+
+.description {
+  @include fdd-blog-descr-font();
+}
+
+body.home {
+  .description {
+    @include text-size(biggest);
+    text-align: center;
+    margin: 0;
+    padding: 50px 25vw;
+  }
+}
+
+body.category, body.single {
+  .description {
+    @include text-size(largest);
+    margin: 0;
+    padding: 10px $fdd-outer-padding-wide-screen 30px;
   }
 }

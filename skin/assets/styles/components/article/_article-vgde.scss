@@ -119,7 +119,12 @@ body.home, body.category {
   .fdd-category-grid {
     > .article-grid {
       position: sticky;
-      top: 0;
+      @if ($fdd-sticky-menu == true) {
+        top: 45px;
+      }
+      @if ($fdd-sticky-menu == false) {
+        top: 0;
+      }
       width: 50%;
       clear: left;
       float: left;

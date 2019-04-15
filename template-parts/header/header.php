@@ -26,3 +26,7 @@ echo esc_html($main_menu->bem_menu('header_main_nav', 'main-navigation'));
 get_template_part('template-parts/header/search', 'form');
 ?>
 </div>
+<div class="header__bottom-border"></div>
+<div class="description">
+  <div><?php echo esc_html($blog_description); ?></div>
+</div>
