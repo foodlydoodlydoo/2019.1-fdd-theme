@@ -39,7 +39,7 @@ class General {
    * @since 1.0.0
    */
   public function add_theme_support() {
-    add_theme_support('title-tag', 'html5', 'responsive-embeds');
+    add_theme_support('title-tag', 'html5', 'search-form', 'responsive-embeds');
     add_filter('wp_calculate_image_srcset', 'Fdd\Theme\sort_image_srcset', 100, 5);
     add_filter('wp_get_attachment_metadata', 'Fdd\Theme\get_attachment_metadata_remove_large_size', 100, 2);
   }

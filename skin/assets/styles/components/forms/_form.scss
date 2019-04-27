@@ -5,3 +5,25 @@
 .field {
   padding-bottom: $form-field-spacing;
 }
+
+.search-form {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  > label {
+    width: 100%;
+  }
+  .search-field {
+    color: white;
+    border: solid 1px white;
+    background: $transparent-color;
+    width: 100%;
+    padding: .5em;
+  }
+  .search-submit {
+    margin: 0;
+    border: none;
+    background: white;
+    padding: calc(.5em + 1px);
+  }
+}
