@@ -75,9 +75,10 @@ $header-menu-item-hover-border: 5px;
       right: 0;
       margin-top: 11px; // Empiric
       padding: 1em 5vw;
-      background: rgba(54, 54, 54, 0.97);
+      background: rgba(54, 54, 54, 0.98);
       width: 100%;
       text-align: right;
+
       li {
         padding: 1em 0;
         display: block;
@@ -106,6 +107,10 @@ $header-menu-item-hover-border: 5px;
 
     ul.main-navigation {
       width: 36%; // Empiric
+      ul.main-navigation__sub-menu {
+        padding-top: 2.5em;
+        padding-bottom: 3.5em;
+      }
       > li:hover, > li.main-navigation__item--active {
         border-bottom: $header-menu-item-hover-border solid black;
         margin-bottom: -$header-menu-item-hover-border;
@@ -127,6 +132,17 @@ $header-menu-item-hover-border: 5px;
       text-align: right;
       ul.main-navigation__sub-menu {
         @include text-size(larger);
+        
+        position: static;
+        width: 100vw;
+        margin-left: -$fdd-outer-padding-wide-screen;
+      }
+      li.fdd-sub-menu-active {
+        margin-top: -50px; // No idea where this comes from!  Empiric
+        margin-bottom: 0;
+        > a {
+          margin-right: $fdd-outer-padding-wide-screen;
+        }
       }
       li.main-navigation__item--wide-screen-only {
         display: none !important;
