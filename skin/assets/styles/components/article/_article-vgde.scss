@@ -10,9 +10,9 @@ body.home, body.category {
   .fdd-category-grid {
     .article-grid-wrapper:hover {
       .article-grid__figure {
-        background-color: #5bff00;
-        background-color: rgb(36, 214, 23);
-        background-color: rgba(158, 238, 113, 0.98);
+        background-color: #5bff00; // for multiply
+        background-color: rgb(36, 214, 23); // for color-burn
+        background-color: $fdd-green-color;
       }
     }
     .article-grid__content header {
