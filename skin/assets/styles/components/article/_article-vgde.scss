@@ -184,6 +184,16 @@ body.home, body.category {
 
 } // media screen and (max-width: $fdd-wide-width-pixels - 1px)
 
+@media screen and (max-width: $fdd-menu-wide-screen-width - 1px) {
+  body.home, body.category {
+    .fdd-category-grid {
+      > .article-grid {
+        top: 0;
+      }
+    }
+  }
+}
+
 /**********************************************************
  Narrow screen
  **********************************************************/
