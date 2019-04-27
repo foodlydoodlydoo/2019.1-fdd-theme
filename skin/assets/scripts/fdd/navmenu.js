@@ -8,7 +8,13 @@ export class FDD_NavMenu {
       const target = this.selector($(e.currentTarget).parent());
       target.toggle();
 
-      this.action(target, target.is(":visible"));
+      const visible = target.is(":visible");
+      this.action(target, visible);
+      if (visible) {
+        $(e.currentTarget).addClass("fdd-sub-menu-active");
+      } else {
+        $(e.currentTarget).removeClass("fdd-sub-menu-active");
+      }
 
       e.preventDefault();
     });
