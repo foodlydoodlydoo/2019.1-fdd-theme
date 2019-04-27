@@ -97,10 +97,7 @@ $header-menu-shift-margin: 7px; // Empiric
   }
 }
 
-$fdd-menu-narrow-screen-width: 1200px;
-$fdd-menu-very-narrow-screen-width: 576px;
-
-@media screen and (min-width: $fdd-menu-narrow-screen-width) {
+@media screen and (min-width: $fdd-menu-wide-screen-width) {
   .header {
     @if ($fdd-sticky-menu == true) {
       position: sticky;
@@ -131,7 +128,7 @@ $fdd-menu-very-narrow-screen-width: 576px;
   }
 }
 
-@media screen and (max-width: $fdd-menu-narrow-screen-width - 1px) {
+@media screen and (max-width: $fdd-menu-wide-screen-width - 1px) {
   .header {
     ul.main-navigation {
       > li {
@@ -145,6 +142,7 @@ $fdd-menu-very-narrow-screen-width: 576px;
         position: static;
         width: 100vw;
         margin-left: -$fdd-outer-padding-wide-screen;
+        //margin-top: $header-menu-shift-margin; // if mobile menu sticky
       }
       li.fdd-sub-menu-active {
         margin-top: -50px; // No idea where this comes from!  Empiric
@@ -169,7 +167,7 @@ $fdd-menu-very-narrow-screen-width: 576px;
   }
 }
 
-@media screen and (max-width: $fdd-menu-very-narrow-screen-width) {
+@media screen and (max-width: $fdd-menu-narrow-screen-width) {
   .header {
     ul.main-navigation {
       width: 100%;
