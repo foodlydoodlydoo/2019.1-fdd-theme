@@ -1,5 +1,5 @@
 $first-article-height-wide: 90vh;
-$first-article-height-narrow: 50vh;
+$first-article-height-narrow: 60vh;
 
 $first-article-text-color: white;
 $article-underline-height: 3px;
@@ -215,6 +215,8 @@ body.home, body.category {
           object-fit: cover;
         }
         .article-grid__content {
+          max-height: $first-article-height-narrow;
+          min-height: $first-article-height-narrow;
           header {
             @include text-size(big);
           }
