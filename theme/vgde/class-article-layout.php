@@ -15,6 +15,10 @@ class ArticleWrappingHomepage {
     $this->order = 0;
   }
 
+  public function before_grid($category) {
+    echo "<div class=\"fdd-category-name\">" . esc_html($category->name) . "</div>";
+  }
+
   public function before_article($post_order_var_name) {
     if ($this->order == 1) {
       echo '<div class="oldish">';
@@ -40,14 +44,29 @@ class ArticleWrappingHomepage {
 
 class ArticleWrappingCategory {
   private $order;
+  private $oldish_open;
+  const BUCKET_SIZE = 5;
 
   function __construct() {
     $this->order = 0;
+    $this->oldish_open = false;
+    $this->bucket_open = false;
+  }
+
+  public function before_grid($category) {
   }
 
   public function before_article($post_order_var_name) {
-    if ($this->order == 0) {
+    if ($this->order % self::BUCKET_SIZE == 1) {
       echo '<div class="oldish">';
+      $this->oldish_open = true;
+    }
+    if ($this->order % self::BUCKET_SIZE == 0) {
+      $this->close_bucket();
+      if ($this->order) {
+        echo '<div class="fdd-category-grid">';
+      }
+      $this->bucket_open = true;
     }
     // Makes visible in the template
     set_query_var($post_order_var_name, $this->order + 1);
@@ -55,6 +74,9 @@ class ArticleWrappingCategory {
 
   public function after_article() {
     ++$this->order;
+    if ($this->order % self::BUCKET_SIZE == 0) {
+      $this->close_oldish();
+    }
   }
 
   public function at_limit($limit) {
@@ -62,6 +84,21 @@ class ArticleWrappingCategory {
   }
 
   public function after_grid() {
-    echo '</div>';
+    $this->close_oldish();
+    $this->close_bucket();
+  }
+
+  private function close_oldish() {
+    if ($this->oldish_open) {
+      echo '</div>';
+      $this->oldish_open = false;
+    }
+  }
+
+  private function close_bucket() {
+    if ($this->bucket_open) {
+      echo '<div class="fdd-heel"></div></div>';
+      $this->bucket_open = false;
+    }
   }
 }

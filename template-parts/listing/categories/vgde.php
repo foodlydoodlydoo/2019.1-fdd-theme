@@ -5,18 +5,14 @@
  * @package Fdd
  */
 
-?>
-<div id="<?php echo esc_html($category->slug); ?>" class="fdd-category">
-
-<div class="fdd-category-name">
-  <?php echo esc_html($category->name); ?>
-</div>
-
-<div class="fdd-category-grid">
-<?php
-
 $wrapper_class = "Fdd\\Theme\\vgde\\$wrapper_class";
 $wrapper = new $wrapper_class;
+
+?><div id="<?php echo esc_html($category->slug); ?>" class="fdd-category"><?php
+
+$wrapper->before_grid($category);
+
+?><div class="fdd-category-grid"><?php
 
 while (have_posts()) {
   the_post();
@@ -33,8 +29,6 @@ while (have_posts()) {
 
 $wrapper->after_grid();
 
-?>
-<div class="fdd-heel"></div>
+?><div class="fdd-heel"></div>
 </div>
-
 </div>
