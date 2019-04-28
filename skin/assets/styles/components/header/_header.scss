@@ -112,7 +112,7 @@ $header-menu-shift-margin: 7px; // Empiric
       ul.main-navigation__sub-menu {
         padding-top: 2.5em;
         padding-bottom: 3.5em;
-        li:hover a {
+        li a:hover {
           border-bottom: $header-menu-item-hover-border solid white;
           margin-bottom: -$header-menu-item-hover-border;
         }
