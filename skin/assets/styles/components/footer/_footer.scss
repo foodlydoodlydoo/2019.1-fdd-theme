@@ -1,10 +1,30 @@
-
 .footer {
   clear: both;
-  padding: 2rem;
-  margin: auto;
-
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  
   &__container {
-    @include site-container();
+    @include font-standard-sans();
+    @include text-size(large);
+    padding: 2.5rem $fdd-outer-padding-wide-screen;
+    background: $fdd-gray-elements-color;
+    color: $fdd-on-gray-color;
+    ul.footer-navigation {
+      list-style-type: none;
+      display: inline-flex;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      margin: 0;
+      padding: 0;
+      li {
+        display: inline-block;
+        padding:  0;
+        margin: 0 0 0 2em;
+        a {
+          color: $fdd-on-gray-color;
+        }
+      }
+    }
   }
 }
