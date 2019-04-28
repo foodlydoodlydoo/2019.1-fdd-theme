@@ -31,3 +31,17 @@
     }
   }
 }
+
+@media screen and (max-width: $fdd-narrow-width-pixels - 1px) {
+  .footer {
+    &__container {
+      ul.footer-navigation {
+        display: block;
+        li {
+          margin: 1.5em 0 0;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
