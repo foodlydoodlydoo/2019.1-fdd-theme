@@ -6,6 +6,7 @@ $header-bottom-line-on-home: true;
 $header-bottom-line-color-on-home: #d9d9d9;
 
 $header-font-size: 28px;
+$header-font-size-narrow: 18px;
 $header-top-bottom-padding: $header-font-size;
 $header-menu-item-hover-border: 5px;
 $header-menu-shift-margin: 7px; // Empiric
@@ -169,6 +170,9 @@ $header-menu-shift-margin: 7px; // Empiric
 
 @media screen and (max-width: $fdd-menu-narrow-screen-width) {
   .header {
+    .header__logo {
+      font-size: $header-font-size-narrow;
+    }
     ul.main-navigation {
       width: 100%;
       li.fdd-sub-menu-active {
