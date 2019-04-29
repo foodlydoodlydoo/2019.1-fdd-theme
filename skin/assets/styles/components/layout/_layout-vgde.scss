@@ -10,9 +10,23 @@ body.home, body.category {
       display: inline-block;
       padding: 0.2em 0;
     }
+  }
+}
+
+body.home {
+  .fdd-category {
     .fdd-category-grid {
       margin: 50px 0 60px;
     }
+  }
+}
+
+body.category {
+  .fdd-category {
+    .fdd-category-grid:first-child {
+      margin-top: 60px;
+    }
+    margin-bottom: 80px;
   }
 }
 
@@ -28,6 +42,11 @@ body.home, body.category {
     .fdd-category-name {
       margin: 0 $fdd-outer-padding-wide-screen;
     }
+  }
+}
+
+body.home {
+  .fdd-category {
     .fdd-category-grid {
       margin-bottom: 150px;
     }
