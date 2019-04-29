@@ -7,7 +7,7 @@ $first-article-min-height-category-wide: 40vh;
 $first-article-max-height-category-wide: 640px / 4 * 3;
 
 $first-article-min-height-category-narrow: 50vh;
-$first-article-max-height-category-narrow: 360px;
+$first-article-max-height-category-narrow: 640px / 4 * 3;
 
 $first-article-text-color: white;
 $article-underline-height: 3px;
@@ -216,7 +216,8 @@ body.category {
           margin: 0;
         }
         img {
-          min-height: $first-article-min-height-category-wide;
+          // W/A for #22
+          //min-height: $first-article-min-height-category-wide;
           max-height: $first-article-max-height-category-wide;
         }
       }
@@ -297,8 +298,8 @@ body.home {
     > .article-grid {
       .article-grid-wrapper {
         img {
-          max-height: $first-article-max-height-home-narrow;
           min-height: $first-article-min-height-home-narrow;
+          max-height: $first-article-max-height-home-narrow;
         }
       }
     }
