@@ -203,12 +203,11 @@ body.home {
 
 body.category {
   $left-article-width: 45%;
-  $outer-padding: 12vw;
 
   .fdd-category-grid {
     > .article-grid {
       width: $left-article-width;
-      padding: 0 $fdd-outer-padding-wide-screen / 2 0 $outer-padding;
+      padding: 0 $fdd-outer-padding-wide-screen / 2 0 $fdd-category-outer-padding-wide-screen;
       .article-grid-wrapper {
         .article-grid__content {
           top: 0; //-5.2em;
@@ -224,7 +223,7 @@ body.category {
     }
     .oldish {
       width: 100% - $left-article-width;
-      padding-right: $outer-padding;
+      padding-right: $fdd-category-outer-padding-wide-screen;
     }
   }
 } // body.category

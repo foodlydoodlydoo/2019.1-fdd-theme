@@ -54,6 +54,7 @@ class ArticleWrappingCategory {
   }
 
   public function before_grid($category) {
+    echo "<div class=\"fdd-category-name\">" . esc_html($category->name) . "</div>";
   }
 
   public function before_article($post_order_var_name) {
