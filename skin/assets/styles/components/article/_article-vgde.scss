@@ -6,7 +6,7 @@ $first-article-max-height-home-narrow: 360px;
 $first-article-min-height-category-wide: 40vh;
 $first-article-max-height-category-wide: 640px / 4 * 3;
 
-$first-article-min-height-category-narrow: 50vh;
+$first-article-min-height-category-narrow: 80vh;
 $first-article-max-height-category-narrow: 640px / 4 * 3;
 
 $first-article-text-color: white;
@@ -258,14 +258,6 @@ body.home, body.category {
           width: 100%;
           object-fit: cover;
         }
-        .article-grid__content {
-          position: absolute;
-          bottom: 0;
-          padding: 0 15% 3em;
-          header {
-            @include text-size(big);
-          }
-        }
       }
     }
     .oldish {
@@ -298,8 +290,16 @@ body.home {
     > .article-grid {
       .article-grid-wrapper {
         img {
-          min-height: $first-article-min-height-home-narrow;
+          height: $first-article-min-height-home-narrow;
           max-height: $first-article-max-height-home-narrow;
+        }
+        .article-grid__content {
+          position: absolute;
+          bottom: 0;
+          padding: 0 15% 3em;
+          header {
+            @include text-size(big);
+          }
         }
       }
     }
@@ -307,7 +307,7 @@ body.home {
 }
 
 body.category {
-  $up-shift: -8.2em;
+  $up-shift: -3.5em;
   
   .fdd-category-grid {
     > .article-grid {
@@ -315,10 +315,11 @@ body.category {
       .article-grid-wrapper {
         margin-bottom: $up-shift;
         img {
-          min-height: $first-article-min-height-category-narrow;
+          height: $first-article-min-height-category-narrow;
           max-height: $first-article-max-height-category-narrow;
         }
         .article-grid__content {
+          margin-left: 10%;
           position: relative;
           padding: 0.3em 0.5em 0 2em;
           top: $up-shift;
@@ -342,16 +343,25 @@ body.category {
 
   body.home, body.category {
   .fdd-category-grid {
+    > .article-grid {
+      padding: 3em 0 2em;
+      .article-grid-wrapper {
+        img {
+          height: 100vh;
+          max-height: $first-article-max-height-category-narrow;
+        }
+      }
+    }
     .oldish {
       columns: auto;
       width: 100%;
-      padding: 7em $fdd-category-outer-padding-narrow-screen 0;
+      padding: 2.5em $fdd-category-outer-padding-super-narrow-screen 0;
       .article-grid {
         width: 100%;
-        padding-bottom: 20px;
-        margin-bottom: 20px;
+        margin-bottom: 25px;
         &:not(:last-child) {
           border-bottom: $base-primary-color 1px solid;
+          padding-bottom: 25px;
         }
         .article-grid-wrapper {
           display: flex;
