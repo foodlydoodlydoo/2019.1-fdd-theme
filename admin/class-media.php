@@ -39,6 +39,7 @@ class Media {
     add_image_size('listing', 570, 320, true);
     add_image_size('homepage-oldish-480', 480, 480 * 1.5, false);
     add_image_size('homepage-oldish-640', 640, 640 * 1.5, false);
+    add_image_size('homepage-oldish-760', 760, 760 * 1.5, false);
   }
 
   /**
