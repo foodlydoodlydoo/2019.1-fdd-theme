@@ -20,7 +20,7 @@ WebFont.load({
 
       'Noto Serif KR:300',
       'Spectral:200i',
-      'Abel',
+      'Abel:400',
       'Oranienbaum',
       'Open Sans:400',
     ],
