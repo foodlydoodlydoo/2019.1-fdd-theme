@@ -16,8 +16,9 @@ if (have_posts()) {
 
 get_footer();
 
-if (true) {
-  $str = file_get_contents('test-vid.txt');
+// IMPORT TEST - REMOVE FROM PRODUCTION!
+foreach (array('prep-in', 'prep-sec', 'vid', 'imgs') as $test) {
+  $str = file_get_contents("test-$test.txt");
 
   fdd_reg_shortcodes();
   $str = do_shortcode($str);
@@ -28,7 +29,8 @@ if (true) {
   ));
   $post = fdd_filter_wp_import_post_data_raw($post);
 
-  file_put_contents('test.out', $post['post_content']);
+  file_put_contents("test-$test.out", $post['post_content']);
 
-  echo "\nSuccess!\n";
+  echo "\nSuccess for $test!\n";
 }
+// IMPORT TEST - REMOVE FROM PRODUCTION!
