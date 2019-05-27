@@ -17,7 +17,8 @@ if (have_posts()) {
 get_footer();
 
 // IMPORT TEST - REMOVE FROM PRODUCTION!
-foreach (array('prep-in', 'prep-sec', 'vid', 'imgs') as $test) {
+$cats = ['recipes', 'recipes', 'recipes', 'recipes', 'food-art'];
+foreach (array('prep-in', 'prep-sec', 'vid', 'imgs', 'art1') as $test) {
   $str = file_get_contents("test-$test.txt");
 
   fdd_reg_shortcodes();
@@ -25,7 +26,7 @@ foreach (array('prep-in', 'prep-sec', 'vid', 'imgs') as $test) {
   print_r($str);
 
   $post = array('post_content' => $str, 'post_type' => 'post', 'terms' => array(
-    array('domain' => 'category', 'slug' => 'recipes'),
+    array('domain' => 'category', 'slug' => array_shift($cats)),
   ));
   $post = fdd_filter_wp_import_post_data_raw($post);
 
