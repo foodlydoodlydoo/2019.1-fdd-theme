@@ -42,14 +42,21 @@ class Images {
 
   // Depending on the current mode, return the appropriate sizes filling
   // This is called for images added generically by calls to `the_content()` et al.
-
   private static $recipe_image_order = 0;
   public static function sizes_attribute_hook($sizes, $size, $image_src, $image_meta, $attachment_id) {
+    $image = wp_get_attachment_image_src($attachment_id);
+    $width = $image[1];
+    $height = $image[2];
+    $landscape = $width > $height;
+
     switch (Images::$image_sizing_mode) {
 
     case 'food-art':
     case 'behind-the-scenes':
-      return '(max-width: 280px) 260px, (max-width: 440px) 400px, (max-width: 700px) 640px, (max-width: 1100px) 1000px, (max-width: 1400px) 1400px, ' . $width . 'px';
+      // TODO - tune this up
+      return $landscape
+      ? '(max-width: 280px) 260px, (max-width: 440px) 400px, (max-width: 700px) 640px, (max-width: 1100px) 1000px, (max-width: 1400px) 1400px, ' . $width . 'px'
+      : '(max-width: 280px) 260px, (max-width: 440px) 400px, (max-width: 700px) 640px, (max-width: 1100px) 1000px, (max-width: 1400px) 1400px, ' . $width . 'px';
 
     case 'recipes':
       if (Images::$recipe_image_order++ == 0) {
@@ -58,15 +65,17 @@ class Images {
         // something special for the small images underneeth?
       }
 
-      return '(max-width: 450px) 260px, (max-width: 700px) 400px, (max-width: 1100px) 640px, 1000px';
+      return $landscape
+      ? '(max-width: 440px) 400px, (max-width: 960px) 1000px, (max-width: 1100px) 640px, 1000px'
+      : '(max-width: 440px) 400px, (max-width: 960px) 400px, 640px';
 
     } // switch $mode
 
     return $sizes;
   }
 
-  // As above, depending on the mode returns the sizes attr, but this called manually
-  // from `get_post_image` method.
+  // As above, depending on the mode returns the sizes attr, but this is called manually
+  // from `Images::get_post_image` method.
   private static function get_sizes_attribute($tag, $width, $height, $attachment_id) {
     switch (Images::$image_sizing_mode) {
 
