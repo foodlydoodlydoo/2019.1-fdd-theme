@@ -5,26 +5,29 @@
  * @package Fdd\Template_Parts\Single
  */
 
-/*
-use Fdd\Theme\Utils\Images;
-
-$image = Images::get_post_image('full_width');
- */
-
-function extract_category_slugs($accumulator, $entry) {
+$category_slugs = array_reduce(get_the_category(), function ($accumulator, $entry) {
   if ($entry->taxonomy == 'category') {
-    $accumulator = array_merge($accumulator, array('category-' . $entry->slug));
+    $accumulator = array_merge($accumulator, array($entry->slug));
   }
   return $accumulator;
-}
+}, array());
 
-$category_slugs = join(' ', array_reduce(get_the_category(), 'extract_category_slugs', array()));
+$image_mode = array_reduce($category_slugs, function ($accumulator, $cat) {
+  if (in_array($cat, ['recipes', 'food-art', 'behind-the-scenes'])) {
+    $accumulator = $cat;
+  }
+  return $accumulator;
+});
 
+Fdd\Theme\Utils\Images::set_image_sizes_mode($image_mode);
+
+$category_slug_classes = join(' ', array_map(function ($cat) {
+  return "category-$cat";
+}, $category_slugs));
 ?>
 
 <!-- Single Content Section -->
-<section class="single <?php echo $category_slugs; ?>" id="<?php echo esc_attr($post->ID); ?>">
-  <!--div class="single__image" data-normal="<?php echo esc_url($image['image']); ?>"></div-->
+<section class="single <?php echo $category_slug_classes; ?>" id="<?php echo esc_attr($post->ID); ?>">
   <header>
     <div class="single__pre_title"></div>
     <h1 class="single__title">

@@ -70,7 +70,7 @@ class ArticleWrappingCategory {
       $this->bucket_open = true;
     }
     // Makes visible in the template
-    set_query_var($post_order_var_name, $this->order + 1);
+    set_query_var($post_order_var_name, $this->order);
   }
 
   public function after_article() {

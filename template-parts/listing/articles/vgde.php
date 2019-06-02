@@ -8,7 +8,10 @@
 use Fdd\Theme\Utils\Excerpt;
 use Fdd\Theme\Utils\Images;
 
-$image = Images::get_post_image($post_order_in_category == 0 ? 'full_width' : 'homepage-oldish-640');
+$image = Images::get_post_image($post_order_in_category == 0
+  ? 'fdd:listing:first-article'
+  : 'fdd:listing:oldish-article');
+
 $excerpt = Excerpt::get_excerpt(get_the_excerpt(), 9999);
 
 ?>
@@ -20,21 +23,13 @@ $excerpt = Excerpt::get_excerpt(get_the_excerpt(), 9999);
 <div class="article-grid__figure">
 <img src="<?php echo esc_attr($image['image']); ?>"
      srcset="<?php echo esc_attr($image['srcset']); ?>"
-     sizes="<?php echo esc_attr($image['sizes']); ?>"
-     style="<?php
-if (false && $post_order_in_category > 0) {
-  $_height = random_int(250, 500);
-  echo "min-height: " . $_height . "px;";
-  echo "max-height: " . $_height . "px;";
-  echo "height: " . $_height . "px;";
-}
-?>">
+     sizes="<?php echo esc_attr($image['sizes']); ?>">
 </div>
 
 <div class="article-grid__content">
   <header>
     <h2 class="article-grid__heading">
-      <?php esc_html(the_title()); /* print("[$post_order_in_category]"); */?>
+      <?php esc_html(the_title());?>
     </h2>
     <div class="article-grid__excerpt">
       <?php echo $excerpt; ?>

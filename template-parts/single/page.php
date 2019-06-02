@@ -5,14 +5,11 @@
  * @package Fdd\Template_Parts\Single
  */
 
-use Fdd\Theme\Utils\Images;
-
-$image = Images::get_post_image('full_width');
+Fdd\Theme\Utils\Images::set_image_sizes_mode('page');
 ?>
 
 <!-- Single Content Section -->
 <section class="single" id="<?php echo esc_attr($post->ID); ?>">
-  <div class="single__image" style="background-image: url('<?php echo esc_url($image['image']); ?>');"></div>
   <header>
     <h1 class="single__title">
       <?php the_title();?>

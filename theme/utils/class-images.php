@@ -16,7 +16,97 @@ use Fdd\Helpers\General_Helper;
 class Images {
 
   /**
-   * Ger featured image for specific post/page ID.
+   * FDD Custom methods for generating the 'sizes' image attribute based
+   * on internal tags and/or what we are currently displaying.
+   */
+
+  private static function remap_size($tag) {
+    switch ($tag) {
+    case 'fdd:listing:first-article':return 'fdd-1000';
+    case 'fdd:listing:oldish-article':return 'fdd-640';
+    }
+
+    return $tag;
+  }
+
+  // Possibly one of: "home", "category", "post"
+  static $image_sizing_mode = '';
+  public static function set_image_sizes_mode($mode) {
+    Images::$image_sizing_mode = $mode;
+  }
+
+  /**
+   * The following code is heavilly dependent on styling for particular templates,
+   * sizes are better determined empirically, by direct examination of elements on the screen.
+   */
+
+  // Depending on the current mode, return the appropriate sizes filling
+  // This is called for images added generically by calls to `the_content()` et al.
+
+  private static $recipe_image_order = 0;
+  public static function sizes_attribute_hook($sizes, $size, $image_src, $image_meta, $attachment_id) {
+    switch (Images::$image_sizing_mode) {
+
+    case 'food-art':
+    case 'behind-the-scenes':
+      return '(max-width: 280px) 260px, (max-width: 440px) 400px, (max-width: 700px) 640px, (max-width: 1100px) 1000px, (max-width: 1400px) 1400px, ' . $width . 'px';
+
+    case 'recipes':
+      if (Images::$recipe_image_order++ == 0) {
+        // something special for the first image?
+      } else {
+        // something special for the small images underneeth?
+      }
+
+      return '(max-width: 450px) 260px, (max-width: 700px) 400px, (max-width: 1100px) 640px, 1000px';
+
+    } // switch $mode
+
+    return $sizes;
+  }
+
+  // As above, depending on the mode returns the sizes attr, but this called manually
+  // from `get_post_image` method.
+  private static function get_sizes_attribute($tag, $width, $height, $attachment_id) {
+    switch (Images::$image_sizing_mode) {
+
+    case 'home':
+      switch ($tag) {
+      case 'fdd:listing:first-article':
+        return ($width >= $height)
+        ? '(max-width: 640px) 640px, (max-width: 1440px) 1000px, ' . $width . 'px'
+        : '(max-width: 640px) 640px, (max-width: 960px) 1000px, (max-width: 1440px) 640px, ' . $width . 'px';
+
+      case 'fdd:listing:oldish-article':
+        return ($width > $height)
+        ? '(max-width: 480px) 260px, (max-width: 640px) 400px, (max-width: 960px) 640px, (max-width: 1440px) 400px, 1000px'
+        : '(max-width: 480px) 260px, (max-width: 640px) 400px, (max-width: 960px) 400px, (max-width: 1440px) 400px, 1000px';
+      } // switch $tag
+
+      break;
+
+    case 'category':
+      switch ($tag) {
+      case 'fdd:listing:first-article':
+        // on >cat:wide, max-h: 480px, cover
+        return '(max-width: 640px) 640px, (max-width: 960px) 1000px, (max-width: 1300px) 400px, 640px';
+
+      case 'fdd:listing:oldish-article':
+        // On >cat:wide, min-h: 21vw -> 4:3 -> 268px
+        return ($width > $height)
+        ? '(max-width: 480px) 260px, (max-width: 640px) 400px, (max-width: 960px) 400px, (max-width: 1440px) 400px, 1000px'
+        : '(max-width: 480px) 260px, (max-width: 640px) 400px, (max-width: 960px) 400px, (max-width: 1440px) 400px, 1000px';
+      } // switch $tag
+
+      break;
+
+    } // switch $mode
+
+    return wp_get_attachment_image_sizes($attachment_id, Images::remap_size($tag));
+  }
+
+  /**
+   * Get featured image for specific post/page ID.
    *
    * If found return it, if not return no image placeholder.
    *
@@ -27,7 +117,7 @@ class Images {
    *
    * @since 1.0.0
    */
-  public static function get_post_image($size, $post_id = null, $no_image = null) {
+  public static function get_post_image($tag, $post_id = null, $no_image = null) {
     global $post;
 
     if (!$post_id) {
@@ -35,10 +125,16 @@ class Images {
     }
 
     if (has_post_thumbnail($post_id)) {
-      $attachemnt_id = get_post_thumbnail_id($post_id);
-      $image = wp_get_attachment_image_src($attachemnt_id, $size);
-      $srcset = wp_get_attachment_image_srcset($attachemnt_id, $size);
-      $sizes = wp_get_attachment_image_sizes($attachemnt_id, $size);
+      $attachment_id = get_post_thumbnail_id($post_id);
+      $image_meta = wp_get_attachment_metadata($attachment_id);
+
+      // Deliberately passing 'full_width' to get full range of sizes,
+      // we count on srcset and sizes to pick up the right one.
+      $image = wp_get_attachment_image_src($attachment_id, 'full_width', $image_meta);
+      $srcset = wp_get_attachment_image_srcset($attachment_id, 'full_width', $image_meta);
+
+      // Instead of using wp_get_attachment_image_sizes, generate manually
+      $sizes = Images::get_sizes_attribute($tag, $image[1], $image[2], $attachment_id);
 
       $image_array = [
         'image' => $image[0],

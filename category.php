@@ -5,6 +5,8 @@
  * @package Fdd
  */
 
+Fdd\Theme\Utils\Images::set_image_sizes_mode('category');
+
 get_header();
 
 if (have_posts()) {

@@ -1,4 +1,6 @@
 $first-article-height-home-wide: 90vh;
+$first-article-height-home-wide-max: 750px; // this is to reflect the 'fdd-1000' size for 4:3 ratio
+$first-article-home-tall-screen: 833px; // 750px / 90vh
 
 $first-article-min-height-home-narrow: 60vh;
 $first-article-max-height-home-narrow: 360px;
@@ -225,6 +227,32 @@ body.category {
 } // body.category
 
 } // media screen and (max-width: $fdd-wide-width-pixels - 1px)
+
+/**********************************************************
+ Too high screen
+ **********************************************************/
+
+@media screen and (min-height: $first-article-home-tall-screen) {
+
+body.home {
+  .fdd-category-grid {
+    > .article-grid {
+      .article-grid-wrapper {
+        img {
+          min-height: $first-article-height-home-wide-max;
+          max-height: $first-article-height-home-wide-max;
+        }
+      }
+    }
+  }
+} // body.home
+
+}
+
+
+/**********************************************************
+ Nav menu quirks
+ **********************************************************/
 
 @media screen and (max-width: $fdd-menu-wide-screen-width - 1px) {
   body.home, body.category {

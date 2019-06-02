@@ -5,6 +5,8 @@
  * @package Fdd
  */
 
+Fdd\Theme\Utils\Images::set_image_sizes_mode('home');
+
 get_header();
 
 $categories = [
