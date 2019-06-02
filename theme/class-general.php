@@ -60,7 +60,7 @@ class General {
     add_filter('wp_calculate_image_sizes', 'Fdd\Theme\image_sizes_attr_hook', 100, 5);
     add_filter('intermediate_image_sizes', 'Fdd\Theme\intermediate_image_sizes_hook', 100, 5);
     add_filter('wp_get_attachment_metadata', 'Fdd\Theme\get_attachment_metadata_hook', 100, 2);
-    add_filter('jpeg_quality', create_function('', 'return 95;')); // we are PHOTOGRAPHS!
+    add_filter('jpeg_quality', create_function('', 'return 85;'));
   }
 
 }
