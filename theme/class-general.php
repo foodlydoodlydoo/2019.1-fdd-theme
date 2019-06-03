@@ -56,6 +56,7 @@ class General {
    */
   public function add_theme_support() {
     add_theme_support('title-tag', 'html5', 'search-form', 'responsive-embeds');
+
     add_filter('wp_calculate_image_srcset', 'Fdd\Theme\sort_image_srcset', 100, 5);
     add_filter('wp_calculate_image_sizes', 'Fdd\Theme\image_sizes_attr_hook', 100, 5);
     add_filter('intermediate_image_sizes', 'Fdd\Theme\intermediate_image_sizes_hook', 100, 5);
