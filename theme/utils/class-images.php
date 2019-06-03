@@ -48,27 +48,22 @@ class Images {
     $width = $image[1];
     $height = $image[2];
     $landscape = $width > $height;
+    $ratio = $width / $height;
 
     switch (Images::$image_sizing_mode) {
 
     case 'food-art':
     case 'behind-the-scenes':
-      // TODO - tune this up
-      return $landscape
-      ? '(max-width: 280px) 260px, (max-width: 440px) 400px, (max-width: 700px) 640px, (max-width: 1100px) 1000px, (max-width: 1400px) 1400px, ' . $width . 'px'
-      : '(max-width: 280px) 260px, (max-width: 440px) 400px, (max-width: 700px) 640px, (max-width: 1100px) 1000px, (max-width: 1400px) 1400px, ' . $width . 'px';
+      return floor($ratio * 85) . 'vh';
 
     case 'recipes':
       if (Images::$recipe_image_order++ == 0) {
-        // something special for the first image?
+        $max_height = 65;
       } else {
-        // something special for the small images underneeth?
+        $max_height = 10;
       }
 
-      return $landscape
-      ? '(max-width: 440px) 400px, (max-width: 960px) 1000px, (max-width: 1100px) 640px, 1000px'
-      : '(max-width: 440px) 400px, (max-width: 960px) 400px, 640px';
-
+      return '(max-width: 440px) 400px, (max-width: 960px) ' . floor($ratio * 66) . 'vh, ' . floor($ratio * $max_height) . 'vh';
     } // switch $mode
 
     return $sizes;
@@ -77,19 +72,18 @@ class Images {
   // As above, depending on the mode returns the sizes attr, but this is called manually
   // from `Images::get_post_image` method.
   private static function get_sizes_attribute($tag, $width, $height, $attachment_id) {
+    $ratio = $width / $height;
+
     switch (Images::$image_sizing_mode) {
 
     case 'home':
       switch ($tag) {
       case 'fdd:listing:first-article':
-        return ($width >= $height)
-        ? '(max-width: 640px) 640px, (max-width: 1440px) 1000px, ' . $width . 'px'
-        : '(max-width: 640px) 640px, (max-width: 960px) 1000px, (max-width: 1440px) 640px, ' . $width . 'px';
+        // 420 = first-article-max-height-category-narrow
+        return '(max-width: 640px) ' . floor(max([$ratio, 1]) * 420) . 'px, (max-width: 960px) 100vw, ' . floor($ratio * 90) . 'vh';
 
       case 'fdd:listing:oldish-article':
-        return ($width > $height)
-        ? '(max-width: 480px) 260px, (max-width: 640px) 400px, (max-width: 960px) 640px, (max-width: 1440px) 400px, 1000px'
-        : '(max-width: 480px) 260px, (max-width: 640px) 400px, (max-width: 960px) 400px, (max-width: 1440px) 400px, 1000px';
+        return '(max-width: 480px) 260px, (max-width: 640px) 400px, (max-width: 960px) ' . floor($ratio * 50) . 'vw, 25vw';
       } // switch $tag
 
       break;
@@ -97,14 +91,11 @@ class Images {
     case 'category':
       switch ($tag) {
       case 'fdd:listing:first-article':
-        // on >cat:wide, max-h: 480px, cover
-        return '(max-width: 640px) 640px, (max-width: 960px) 1000px, (max-width: 1300px) 400px, 640px';
+        // 420 = first-article-max-height-category-narrow
+        return '(max-width: 640px) ' . floor(max([$ratio, 1]) * 420) . 'px, (max-width: 960px) 1000px, ' . floor($ratio * 70) . 'vh';
 
       case 'fdd:listing:oldish-article':
-        // On >cat:wide, min-h: 21vw -> 4:3 -> 268px
-        return ($width > $height)
-        ? '(max-width: 480px) 260px, (max-width: 640px) 400px, (max-width: 960px) 400px, (max-width: 1440px) 400px, 1000px'
-        : '(max-width: 480px) 260px, (max-width: 640px) 400px, (max-width: 960px) 400px, (max-width: 1440px) 400px, 1000px';
+        return '(max-width: 480px) 260px, (max-width: 960px) ' . floor(max([$ratio, 0]) * 50) . 'vw, ' . floor(max([$ratio, 1]) * 21) . 'vw';
       } // switch $tag
 
       break;
