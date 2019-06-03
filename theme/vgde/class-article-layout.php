@@ -68,6 +68,7 @@ class ArticleWrappingCategory {
         echo '<div class="fdd-category-grid">';
       }
       $this->bucket_open = true;
+      $this->order = 0;
     }
     // Makes visible in the template
     set_query_var($post_order_var_name, $this->order);
