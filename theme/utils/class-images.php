@@ -54,7 +54,9 @@ class Images {
 
     case 'food-art':
     case 'behind-the-scenes':
-      return floor($ratio * 85) . 'vh';
+      // TODO Think of using 'min(90vw, 85vh)'
+      // landscape fit the whole screen minus padding, square and portrait has max-height
+      return $landscape ? '90vw' : floor($ratio * 85) . 'vh';
 
     case 'recipes':
       if (Images::$recipe_image_order++ == 0) {
