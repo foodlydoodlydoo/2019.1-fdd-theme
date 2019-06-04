@@ -21,6 +21,10 @@ body { /* stylelint-disable-line selector-no-type */
   &.overflow-hidden {
     overflow: hidden;
   }
+
+  img {
+    transition: max-height .15s ease;
+  }
 }
 
 // This is used as the last element in page block to provide tailing element for sticky positioning
