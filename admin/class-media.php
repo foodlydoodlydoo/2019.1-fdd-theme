@@ -44,6 +44,8 @@ class Media {
     gen_size(640);
     gen_size(1000);
     gen_size(1400);
+    gen_size(2000); // for full HD screens and retina tablets
+    // Don't forget to update max_srcset_image_width in General::add_theme_support!
   }
 
   /**

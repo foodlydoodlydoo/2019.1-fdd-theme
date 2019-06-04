@@ -35,6 +35,11 @@ function intermediate_image_sizes_hook($sizes) {
   });
 }
 
+function max_srcset_image_width($default_width, $size_array) {
+  // See Media::add_custom_image_sizes
+  return false;
+}
+
 function sort_image_srcset($sources, $size_array, $image_src, $image_meta, $attachment_id) {
   ksort($sources);
   return $sources;
@@ -57,6 +62,7 @@ class General {
   public function add_theme_support() {
     add_theme_support('title-tag', 'html5', 'search-form', 'responsive-embeds');
 
+    add_filter('max_srcset_image_width', 'Fdd\Theme\max_srcset_image_width', 100, 2);
     add_filter('wp_calculate_image_srcset', 'Fdd\Theme\sort_image_srcset', 100, 5);
     add_filter('wp_calculate_image_sizes', 'Fdd\Theme\image_sizes_attr_hook', 100, 5);
     add_filter('intermediate_image_sizes', 'Fdd\Theme\intermediate_image_sizes_hook', 100, 5);
