@@ -123,9 +123,13 @@
  **********************************************************/
 @media screen and (max-width: $fdd-menu-narrow-screen-width) {
   #fullscreen-menu {
+    input[type=submit] {
+      display: none;
+    }
+
     &__close-button {
       right: $fdd-home-outer-padding-narrow-screen;
-      top: 35px;
+      top: 20px;
       font-size: 56px;
     }
 
@@ -136,7 +140,7 @@
 
     ul.fs-navigation {
       li {
-        padding: 1.25em 0;
+        padding: 1em 0;
       }
     }
   }
@@ -145,7 +149,7 @@
 @media screen and (max-height: 760px) {
   #fullscreen-menu {
     ul.fs-navigation {
-      padding: 140px 0 0;
+      padding: 95px 0 0;
     }
   }
 }
