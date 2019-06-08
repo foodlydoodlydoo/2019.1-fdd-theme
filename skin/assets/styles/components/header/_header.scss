@@ -11,6 +11,8 @@ $header-top-bottom-padding: $header-font-size;
 $header-menu-item-hover-border: 5px;
 $header-menu-shift-margin: 7px; // Empiric
 
+// Global
+
 @if ($header-bottom-line-on-home) {
   .home .header {
     border-bottom: 1px solid $header-bottom-line-color-on-home;
@@ -28,11 +30,16 @@ $header-menu-shift-margin: 7px; // Empiric
     border-bottom: 1px solid $header-bottom-line-color;
   }
 
-  img {
-    width: 65%;
-    padding: 30px 0 0 0;
+  .header__logo-link {
+    display: inline-block;
+    img {
+      width: 320px;
+      display: inline-block;
+      padding: 30px 0 0 0;
+    }
   }
   
+  /*
   .header__logo {
     @if ($fdd-sticky-menu == true) {
       padding: $header-top-bottom-padding / 2 0;
@@ -47,6 +54,7 @@ $header-menu-shift-margin: 7px; // Empiric
     display: inline-block;
     margin-right: $fdd-outer-padding-wide-screen;
   }
+  */
 
   ul.main-navigation {
     z-index: 1;
@@ -56,10 +64,6 @@ $header-menu-shift-margin: 7px; // Empiric
     flex-wrap: nowrap;
     margin: 0;
     padding: 0;
-    font-size: 21px;
-    .main-navigation__item--sandwitch {
-      font-size: 27px;
-    }
     li {
       display: inline-block;
       padding:  0;
@@ -75,6 +79,9 @@ $header-menu-shift-margin: 7px; // Empiric
   }
 }
 
+/**********************************************************
+  Wide screen
+ **********************************************************/
 @media screen and (min-width: $fdd-menu-wide-screen-width) {
   .header {
     @if ($fdd-sticky-menu == true) {
@@ -86,7 +93,12 @@ $header-menu-shift-margin: 7px; // Empiric
     }
 
     ul.main-navigation {
-      width: 36%; // Empiric
+      // width: 36%; empiric to align with recipe text width
+      width: 600px;
+      font-size: 21px;
+      li.main-navigation__item--sandwitch {
+        font-size: 27px;
+      }
       > li:hover, > li.main-navigation__item--active {
         border-bottom: $header-menu-item-hover-border solid black;
         margin-bottom: -$header-menu-item-hover-border;
@@ -95,21 +107,15 @@ $header-menu-shift-margin: 7px; // Empiric
   }
 }
 
+/**********************************************************
+  Medium screen
+ **********************************************************/
 @media screen and (max-width: $fdd-menu-wide-screen-width - 1px) {
   .header {
+    padding: 0 $fdd-menu-wide-screen-width * .05; // =$fdd-outer-padding-wide-screen
     ul.main-navigation {
-      > li {
-        font-size: 32px;
-      }
-      display: inline !important;
-      text-align: right;
-      ul.main-navigation__sub-menu {
-        @include text-size(larger);
-        
-        position: static;
-        width: 100vw;
-        margin-left: -$fdd-outer-padding-wide-screen;
-        //margin-top: $header-menu-shift-margin; // if mobile menu sticky
+      li.main-navigation__item--sandwitch {
+        font-size: 60px;
       }
       li.main-navigation__item--wide-screen-only {
         display: none !important;
@@ -118,20 +124,20 @@ $header-menu-shift-margin: 7px; // Empiric
   }
 }
 
+/**********************************************************
+  Narrow screen
+ **********************************************************/
 @media screen and (max-width: $fdd-menu-narrow-screen-width) {
   .header {
-    .header__logo {
-      font-size: $header-font-size-narrow;
-    }
-    ul.main-navigation {
-      width: 100%;
-      li.main-navigation__item--wide-screen-only {
-        display: none !important;
+    padding: 0 $fdd-home-outer-padding-narrow-screen;
+    .header__logo-link {
+      img {
+        width: 45vw;
       }
     }
   }
-
 }
+
 
 @if ($header-bottom-line == true and $header-sticky-bottom-line == false) {
   .header__bottom-border {
