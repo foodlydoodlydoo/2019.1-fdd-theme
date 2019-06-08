@@ -19,6 +19,8 @@ $input: (
   font-weight: 300;
   color: map-get($input, 'text-color');
   border-radius: 0;
+  -webkit-border-radius:0;
+  -webkit-appearance: none;
   -webkit-tap-highlight-color: map-get($input, 'tap-highlight-color');
   line-height: normal;
 
