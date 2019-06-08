@@ -22,8 +22,9 @@ class Menu {
    */
   public function get_menu_positions() {
     return array(
-        'header_main_nav' => esc_html__( 'Main Menu', 'fdd' ),
-        'footer_main_nav' => esc_html__( 'Footer Menu', 'fdd' ),
+      'header_main_nav' => esc_html__('Main Menu', 'fdd'),
+      'footer_main_nav' => esc_html__('Footer Menu', 'fdd'),
+      'fullscreen_nav' => esc_html__('Overlay Fullscreen Menu', 'fdd'),
     );
   }
 
@@ -49,30 +50,30 @@ class Menu {
    *
    * @since 1.0.0
    */
-  public function bem_menu( $location = 'main_menu', $css_class_prefix = 'main-menu', $css_class_modifiers = null, $echo = true ) {
+  public function bem_menu($location = 'main_menu', $css_class_prefix = 'main-menu', $css_class_modifiers = null, $echo = true) {
 
-      // Check to see if any css modifiers were supplied.
-    if ( $css_class_modifiers ) {
+    // Check to see if any css modifiers were supplied.
+    if ($css_class_modifiers) {
 
-      if ( is_array( $css_class_modifiers ) ) {
-        $modifiers = implode( ' ', $css_class_modifiers );
-      } elseif ( is_string( $css_class_modifiers ) ) {
+      if (is_array($css_class_modifiers)) {
+        $modifiers = implode(' ', $css_class_modifiers);
+      } elseif (is_string($css_class_modifiers)) {
         $modifiers = $css_class_modifiers;
       }
     } else {
       $modifiers = '';
     }
 
-      $args = array(
-          'theme_location' => $location,
-          'container'      => false,
-          'items_wrap'     => '<ul class="' . $css_class_prefix . ' ' . $modifiers . '">%3$s</ul>',
-          'echo'           => $echo,
-          'walker'         => new Bem_Menu_Walker( $css_class_prefix ),
-      );
+    $args = array(
+      'theme_location' => $location,
+      'container' => false,
+      'items_wrap' => '<ul class="' . $css_class_prefix . ' ' . $modifiers . '">%3$s</ul>',
+      'echo' => $echo,
+      'walker' => new Bem_Menu_Walker($css_class_prefix),
+    );
 
-    if ( has_nav_menu( $location ) ) {
-      return wp_nav_menu( $args );
+    if (has_nav_menu($location)) {
+      return wp_nav_menu($args);
     }
   }
 }

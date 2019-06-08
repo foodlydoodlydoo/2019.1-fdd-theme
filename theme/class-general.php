@@ -49,6 +49,17 @@ function image_sizes_attr_hook($sizes, $size, $image_src, $image_meta, $attachme
   return Utils\Images::sizes_attribute_hook($sizes, $size, $image_src, $image_meta, $attachment_id);
 }
 
+function menu_special_tags($title, $item, $args, $depth) {
+  if (preg_match('/SEARCH-FORM/', $title)) {
+    // return get_template_part('template-parts/header/search-form');
+    return get_search_form(false);
+  }
+  if (preg_match('/SEPARATOR/', $title)) {
+    return '<div class="menu-items-separator"></div>';
+  }
+  return $title;
+}
+
 /**
  * Class General
  */
@@ -68,6 +79,8 @@ class General {
     add_filter('intermediate_image_sizes', 'Fdd\Theme\intermediate_image_sizes_hook', 100, 5);
     add_filter('wp_get_attachment_metadata', 'Fdd\Theme\get_attachment_metadata_hook', 100, 2);
     add_filter('jpeg_quality', create_function('', 'return 85;'));
+
+    add_filter('walker_nav_menu_start_el', 'FDD\Theme\menu_special_tags', 10, 4);
   }
 
 }

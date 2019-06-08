@@ -1,5 +1,5 @@
 import { FDD_Carousel } from './carousel';
-import { FDD_NavMenu } from './navmenu';
+import { FDD_FullscreenMenu } from './navmenu';
 
 $(function () {
   const isTouchCapable =
@@ -8,22 +8,28 @@ $(function () {
     navigator.maxTouchPoints > 0 ||
     window.navigator.msMaxTouchPoints > 0;
 
+
+  // Instantiate the recipe images carousel
   new FDD_Carousel('body', '.fdd-recipe--media a');
-  const sandwitch = new FDD_NavMenu('sandwitch', target => target.find(".main-navigation__sub-menu"), (target, visible) => {
-    const search_field = target.find(".search-field");
-    if (visible) {
+
+  // Instantiate the fullscreen menu hooks
+  new FDD_FullscreenMenu('sandwitch', '#fullscreen-menu',
+    (menu, close) => {
+      const search_field = menu.find(".search-field");
       if (!isTouchCapable) {
         search_field.focus();
       }
       search_field.keydown((e) => {
         if (e.which == 27) {
-          sandwitch.toggle();
+          close();
         }
       });
-      target.parent().addClass("fdd-sub-menu-active");
-    } else {
+      $('body').addClass('noscroll');
+    },
+    (menu) => {
+      const search_field = menu.find(".search-field");
       search_field.off('keydown');
-      target.parent().removeClass("fdd-sub-menu-active");
+      $('body').removeClass('noscroll');
     }
-  });
+  );
 });
