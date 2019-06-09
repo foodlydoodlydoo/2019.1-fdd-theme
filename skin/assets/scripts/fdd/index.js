@@ -1,4 +1,4 @@
-import { FDD_Carousel } from './carousel';
+import { FDD_Carousel, FDD_PhotoSwipe } from './images';
 import { FDD_FullscreenMenu } from './navmenu';
 
 $(function () {
@@ -8,10 +8,19 @@ $(function () {
     navigator.maxTouchPoints > 0 ||
     window.navigator.msMaxTouchPoints > 0;
 
+  const section = $('main section div.single__content');
+  const is_recipe = section.find('.fdd-recipe--page').length > 0;
+  const is_art = section.find('.fdd-art--page').length > 0;
 
-  // Instantiate the recipe images carousel
-  // 960 = $fdd-wide-width-pixels value from _common.scss
-  new FDD_Carousel('body', '.fdd-recipe--media a', '(min-width: 960px)');
+  if (is_recipe) {
+    // Instantiate the recipe images carousel
+    // 960 = $fdd-wide-width-pixels value from _common.scss
+    new FDD_Carousel('main section .single__content', '.fdd-recipe--media figure a', '(min-width: 960px)',
+      new FDD_PhotoSwipe());
+  }
+  if (is_art) {
+    new FDD_PhotoSwipe('main section .single__content', '.fdd-art--page figure a');
+  }
 
   // Instantiate the fullscreen menu hooks
   new FDD_FullscreenMenu('sandwitch', '#fullscreen-menu',
