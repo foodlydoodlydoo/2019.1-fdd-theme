@@ -8,12 +8,6 @@
 
 namespace Fdd\Theme;
 
-function print_r_pre($object) {
-  echo "<pre>[\n";
-  print_r($object);
-  echo "\n]</pre>";
-}
-
 function get_attachment_metadata_hook($data, $postid) {
   // As the 'large' size is the default to be picked for new core/image block,
   // this will make the editor fall back to full-size!
