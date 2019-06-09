@@ -31,11 +31,19 @@ export class FDD_PhotoSwipe {
   assignGallery(images) {
     this.images = images.map(image => {
       const anch = image.parent();
-      return {
-        src: anch.attr('href'),
-        w: anch.attr('data-width'),
-        h: anch.attr('data-height'),
+
+      const w = parseInt(anch.attr('data-width'), 10);
+      const h = parseInt(anch.attr('data-height'), 10);
+      const src = anch.attr('href');
+
+      const ratio = w / 1000;
+      if (ratio < 1) {
+        return { src, w, h, };
       }
+
+      const thumb_y = Math.round(h / ratio);
+      const msrc = src.replace(/(\.\w+$)/, `-1000x${thumb_y}$1`);
+      return { src, msrc, w, h, };
     });
   }
 
