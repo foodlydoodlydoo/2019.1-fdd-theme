@@ -10,7 +10,8 @@ $(function () {
 
 
   // Instantiate the recipe images carousel
-  new FDD_Carousel('body', '.fdd-recipe--media a');
+  // 960 = $fdd-wide-width-pixels value from _common.scss
+  new FDD_Carousel('body', '.fdd-recipe--media a', '(min-width: 960px)');
 
   // Instantiate the fullscreen menu hooks
   new FDD_FullscreenMenu('sandwitch', '#fullscreen-menu',
