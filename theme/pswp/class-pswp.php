@@ -19,6 +19,7 @@ class PSWP {
 
       $addition = ' data-width="' . $width . '" data-height="' . $heigh . '"';
     }
+
     return $matches[1] . $matches[2] . $matches[3] . $matches[4] . $addition . $matches[5];
   }
 
