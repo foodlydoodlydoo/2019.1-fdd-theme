@@ -39,10 +39,6 @@ function sort_image_srcset($sources, $size_array, $image_src, $image_meta, $atta
   return $sources;
 }
 
-function image_sizes_attr_hook($sizes, $size, $image_src, $image_meta, $attachment_id) {
-  return Utils\Images::sizes_attribute_hook($sizes, $size, $image_src, $image_meta, $attachment_id);
-}
-
 function menu_special_tags($title, $item, $args, $depth) {
   if (preg_match('/SEARCH-FORM/', $title)) {
     // return get_template_part('template-parts/header/search-form');
@@ -67,11 +63,15 @@ class General {
   public function add_theme_support() {
     add_theme_support('title-tag', 'html5', 'search-form', 'responsive-embeds');
 
+    add_filter('wp_get_attachment_metadata', 'Fdd\Theme\get_attachment_metadata_hook', 100, 2);
+    add_filter('intermediate_image_sizes', 'Fdd\Theme\intermediate_image_sizes_hook', 100, 5);
+
     add_filter('max_srcset_image_width', 'Fdd\Theme\max_srcset_image_width', 100, 2);
     add_filter('wp_calculate_image_srcset', 'Fdd\Theme\sort_image_srcset', 100, 5);
-    add_filter('wp_calculate_image_sizes', 'Fdd\Theme\image_sizes_attr_hook', 100, 5);
-    add_filter('intermediate_image_sizes', 'Fdd\Theme\intermediate_image_sizes_hook', 100, 5);
-    add_filter('wp_get_attachment_metadata', 'Fdd\Theme\get_attachment_metadata_hook', 100, 2);
+    add_filter('wp_calculate_image_sizes', 'Fdd\Theme\Utils\Images::sizes_attribute_hook', 100, 5);
+
+    add_filter('the_content', 'Fdd\Theme\PSWP::add_image_sizes_to_content');
+
     add_filter('jpeg_quality', create_function('', 'return 85;'));
 
     add_filter('walker_nav_menu_start_el', 'FDD\Theme\menu_special_tags', 10, 4);
