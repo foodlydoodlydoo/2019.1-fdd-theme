@@ -1,5 +1,13 @@
+import * as PhotoSwipe from 'photoswipe'
+import * as PhotoSwipeUI_Default from 'photoswipe/dist/photoswipe-ui-default'
+
 function getImages(selector_outer, selector_inner) {
-  return $(`${selector_outer} ${selector_inner} img`).get().map(i => $(i));
+  const images = $(`${selector_outer} ${selector_inner} img`).get().map(i => $(i));
+  for (const index in images) {
+    images[index].data('index', index);
+  };
+
+  return images;
 }
 
 export class FDD_PhotoSwipe {
@@ -21,15 +29,29 @@ export class FDD_PhotoSwipe {
   }
 
   assignGallery(images) {
-    this.images = images.map(image => ({
-      src: image.prop('src'),
-      w: image.parent().attr('data-width'),
-      h: image.parent().attr('data-height'),
-    }));
+    this.images = images.map(image => {
+      const anch = image.parent();
+      return {
+        src: anch.attr('href'),
+        w: anch.attr('data-width'),
+        h: anch.attr('data-height'),
+      }
+    });
   }
 
   click(image) {
-    alert(image);
+    const options = {
+      index: parseInt(image.data('index'), 10),
+    };
+
+    try {
+      const pswp = document.querySelectorAll('.pswp')[0];
+      this.gallery = new PhotoSwipe(pswp, PhotoSwipeUI_Default, this.images, options);
+      this.gallery.init();
+    } catch (e) {
+      console.error(e);
+    }
+
     return true;
   }
 }
@@ -59,10 +81,6 @@ export class FDD_Carousel {
     this.thumb_image_sizes = this.images[1].prop('sizes');
 
     this.active_image_index = 0;
-
-    for (const index in this.images) {
-      this.images[index].data('index', index);
-    };
   }
 
   click(image) {

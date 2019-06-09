@@ -15,9 +15,9 @@ class PSWP {
       $image = wp_get_attachment_image_src($attachment_id, 'full_width', $image_meta);
 
       $width = $image[1];
-      $heigh = $image[2];
+      $height = $image[2];
 
-      $addition = ' data-width="' . $width . '" data-height="' . $heigh . '"';
+      $addition = ' data-width="' . $width . '" data-height="' . $height . '"';
     }
 
     return $matches[1] . $matches[2] . $matches[3] . $matches[4] . $addition . $matches[5];
