@@ -50,6 +50,7 @@ export class FDD_PhotoSwipe {
   click(image) {
     const options = {
       index: parseInt(image.data('index'), 10),
+      loop: false,
     };
 
     try {
