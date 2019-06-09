@@ -11,5 +11,11 @@
   <?php esc_html_e('To top', 'fdd');?>
 </a-->
 <?php wp_footer();?>
+
+<?php if (is_single()) {
+  get_template_part('template-parts/parts/pswp');
+}
+?>
+
 </body>
 </html>
