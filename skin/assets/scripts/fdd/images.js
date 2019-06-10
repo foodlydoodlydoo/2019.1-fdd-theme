@@ -51,6 +51,9 @@ export class FDD_PhotoSwipe {
     const options = {
       index: parseInt(image.data('index'), 10),
       loop: false,
+      closeOnScroll: false,
+      closeOnVerticalDrag: false,
+      history: false,
     };
 
     try {
