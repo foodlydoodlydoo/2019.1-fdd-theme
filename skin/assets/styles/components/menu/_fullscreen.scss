@@ -21,6 +21,7 @@
   text-align: right;
   overflow-x: hidden;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 
   .search-form input {
     @include font-standard-sans();
