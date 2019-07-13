@@ -9,7 +9,7 @@
     "lintStyle": "npm run __stylelintTheme",
     "lintJs": "npm run __eslintTheme",
     "lint": "npm run lintJs && npm run lintStyle && bash bin/lintPhp.sh",
-    "precommit": "wsl npm run lint",
+    "DISABLED_precommit": "wsl npm run lint",
     "start": "webpack --progress --watch --display-error-details --display-reasons --mode development",
     "build": "cross-env NODE_ENV=production webpack --progress --mode production",
     "export": "node bin/export.js",
@@ -46,7 +46,7 @@
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.0",
     "stylelint": "^10.1.0",
-    "uglifyjs-webpack-plugin": "^1.3.0",
+    "terser-webpack-plugin": "^1.3.0",
     "webpack": "^4.35.3",
     "webpack-cli": "^3.3.5",
     "webpack-manifest-plugin": "^2.0.3"
