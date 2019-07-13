@@ -12,6 +12,7 @@ body { /* stylelint-disable-line selector-no-type */
   @include font-smoothing;
   @include base-font-family-set();
   color: $base-text-color;
+
   /* // interferes with mix-blend-mode: liminosity and static positioned images, Firefox bug
   background-color: $base-bg-color;
   */
@@ -24,7 +25,7 @@ body { /* stylelint-disable-line selector-no-type */
   }
 
   img {
-    transition: max-height .15s ease;
+    transition: max-height 0.15s ease;
   }
 }
 
@@ -34,7 +35,7 @@ body.noscroll {
 
 // This is used as the last element in page block to provide tailing element for sticky positioning
 .fdd-heel {
-  height: 500px; // FOR TESTING PURPOSES ONLY
+  // height: 500px; // FOR TESTING PURPOSES ONLY
   height: 0;
   clear: both;
 }
