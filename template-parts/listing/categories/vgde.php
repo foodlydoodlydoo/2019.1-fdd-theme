@@ -14,7 +14,7 @@ $wrapper->before_grid($category);
 
 ?><div class="fdd-category-grid"><?php
 
-while (have_posts()) {
+while ($more_posts = have_posts()) {
   the_post();
 
   for ($i = 0; $i < 1; ++$i) {
@@ -27,7 +27,6 @@ while (have_posts()) {
   }
 }
 
-$more_posts = have_posts() || 1/*test*/;
 $wrapper->after_grid($more_posts);
 
 ?><div class="fdd-heel"></div><?php
