@@ -119,22 +119,19 @@ body.home {
     }
     */
 
+    a.more-articles:hover {
+      color: $fdd-red-color;
+    }
     a.more-articles {
-      display: inline-block;
-      $more-width: 70%;
-      $more-side-margin: (100% - $more-width) / 2;
-      width: $more-width;
-      margin-left: $more-side-margin;
       text-align: center;
-      //background: linear-gradient(to bottom, #fafafa 0%, #fff 60%);
-      border-top: solid 2px #eee;
-      padding: 1em;
-      transition: background .3s;
+      margin: 3em 0 0;
+      display: block;
       .more-articles__text {
         @include font-standard-serif();
         font-size: 20px;
-        padding: .5em 0;
-        display: block;
+        padding: .3em 0;
+        margin-right: 16px;
+        border-top: 5px solid;
       }
       .more-articles__button {
         display: inline-block;
@@ -145,6 +142,8 @@ body.home {
         border-radius: 50%;
         font-size: 24px;
         line-height: 1;
+        position: relative;
+        top: -6px;
       }
     }
   }
