@@ -410,10 +410,10 @@ body.category {
 
 @media screen and (max-width: $fdd-narrow-width-pixels - 1px) {
 
-  body.home, body.category {
+body.home, body.category {
   .fdd-category-grid {
     > .article-grid {
-      padding: 3em 0 2em;
+      padding: 3em 0 1em;
       .article-grid-wrapper {
         img {
           height: 100vh;
@@ -429,11 +429,8 @@ body.category {
       }
       .article-grid {
         width: 100%;
-        margin-bottom: 25px;
-        &:not(:last-child) {
-          border-bottom: $base-primary-color 1px solid;
-          padding-bottom: 25px;
-        }
+        padding-top: 35px;
+        border-top: $fdd-on-gray-color 1px solid;
         .article-grid-wrapper {
           display: flex;
           flex-wrap: wrap;
@@ -460,6 +457,16 @@ body.category {
             }
           }
         }
+      }
+    }
+  }
+}
+
+body.home {
+  .fdd-category-grid {
+    .oldish {
+      .article-grid:first-child {
+        border-top: none;
       }
     }
   }
