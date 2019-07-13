@@ -33,6 +33,13 @@ body.noscroll {
   overflow: hidden;
 }
 
+div.pswp {
+  @include font-standard-sans();
+  .pswp__top-bar {
+    background: none;
+  }
+}
+
 // This is used as the last element in page block to provide tailing element for sticky positioning
 .fdd-heel {
   // height: 500px; // FOR TESTING PURPOSES ONLY
