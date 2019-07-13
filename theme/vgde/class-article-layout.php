@@ -119,6 +119,5 @@ class ArticleWrappingCategory {
   }
 
   public function tail($have_posts) {
-    // echo 'Infinite scrolling handler';
   }
 }
