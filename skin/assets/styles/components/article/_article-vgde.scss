@@ -422,9 +422,11 @@ body.category {
       }
     }
     .oldish {
-      columns: auto;
-      width: 100%;
       padding: 2.5em $fdd-category-outer-padding-super-narrow-screen 0;
+      .oldish__inner {
+        columns: auto;
+        width: 100%;
+      }
       .article-grid {
         width: 100%;
         margin-bottom: 25px;
