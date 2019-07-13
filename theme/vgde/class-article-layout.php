@@ -10,6 +10,7 @@ namespace Fdd\Theme\vgde;
 
 class ArticleWrappingHomepage {
   private $order;
+  private $category;
 
   function __construct() {
     $this->order = 0;
@@ -17,11 +18,13 @@ class ArticleWrappingHomepage {
 
   public function before_grid($category) {
     echo "<div class=\"fdd-category-name\">" . esc_html($category->name) . "</div>";
+    $this->category = $category;
   }
 
   public function before_article($post_order_var_name) {
     if ($this->order == 1) {
       echo '<div class="oldish">';
+      echo '<div class="oldish__inner">';
     }
     // Makes visible in the template
     set_query_var($post_order_var_name, $this->order);
@@ -35,10 +38,19 @@ class ArticleWrappingHomepage {
     return $limit > 0 && $this->order >= $limit;
   }
 
-  public function after_grid() {
+  public function after_grid($more_posts) {
     if ($this->order > 1) {
-      echo '</div>';
+      //echo '<div class="after-last-article"></div>';
+      echo '</div>'; // oldish__inner
+      if ($more_posts) {
+        set_query_var("category", $this->category);
+        get_template_part('template-parts/listing/home-more-articles');
+      }
+      echo '</div>'; // oldish
     }
+  }
+
+  public function tail($more_posts) {
   }
 }
 
@@ -60,6 +72,7 @@ class ArticleWrappingCategory {
   public function before_article($post_order_var_name) {
     if ($this->order % self::BUCKET_SIZE == 1) {
       echo '<div class="oldish">';
+      echo '<div class="oldish__inner">';
       $this->oldish_open = true;
     }
     if ($this->order % self::BUCKET_SIZE == 0) {
@@ -85,13 +98,14 @@ class ArticleWrappingCategory {
     return $limit > 0 && $this->order >= $limit;
   }
 
-  public function after_grid() {
+  public function after_grid($more_posts) {
     $this->close_oldish();
     $this->close_bucket();
   }
 
   private function close_oldish() {
     if ($this->oldish_open) {
+      echo '</div>'; // inner
       echo '</div>';
       $this->oldish_open = false;
     }
@@ -102,5 +116,9 @@ class ArticleWrappingCategory {
       echo '<div class="fdd-heel"></div></div>';
       $this->bucket_open = false;
     }
+  }
+
+  public function tail($have_posts) {
+    // echo 'Infinite scrolling handler';
   }
 }

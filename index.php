@@ -25,7 +25,6 @@ foreach ($categories as $category_slug) {
     set_query_var("article_limit", 9);
 
     get_template_part('template-parts/listing/categories/vgde');
-    the_posts_pagination();
   }
 }
 

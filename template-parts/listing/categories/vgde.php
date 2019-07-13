@@ -27,8 +27,13 @@ while (have_posts()) {
   }
 }
 
-$wrapper->after_grid();
+$more_posts = have_posts() || 1/*test*/;
+$wrapper->after_grid($more_posts);
 
-?><div class="fdd-heel"></div>
+?><div class="fdd-heel"></div><?php
+
+$wrapper->tail($more_posts);
+
+?>
 </div>
 </div>
