@@ -57,10 +57,13 @@ body.category .fdd-category-grid {
         position: relative;
         width: 90%;
         margin-left: 10%;
-        padding: 0.3em 0.5em 0 2em;
+        padding: 0.3em 0.5em 0 1.2em;
         background: white;
         header {
           @include fdd-home-oldish-article-heading();
+          h2 {
+            margin-top: .3em;
+          }
         }
         .article-grid__excerpt {
           @include fdd-home-article-excerpt(18px);
@@ -70,7 +73,8 @@ body.category .fdd-category-grid {
           background: #bbbbbb;
           margin-top: 2em; // affects bottom positioning of __content
           margin-left: 0;
-          display: none;
+
+          //display: none;
         }
       }
     }
