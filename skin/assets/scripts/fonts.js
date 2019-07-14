@@ -17,6 +17,7 @@ WebFont.load({
   google: {
     families: [
       'Noto Serif KR:300',
+      'Noto Serif:300', // as czech chars (imperfect) fallback
       'Spectral:200i',
       'Abel:400',
       'Oranienbaum',
