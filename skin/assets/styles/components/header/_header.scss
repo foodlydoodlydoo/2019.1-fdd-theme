@@ -83,6 +83,9 @@ body.search {
   header h1 {
     padding: 2em $fdd-outer-padding-wide-screen;
     text-align: center;
+    > span { // the search term...
+      @include font-italic-serif();
+    }
   }
 }
 

@@ -1,13 +1,6 @@
 $article-underline-height: 3px;
 
 body.search {
-  .infscroll-item-selector:not(:last-child) {
-    .article-list {
-      &__container {
-        border-bottom: 1px solid $fdd-on-gray-color;
-      }
-    }
-  }
   .article-list {
     padding: 0 $fdd-outer-padding-wide-screen;
     a {
@@ -18,6 +11,7 @@ body.search {
       .article-list__container {
         display: flex;
         padding: 2em 0;
+        border-bottom: 1px solid $fdd-on-gray-color;
         .article-list__image {
           width: 50%;
           img {
