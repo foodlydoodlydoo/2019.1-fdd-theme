@@ -7,6 +7,7 @@
 
 ?>
 
+<div class="more-articles__wrap">
 <a class="more-articles" href="<?php echo get_category_link($category); ?>">
 <span class="more-articles__text">
 More <?php echo $category->name; ?>
@@ -15,3 +16,4 @@ More <?php echo $category->name; ?>
 &gt;
 </span>
 </a>
+</div>
