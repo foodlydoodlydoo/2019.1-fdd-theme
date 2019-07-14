@@ -78,7 +78,7 @@ class ArticleWrappingCategory {
     if ($this->order % self::BUCKET_SIZE == 0) {
       $this->close_bucket();
       if ($this->order) {
-        echo '<div class="fdd-category-grid">';
+        echo '<div class="fdd-category-grid infscroll-item-selector">';
       }
       $this->bucket_open = true;
       $this->order = 0;

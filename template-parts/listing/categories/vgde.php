@@ -8,11 +8,11 @@
 $wrapper_class = "Fdd\\Theme\\vgde\\$wrapper_class";
 $wrapper = new $wrapper_class;
 
-?><div id="<?php echo esc_html($category->slug); ?>" class="fdd-category"><?php
+?><div id="<?php echo esc_html($category->slug); ?>" class="fdd-category infscroll-content-selector"><?php
 
 $wrapper->before_grid($category);
 
-?><div class="fdd-category-grid"><?php
+?><div class="fdd-category-grid infscroll-item-selector"><?php
 
 while ($more_posts = have_posts()) {
   the_post();
