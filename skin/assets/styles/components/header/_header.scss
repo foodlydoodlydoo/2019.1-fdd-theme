@@ -79,6 +79,14 @@ $header-menu-shift-margin: 7px; // Empiric
   }
 }
 
+body.search {
+  header h1 {
+    padding: 2em $fdd-outer-padding-wide-screen;
+    text-align: center;
+  }
+}
+
+
 /**********************************************************
   Wide screen
  **********************************************************/
@@ -165,13 +173,13 @@ body.home {
   }
 }
 
-body.single {
+body.single, body.search {
   .description {
     border-bottom: 1px solid $header-bottom-line-color-on-home;
   }
 }
 
-body.category, body.single {
+body.category, body.single, body.search {
   .description {
     @include text-size(largest);
     margin: 0;

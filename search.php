@@ -6,39 +6,44 @@
  * @package Fdd
  */
 
+Fdd\Theme\Utils\Images::set_image_sizes_mode('search');
+
 get_header();
 
-if ( have_posts() ) { ?>
+if (have_posts()) {
+  ?>
 
   <!-- Page Title -->
-  <header>
-    <h1>
-      <?php
-      // translators: 1: Search Query.
-      printf( esc_html__( 'Search Results for: %s', 'fdd' ), '<span>' . get_search_query() . '</span>' );
-      ?>
-    </h1>
+  <header><h1>
+  <?php printf(esc_html__('Search Results for: %s', 'fdd'), '<span>' . get_search_query() . '</span>');?>
+  </h1>
   </header>
-<?php } ?>
+<?php }?>
 
 <!-- Listing Section -->
 
+<div class="fdd-search-list infscroll-content-selector">
+
 <?php
-if ( have_posts() ) {
-  while ( have_posts() ) {
+if (have_posts()) {
+  while (have_posts()) {
     the_post();
-    get_template_part( 'template-parts/listing/articles/grid' );
-  };
+    get_template_part('template-parts/listing/articles/list');
+  }
 
   the_posts_pagination(
     array(
-        'screen_reader_text' => ' ',
+      'screen_reader_text' => ' ',
     )
   );
-
 } else {
-  get_template_part( 'template-parts/listing/articles/empty' );
+  get_template_part('template-parts/listing/articles/empty');
+}
 
-};
+?>
+
+</div>
+
+<?php
 
 get_footer();

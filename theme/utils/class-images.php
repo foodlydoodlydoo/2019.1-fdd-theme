@@ -102,6 +102,14 @@ class Images {
 
       break;
 
+    case 'search':
+      switch ($tag) {
+      case 'fdd:listing:search-article':
+        // so far a copy from home/oldish
+        return '(max-width: 480px) 260px, (max-width: 640px) 640px, 400px';
+      }
+      break;
+
     } // switch $mode
 
     return wp_get_attachment_image_sizes($attachment_id, Images::remap_size($tag));
