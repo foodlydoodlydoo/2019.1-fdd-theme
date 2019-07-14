@@ -106,7 +106,7 @@ class Images {
       switch ($tag) {
       case 'fdd:listing:search-article':
         // so far a copy from home/oldish
-        return '(max-width: 480px) 260px, (max-width: 640px) 640px, 400px';
+        return '(max-width: 400px) 400px, (max-width: 640px) 640px, 400px';
       }
       break;
 
