@@ -22,7 +22,7 @@ foreach ($categories as $category_slug) {
   if (have_posts()) {
     set_query_var("category", $category);
     set_query_var("wrapper_class", "ArticleWrappingHomepage");
-    set_query_var("article_limit", 9);
+    set_query_var("article_limit", 7);
 
     get_template_part('template-parts/listing/categories/vgde');
   }
