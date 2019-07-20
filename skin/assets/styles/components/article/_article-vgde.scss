@@ -1,7 +1,7 @@
 $first-article-height-home-wide: 90vh;
 
 $first-article-home-tall-screen: 720px;
-$first-article-height-home-wide-max: $first-article-home-tall-screen * 0.9; // 90vh of 1080px
+$first-article-height-home-wide-max: $first-article-home-tall-screen * 0.9;
 
 $first-article-min-height-home-narrow: 60vh;
 $first-article-max-height-home-narrow: 480px;
@@ -290,28 +290,28 @@ body.category {
   }
 } // body.category
 
-} // media screen and (max-width: $fdd-wide-width-pixels - 1px)
-
 /**********************************************************
  Too high screen
  **********************************************************/
 
-@media screen and (min-height: $first-article-home-tall-screen) {
+  @media screen and (min-height: $first-article-home-tall-screen) {
 
-body.home {
-  .fdd-category-grid {
-    > .article-grid {
-      .article-grid-wrapper {
-        img {
-          min-height: $first-article-height-home-wide-max;
-          max-height: $first-article-height-home-wide-max;
+  body.home {
+    .fdd-category-grid {
+      > .article-grid {
+        .article-grid-wrapper {
+          img {
+            min-height: $first-article-height-home-wide-max;
+            max-height: $first-article-height-home-wide-max;
+          }
         }
       }
     }
-  }
-} // body.home
+  } // body.home
 
-}
+  } // media tall screen
+
+} // media screen and (max-width: $fdd-wide-width-pixels - 1px)
 
 
 /**********************************************************
