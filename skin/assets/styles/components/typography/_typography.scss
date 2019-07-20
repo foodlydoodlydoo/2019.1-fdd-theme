@@ -11,7 +11,8 @@
 
 a { // stylelint-disable-line selector-no-type
   @extend %link-transition;
-  color: map-deep-get($links-map, default, color);
+  //color: map-deep-get($links-map, default, color);
+  color: $base-fdd-link-color;
   text-decoration: none;
 
   &:hover {
