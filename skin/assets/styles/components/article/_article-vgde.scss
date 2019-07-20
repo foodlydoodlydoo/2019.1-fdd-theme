@@ -465,6 +465,7 @@ body.home, body.category {
         width: 100%;
         padding-top: 35px;
         border-top: $fdd-on-gray-color 1px solid;
+        min-height: unset;
         .article-grid-wrapper {
           display: flex;
           flex-wrap: wrap;
