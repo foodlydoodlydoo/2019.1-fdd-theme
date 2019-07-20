@@ -12,7 +12,7 @@ $image = Images::get_post_image($post_order_in_category == 0
   ? 'fdd:listing:first-article'
   : 'fdd:listing:oldish-article');
 
-$excerpt = Excerpt::get_excerpt(get_the_excerpt(), 9999);
+$excerpt = Excerpt::get_excerpt(get_the_excerpt(), 22);
 
 ?>
 
