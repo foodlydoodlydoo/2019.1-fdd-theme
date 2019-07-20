@@ -65,7 +65,9 @@ class Images {
         $max_height = 10;
       }
 
-      return '(max-width: 440px) 400px, (max-width: 960px) ' . floor($ratio * 66) . 'vh, ' . floor($ratio * $max_height) . 'vh';
+      return $landscape 
+      ? '(max-width: 440px) 400px, (max-width: 960px) 90vw, ' . floor($ratio * $max_height) . 'vh'
+      : '(max-width: 440px) 400px, (max-width: 960px) ' . floor($ratio * 80) . 'vh, ' . floor($ratio * $max_height) . 'vh';
     } // switch $mode
 
     return $sizes;
