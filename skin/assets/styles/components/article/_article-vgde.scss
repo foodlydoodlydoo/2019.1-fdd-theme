@@ -1,7 +1,7 @@
 $first-article-height-home-wide: 90vh;
 
-$first-article-height-home-wide-max: 972px; // 90vh of 1080px
-$first-article-home-tall-screen: 1080px;
+$first-article-home-tall-screen: 720px;
+$first-article-height-home-wide-max: $first-article-home-tall-screen * 0.9; // 90vh of 1080px
 
 $first-article-min-height-home-narrow: 60vh;
 $first-article-max-height-home-narrow: 480px;
