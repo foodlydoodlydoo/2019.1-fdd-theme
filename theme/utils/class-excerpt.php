@@ -43,9 +43,12 @@ class Excerpt {
     $output = trim(preg_replace('/\s+/', ' ', $output));
 
     // Check if strings are equal if not remove text until first space.
+    /*
+    // If `wp_strip_all_tags` removed some stuff, this will just cut off the last word
     if (strcmp($source, $output) !== 0) {
       $output = substr($output, 0, strripos($output, ' '));
     }
+    */
 
     // Reduce string to limit.
     $output = wp_trim_words($output, $limit, '...');
