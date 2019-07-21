@@ -501,6 +501,9 @@ body.home, body.category {
           }
         }
       }
+      .article-grid.last-article:only-child {
+        min-height: unset;
+      }
     }
 
     a.more-articles {
