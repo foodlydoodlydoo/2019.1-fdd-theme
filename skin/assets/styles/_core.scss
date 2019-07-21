@@ -18,7 +18,7 @@ body { /* stylelint-disable-line selector-no-type */
   */
   position: relative;
   overflow-x: hidden;
-  min-height: 100%;
+  min-height: 100vh;
 
   &.overflow-hidden {
     overflow: hidden;
