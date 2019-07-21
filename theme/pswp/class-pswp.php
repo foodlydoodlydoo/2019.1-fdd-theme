@@ -17,7 +17,10 @@ class PSWP {
       $width = $image[1];
       $height = $image[2];
 
-      $addition = ' data-width="' . $width . '" data-height="' . $height . '"';
+      $thumb = $image_meta['sizes']['fdd-400'];
+
+      $addition .= ' data-width="' . $width . '" data-height="' . $height . '"';
+      $addition .= ' thumb="' . $thumb['width'] . 'x' . $thumb['height'] . '"';
     }
 
     return $matches[1] . $matches[2] . $matches[3] . $matches[4] . $addition . $matches[5];
