@@ -15,7 +15,7 @@ if (have_posts()) {
 
   <!-- Page Title -->
   <header><h1>
-  <?php printf(esc_html__('Searching: %s', 'fdd'), '<span>' . get_search_query() . '</span>');?>
+  <?php printf(esc_html__('Search: %s', 'fdd'), '<span>' . get_search_query() . '</span>');?>
   </h1>
   </header>
 <?php }?>
