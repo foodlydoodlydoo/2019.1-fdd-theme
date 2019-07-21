@@ -1,0 +1,81 @@
+.page {
+  header {
+    text-align: center;
+    padding: 0 $fdd-outer-padding-wide-screen 2em;
+    h1 {
+      display: inline-block;
+      padding: 0;
+    }
+  }
+}
+
+/**********************************************************
+  Wide screen 
+**********************************************************/
+
+@media screen and (min-width: $fdd-wide-width-pixels) {
+
+.page {
+  .single__content  {
+    padding: 0 $fdd-outer-padding-wide-screen;
+  }
+  h2 {
+    margin-top: -4px;
+    margin-bottom: 2em;
+    line-height: 1;
+  }
+  figure {
+    margin: 0;
+    &.sticky {
+      position: sticky;
+      top: 45px;
+    }
+  }
+  .wp-block-column {
+    flex-basis: calc(50% - 2.5vw); // 5vw = $fdd-outer-padding-wide-screen, scss can't expand...
+  }
+  .wp-block-column:not(:first-child) {
+    margin-left: $fdd-outer-padding-wide-screen;
+  }
+}
+
+}
+
+/**********************************************************
+  Narrow screen
+**********************************************************/
+
+@media screen and (max-width: $fdd-wide-width-pixels - 1px) {
+
+.page {
+  header {
+    padding: 0 $fdd-outer-padding-narrow-screen;
+  }
+  .single__content  {
+    padding: 0 $fdd-outer-padding-narrow-screen;
+  }
+  figure {
+    display: block;
+    width: 100%;
+    text-align: center;
+    img {
+      margin-left: auto;
+      margin-right: auto;
+      max-height: 90vh;
+    }
+  }
+
+  // override wp default branching on 600px
+  .wp-block-columns {
+    flex-wrap: wrap;
+  }
+  .wp-block-column {
+    flex-grow: 1;
+    flex-basis: 100%;
+  }
+  .wp-block-column:nth-child(2n) {
+    margin-left: 0;
+  }
+}
+
+}

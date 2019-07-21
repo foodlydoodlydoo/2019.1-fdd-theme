@@ -29,7 +29,7 @@ class Images {
     return $tag;
   }
 
-  // Possibly one of: "home", "category", "post"
+  // Possibly one of: "home", "category", "post", ...
   static $image_sizing_mode = '';
   public static function set_image_sizes_mode($mode) {
     Images::$image_sizing_mode = $mode;
@@ -68,6 +68,12 @@ class Images {
       return $landscape 
       ? '(max-width: 440px) 400px, (max-width: 960px) 90vw, ' . floor($ratio * $max_height) . 'vh'
       : '(max-width: 440px) 400px, (max-width: 960px) ' . floor($ratio * 80) . 'vh, ' . floor($ratio * $max_height) . 'vh';
+
+    case 'page':
+      // There is no way to get classes or any post-specific settings for the inserted image.
+      // Assume that we have images only in two columns layout breaking at 960vw.
+      return '(max-width: 959px) 90vw, 44vw';
+
     } // switch $mode
 
     return $sizes;

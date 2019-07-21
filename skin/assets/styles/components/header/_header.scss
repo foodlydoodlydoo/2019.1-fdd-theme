@@ -80,7 +80,9 @@ $header-menu-shift-margin: 7px; // Empiric
 
 body.search {
   header h1 {
-    padding: 2em $fdd-outer-padding-wide-screen;
+    @include fdd-home-category-name(giant);
+    color: $fdd-title-color;
+    padding: .5em $fdd-outer-padding-wide-screen 0;
     text-align: center;
     > span { // the search term...
       @include font-italic-serif();
@@ -175,13 +177,19 @@ body.home {
   }
 }
 
-body.single, body.search {
+body.single, body.page {
   .description {
-    border-bottom: 1px solid $header-bottom-line-color-on-home;
+    border-bottom: 1px solid $header-bottom-line-color-light;
   }
 }
 
-body.category, body.single, body.search {
+body.search {
+  .description {
+    border-bottom: 1px solid $header-bottom-line-color-dark;
+  }
+}
+
+body.category, body.single, body.search, body.page {
   .description {
     @include text-size(largest);
     margin: 0;
