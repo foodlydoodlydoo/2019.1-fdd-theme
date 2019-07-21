@@ -66,7 +66,7 @@ body.category .fdd-category-grid {
         background: white;
         header {
           h2 {
-            @include fdd-home-oldish-article-heading();
+            @include fdd-home-oldish-article-heading(bold);
           }
           .article-grid__heading {
             margin-top: .1em;
@@ -101,7 +101,7 @@ body.home {
           background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
           header {
             h2 {
-              @include fdd-home-front-article-heading();
+              @include fdd-home-front-article-heading(bold);
             }
             color: $first-article-text-color;
             text-align: center;
