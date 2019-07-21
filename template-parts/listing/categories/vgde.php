@@ -14,8 +14,15 @@ $wrapper->before_grid($category);
 
 ?><div class="fdd-category-grid infscroll-item-selector"><?php
 
-while ($more_posts = have_posts()) {
+$more_posts = have_posts();
+$first_post = true;
+
+while ($more_posts) {
   the_post();
+
+  $more_posts = have_posts();
+  set_query_var("is_first_post", $first_post);
+  set_query_var("is_last_post", !$more_posts);
 
   for ($i = 0; $i < 1; ++$i) {
     $wrapper->before_article('post_order_in_category');
@@ -25,6 +32,8 @@ while ($more_posts = have_posts()) {
       break 2;
     }
   }
+
+  $first_post = false;
 }
 
 $wrapper->after_grid($more_posts);

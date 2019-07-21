@@ -138,7 +138,7 @@ body.home {
       //$more-width: 75%;
       //width: $more-width;
       //margin-left: (100% - $more-width) / 2;
-      
+
       display: inline-block;
       margin-top: 2em;
       padding-top: .5em;
@@ -359,7 +359,6 @@ body.home, body.category {
       padding: 7em $fdd-home-outer-padding-narrow-screen 0 $fdd-home-outer-padding-narrow-screen;
       .article-grid {
         break-inside: avoid;
-        min-height: 55vh; // to workaround missing support for `break-inside: avoid;`
         width: 100%;
         margin-bottom: 1em;
         .article-grid-wrapper {
@@ -374,6 +373,11 @@ body.home, body.category {
             }
           }
         }
+      }
+
+      // to workaround missing support for `break-inside: avoid;`
+      .article-grid.last-article:only-child {
+        min-height: calc(50vw + 300px); // this comes from the height of the image which is based on vw + some space for the text
       }
     }
   }
@@ -416,7 +420,7 @@ body.home {
 
 body.category {
   $up-shift: -3.5em;
-  
+
   .fdd-category-grid {
     > .article-grid {
       padding: 0 $fdd-category-outer-padding-narrow-screen 2em;

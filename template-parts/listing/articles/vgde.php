@@ -14,9 +14,15 @@ $image = Images::get_post_image($post_order_in_category == 0
 
 $excerpt = Excerpt::get_excerpt(get_the_excerpt(), 22);
 
+$grid_classes = ["article-grid"];
+if ($is_first_post) array_push($grid_classes, "first-article");
+if ($is_last_post) array_push($grid_classes, "last-article");
+
+$grid_classes = join(' ', $grid_classes);
+
 ?>
 
-<article class="article-grid">
+<article class="<?php echo($grid_classes);?>">
 <a class="article-permalink" href="<?php the_permalink();?>">
 <div class="article-grid-wrapper">
 
