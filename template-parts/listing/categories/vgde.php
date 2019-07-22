@@ -25,7 +25,7 @@ while ($more_posts) {
   set_query_var("is_last_post", !$more_posts);
 
   for ($i = 0; $i < 1; ++$i) {
-    $wrapper->before_article('post_order_in_category');
+    $wrapper->before_article('post_order_in_category', 'is_front_post');
     get_template_part('template-parts/listing/articles/vgde');
     $wrapper->after_article();
     if ($wrapper->at_limit($article_limit)) {

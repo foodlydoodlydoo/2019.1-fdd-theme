@@ -12,7 +12,9 @@ $image = Images::get_post_image($post_order_in_category == 0
   ? 'fdd:listing:first-article'
   : 'fdd:listing:oldish-article');
 
-$excerpt = Excerpt::get_excerpt(get_the_excerpt(), 30);
+$excerpt = Excerpt::get_excerpt(get_the_excerpt(), $is_front_post
+  ? 22
+  : 30);
 
 $grid_classes = ["article-grid"];
 if ($is_first_post) array_push($grid_classes, "first-article");

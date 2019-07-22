@@ -461,6 +461,9 @@ body.home, body.category {
           height: 100vh;
           max-height: $first-article-max-height-category-narrow;
         }
+        .article-grid__content {
+          max-height: $first-article-max-height-category-narrow;
+        }
       }
     }
     .oldish {

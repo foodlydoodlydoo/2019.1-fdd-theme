@@ -16,18 +16,23 @@ class ArticleWrappingHomepage {
     $this->order = 0;
   }
 
+  private function is_front_post() {
+    return $this->order == 0;
+  }
+
   public function before_grid($category) {
     echo "<div class=\"fdd-category-name\">" . esc_html($category->name) . "</div>";
     $this->category = $category;
   }
 
-  public function before_article($post_order_var_name) {
+  public function before_article($post_order_var_name, $front_post_var_name) {
     if ($this->order == 1) {
       echo '<div class="oldish">';
       echo '<div class="oldish__inner">';
     }
     // Makes visible in the template
     set_query_var($post_order_var_name, $this->order);
+    set_query_var($front_post_var_name, $this->is_front_post());
   }
 
   public function after_article() {
@@ -65,17 +70,24 @@ class ArticleWrappingCategory {
     $this->bucket_open = false;
   }
 
+  private function is_front_post() {
+    return $this->order % self::BUCKET_SIZE == 0;
+  }
+
   public function before_grid($category) {
     echo "<div class=\"fdd-category-name\">" . esc_html($category->name) . "</div>";
   }
 
-  public function before_article($post_order_var_name) {
+  public function before_article($post_order_var_name, $front_post_var_name) {
+    set_query_var($post_order_var_name, $this->order);
+    set_query_var($front_post_var_name, $this->is_front_post());
+
     if ($this->order % self::BUCKET_SIZE == 1) {
       echo '<div class="oldish">';
       echo '<div class="oldish__inner">';
       $this->oldish_open = true;
     }
-    if ($this->order % self::BUCKET_SIZE == 0) {
+    if ($this->is_front_post()) {
       $this->close_bucket();
       if ($this->order) {
         echo '<div class="fdd-category-grid infscroll-item-selector">';
@@ -84,12 +96,11 @@ class ArticleWrappingCategory {
       $this->order = 0;
     }
     // Makes visible in the template
-    set_query_var($post_order_var_name, $this->order);
   }
 
   public function after_article() {
     ++$this->order;
-    if ($this->order % self::BUCKET_SIZE == 0) {
+    if ($this->is_front_post()) {
       $this->close_oldish();
     }
   }
