@@ -28,6 +28,7 @@ body.search {
 body.category {
   nav.navigation.posts-navigation {
     text-align: center;
+    max-width: 720px;
     div.nav-links {
       a:only-child {
         width: 100%;
@@ -97,6 +98,7 @@ a.page-numbers.prev {
 
   body.category {
     nav.navigation.posts-navigation {
+      margin-top: 60px;
       padding: 0 $fdd-category-outer-padding-wide-screen;
     }
   }
