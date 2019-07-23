@@ -6,6 +6,8 @@
  * @package Fdd
  */
 
+use Fdd\Theme\Pagination;
+
 Fdd\Theme\Utils\Images::set_image_sizes_mode('search');
 
 get_header();
@@ -31,11 +33,7 @@ if (have_posts()) {
     get_template_part('template-parts/listing/articles/list');
   }
 
-  the_posts_pagination(
-    array(
-      'screen_reader_text' => ' ',
-    )
-  );
+  Pagination::put('results for ' . get_search_query(), 'More', 'Previous');
 } else {
   get_template_part('template-parts/listing/articles/empty');
 }

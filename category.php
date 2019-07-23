@@ -5,6 +5,8 @@
  * @package Fdd
  */
 
+use Fdd\Theme\Pagination;
+
 Fdd\Theme\Utils\Images::set_image_sizes_mode('category');
 
 get_header();
@@ -15,7 +17,8 @@ if (have_posts()) {
   set_query_var("wrapper_class", "ArticleWrappingCategory");
 
   get_template_part('template-parts/listing/categories/vgde');
-  the_posts_pagination();
+
+  Pagination::put($category->name, 'More', 'Newer');
 }
 
 get_footer();
