@@ -47,10 +47,12 @@ class ArticleWrappingHomepage {
     if ($this->order > 1) {
       //echo '<div class="after-last-article"></div>';
       echo '</div>'; // oldish__inner
-      if ($more_posts) {
-        set_query_var("category", $this->category);
-        get_template_part('template-parts/listing/home-more-articles');
-      }
+    }
+    if ($more_posts) {
+      set_query_var("category", $this->category);
+      get_template_part('template-parts/listing/home-more-articles');
+    }
+    if ($this->order > 1) {
       echo '</div>'; // oldish
     }
   }

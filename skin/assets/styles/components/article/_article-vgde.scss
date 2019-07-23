@@ -121,48 +121,6 @@ body.home {
         }
       }
     }
-
-    /*
-    a.more-articles:hover {
-      color: white;
-      background: $fdd-red-color;
-      transition: background .3s, border-color .3s;
-      border-color: $fdd-red-color;
-    }
-    */
-    .more-articles__wrap {
-      width: 100%;
-      text-align: center;
-    }
-    a.more-articles {
-      //$more-width: 75%;
-      //width: $more-width;
-      //margin-left: (100% - $more-width) / 2;
-
-      display: inline-block;
-      margin-top: 2em;
-      padding-top: .5em;
-      padding-bottom: .5em;
-      text-align: center;
-
-      .more-articles__text {
-        @include font-standard-serif();
-        font-size: 20px;
-        padding: .3em 0;
-        margin-right: 16px;
-        white-space: nowrap;
-      }
-      .more-articles__button {
-        display: inline-block;
-        background: $fdd-red-color;
-        color: white;
-        padding: .5em .5em;
-        width: 2em;
-        border-radius: 50%;
-        font-size: 24px;
-        line-height: 1;
-      }
-    }
   }
 }
 
@@ -228,13 +186,6 @@ body.home, body.category {
             }
           }
         }
-      }
-    }
-    a.more-articles {
-      .more-articles__text {
-        border-top: 4px solid;
-        position: relative;
-        top: 8px;
       }
     }
   }
@@ -401,20 +352,6 @@ body.home {
         }
       }
     }
-    a.more-articles {
-      border: 1px solid $fdd-light-gray;
-      margin-bottom: 32px;
-      padding-top: 20px;
-      padding-bottom: 20px;
-      width: 100%;
-      margin-left: 0;
-      .more-articles__text {
-        font-size: 26px;
-      }
-      .more-articles__button {
-        top: 0;
-      }
-    }
   }
 }
 
@@ -506,17 +443,6 @@ body.home, body.category {
       }
       .article-grid.last-article:only-child {
         min-height: unset;
-      }
-    }
-
-    a.more-articles {
-      .more-articles__text {
-        padding: 0;
-        margin-left: .25em;
-        margin-right: .25em;
-        margin-bottom: 10px;
-        font-size: 20px;
-        display: inline-block;
       }
     }
   }

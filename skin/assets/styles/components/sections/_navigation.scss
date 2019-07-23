@@ -1,0 +1,252 @@
+// [global]
+
+// The navigation pan
+nav.navigation.posts-navigation {
+  margin-left: auto;
+  margin-right: auto;
+  div.nav-links {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    column-gap: 30px;
+    justify-content: space-between;
+  }
+}
+
+body.search {
+  nav.navigation.posts-navigation {
+    max-width: $fdd-search-result-width;
+    div.nav-links {
+      a:only-child {
+        width: 100%;
+      }
+    }
+  }
+}
+
+body.category {
+  nav.navigation.posts-navigation {
+    text-align: center;
+    div.nav-links {
+      a:only-child {
+        width: 100%;
+      }
+    }
+  }  
+}
+
+// Styling common to home-page more-button and more-results on search/cat
+.more-articles__wrap {
+  margin-top: 2em;
+  width: 100%;
+  text-align: center;
+}
+
+a.more-articles, a.page-numbers.next, a.page-numbers.prev {
+  display: inline-block;
+  padding-top: .5em;
+  padding-bottom: .5em;
+  text-align: center;
+
+  .more-articles__text {
+    @include font-standard-serif();
+    font-size: 20px;
+    padding: .3em 0;
+    white-space: nowrap;
+  }
+}
+
+.more-articles__button {
+  display: inline-block;
+  padding: .5em .5em;
+  width: 2em;
+  border-radius: 50%;
+  font-size: 24px;
+  line-height: 1;
+}
+
+a.more-articles, a.page-numbers.next {
+  .more-articles__button {
+    background: $fdd-red-color;
+    color: white;
+  }
+  .more-articles__text {
+    margin-right: 16px;
+  }
+}
+
+a.page-numbers.prev {
+  .more-articles__button {
+    background: none;
+    border: solid 1px $fdd-light-gray;
+    color: inherit;
+  }
+  .more-articles__text {
+    margin-left: 16px;
+  }
+}
+
+// [/global]
+
+/**********************************************************
+ Wide screen
+ **********************************************************/
+
+@media screen and (min-width: $fdd-wide-width-pixels) {
+
+  body.category {
+    nav.navigation.posts-navigation {
+      padding: 0 $fdd-category-outer-padding-wide-screen;
+    }
+  }
+
+  body.search {
+    nav.navigation.posts-navigation {
+      margin-top: 60px;
+    }
+  }
+
+  a.more-articles, a.page-numbers.next, a.page-numbers.prev {
+    .more-articles__text {
+      border-top: 4px solid;
+      position: relative;
+      top: 8px;
+    }
+  }
+
+}
+
+/**********************************************************
+ Narrow screen
+ **********************************************************/
+
+@media screen and (max-width: $fdd-wide-width-pixels - 1px) {
+
+  body.search {
+    nav.navigation.posts-navigation {
+      padding: 3em 0 0;
+    }
+  }
+
+  body.category {
+    nav.navigation.posts-navigation {
+      padding: 2em $fdd-category-outer-padding-narrow-screen 0;
+    }
+  }
+
+  a.more-articles, a.page-numbers.next, a.page-numbers.prev {
+    margin-bottom: 32px;
+    margin-left: 0;
+    .more-articles__text {
+      font-size: 26px;
+      margin-left: 0; // to center... but breaks '< Prev' not having space...
+      &_name {
+        display: none;
+      }
+    }
+    .more-articles__button {
+      top: 0;
+    }
+  }
+
+  a.more-articles, a.page-numbers.next {
+    padding: 20px;
+    border: 1px solid $fdd-light-gray;
+  }
+
+  a.more-articles {
+    width: 100%;
+  }
+  a.page-numbers.next {
+    width: 70%;
+  }
+  a.page-numbers.prev {
+    padding: 20px 0;
+  }
+
+  div.nav-links a:only-child {
+    .more-articles__text {
+      margin-left: 16px;
+    }
+  }
+
+}
+
+@media screen and (max-width: $fdd-search-result-width + 64px) { // 640px - 2 * $fdd-outer-padding-wide-screen
+
+body.search {
+  nav.navigation.posts-navigation {
+    margin-left: $fdd-outer-padding-wide-screen;
+    margin-right: $fdd-outer-padding-wide-screen;
+  }
+}
+
+}
+
+
+/**********************************************************
+ Super-narrow screen
+ **********************************************************/
+
+@media screen and (max-width: $fdd-narrow-width-pixels - 1px) {
+
+  body.home {
+    .more-articles__wrap {
+      margin-top: 5em;
+    }
+    a.more-articles, a.page-numbers.next, a.page-numbers.prev {
+      .more-articles__text {
+        margin-left: .25em;
+        margin-right: .25em;
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  body.category, body.search {
+    nav.navigation.posts-navigation {
+      div.nav-links {
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+
+        justify-content: center;
+        flex-wrap: nowrap;
+        flex-direction: column-reverse;
+        a.page-numbers {
+          align-self: center;
+        }
+      }
+    }
+  }
+
+  body.category {
+    nav.navigation.posts-navigation {
+      padding: 5em $fdd-category-outer-padding-super-narrow-screen 0;
+    }
+  }
+
+  body.search {
+    nav.navigation.posts-navigation {
+      padding-left: $fdd-outer-padding-narrow-screen;
+      padding-right: $fdd-outer-padding-narrow-screen;
+    }
+  }
+
+  a.more-articles, a.page-numbers.next, a.page-numbers.prev {
+    .more-articles__text {
+      font-size: 20px;
+      display: inline-block;
+    }
+  }
+
+  a.more-articles {
+    .more-articles__text {
+      padding: 0;
+    }
+  }
+  a.page-numbers.next {
+    min-width: 220px;
+  }
+
+}

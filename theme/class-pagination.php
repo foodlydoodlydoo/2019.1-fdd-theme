@@ -21,7 +21,7 @@ class Pagination {
    * @since 1.0.0
    */
   public function pagination_link_next_class() {
-    return 'class="page-numbers next screen-reader-text"';
+    return 'class="page-numbers next"';
   }
 
   /**
@@ -32,21 +32,67 @@ class Pagination {
    * @since 1.0.0
    */
   public function pagination_link_prev_class() {
-    return 'class="page-numbers prev screen-reader-text"';
+    return 'class="page-numbers prev"';
+  }
+
+  /**
+   * Prints out our custom-made posts nav link
+   */
+  private static function posts_link($link, $attrs, $inner_markup) {
+    if ($link) {
+      echo '<a ' . $attrs . ' href="' . $link . '">';
+      echo $inner_markup;
+      echo '</a>' . "\n";
+    }
+  }
+
+  private static function nav_link_markup($text, $button, $reverse) {
+      // Copies inner part of template-parts\listing\home-more-articles.php
+      $text = '<span class="more-articles__text">' . $text . '</span>';
+      $button = '<span class="more-articles__button">' . $button . '</span>';
+      if ($reverse) {
+        return $button . $text;
+      } else {
+        return $text . $button;
+      }
   }
 
   /**
    * Adds the pagination according to our styling (replacement for \the_posts_pagination())
    */
-  public static function put($name, $more, $prev) {
-    echo '<nav class="navigation posts-navigation" role="navigation">';
-    echo '<div class="nav-links">';
+  public static function put($name, $more, $back) {
+    // Markup copied from the private function `_navigation_markup`.
+    // Filtering is not set that well to modify the content inside the links easily,
+    // so we have to build on our own...
 
-    if (get_next_posts_link()) {
-      previous_posts_link('<');
-      next_posts_link("$more $name");
-    } else {
-      previous_posts_link("< $prev $name");
+    echo '<nav class="navigation posts-navigation" role="navigation">' . "\n";
+    echo '<div class="nav-links">' . "\n";
+
+    global $wp_query, $paged;
+    $next = get_next_posts_page_link($wp_query->max_num_pages);
+    $prev = $paged > 1 ? get_previous_posts_page_link() : false;
+
+    if ($prev) {
+      if ($next) {
+        // Only a decent 'back' markup when we can go both ways
+        Pagination::posts_link($prev, 
+          Pagination::pagination_link_prev_class() . ' title="' . htmlspecialchars(wp_strip_all_tags("$back $name")) . '"',
+          Pagination::nav_link_markup('', esc_html('<'), true)
+        );
+      } else {
+        // On the last page make the back button visible
+        Pagination::posts_link($prev, 
+          Pagination::pagination_link_prev_class(), 
+          Pagination::nav_link_markup(esc_html($back) . " <span class=\"more-articles__text_name\">$name</span>", esc_html('<'), true)
+        );
+      }
+    }
+
+    if ($next) {
+      Pagination::posts_link($next, 
+        Pagination::pagination_link_next_class(), 
+        Pagination::nav_link_markup(esc_html($more) . " <span class=\"more-articles__text_name\">$name</span>", esc_html('>'), false)
+      );
     }
 
     echo '</div></nav>';

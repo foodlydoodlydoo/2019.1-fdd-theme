@@ -32,8 +32,6 @@ if (have_posts()) {
     the_post();
     get_template_part('template-parts/listing/articles/list');
   }
-
-  Pagination::put('results for ' . get_search_query(), 'More', 'Previous');
 } else {
   get_template_part('template-parts/listing/articles/empty');
 }
@@ -44,4 +42,5 @@ if (have_posts()) {
 
 <?php
 
+Pagination::put('search results', 'More', 'Previous');
 get_footer();

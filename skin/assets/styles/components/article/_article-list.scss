@@ -4,7 +4,7 @@ body.search {
   .article-list {
     padding: 0 $fdd-outer-padding-wide-screen;
     a {
-      max-width: 640px;
+      max-width: $fdd-search-result-width;
       display: block;
       margin-left: auto;
       margin-right: auto;
