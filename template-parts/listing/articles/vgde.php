@@ -8,7 +8,7 @@
 use Fdd\Theme\Utils\Excerpt;
 use Fdd\Theme\Utils\Images;
 
-$image = Images::get_post_image($post_order_in_category == 0
+$image = Images::get_post_image($is_front_post
   ? 'fdd:listing:first-article'
   : 'fdd:listing:oldish-article');
 
