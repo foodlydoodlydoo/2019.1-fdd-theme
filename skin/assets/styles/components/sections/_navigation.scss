@@ -9,32 +9,18 @@ nav.navigation.posts-navigation {
     margin-right: auto;
     display: flex;
     flex-wrap: nowrap;
-    column-gap: 30px;
     justify-content: space-between;
+    a.page-numbers.next { //:only-child {
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 }
 
 body.search {
   nav.navigation.posts-navigation {
     max-width: $fdd-search-result-width;
-    div.nav-links {
-      a:only-child {
-        width: 100%;
-      }
-    }
   }
-}
-
-body.category {
-  nav.navigation.posts-navigation {
-    text-align: center;
-    max-width: 720px;
-    div.nav-links {
-      a:only-child {
-        width: 100%;
-      }
-    }
-  }  
 }
 
 // Styling common to home-page more-button and more-results on search/cat
@@ -172,7 +158,7 @@ a.page-numbers.prev {
     width: 100%;
   }
   a.page-numbers.next {
-    width: 70%;
+    width: 35vw;
   }
   a.page-numbers.prev {
     padding: 20px 0;
