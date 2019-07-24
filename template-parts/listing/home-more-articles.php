@@ -5,6 +5,10 @@
  * @package Fdd
  */
 
+ /**
+  * IMPORTANT, Fdd\Theme\Pagination is using inner parts of this template!
+  */
+ 
 ?>
 
 <div class="more-articles__wrap">
