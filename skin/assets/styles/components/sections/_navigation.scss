@@ -50,6 +50,10 @@ a.more-articles, a.page-numbers.next, a.page-numbers.prev {
   padding-bottom: .5em;
   text-align: center;
 
+  &:active .more-articles__text {
+    color: $fdd-red-color;
+  }
+
   .more-articles__text {
     @include font-standard-serif();
     font-size: 20px;
@@ -125,6 +129,13 @@ a.page-numbers.prev {
 
 @media screen and (max-width: $fdd-wide-width-pixels - 1px) {
 
+  body.home {
+    .more-articles__wrap {
+      margin-top: 5em;
+      margin-bottom: 7em;
+    }
+  }
+
   body.search {
     nav.navigation.posts-navigation {
       padding: 3em 0 0;
@@ -196,6 +207,7 @@ body.search {
   body.home {
     .more-articles__wrap {
       margin-top: 5em;
+      margin-bottom: 2em;
     }
     a.more-articles, a.page-numbers.next, a.page-numbers.prev {
       .more-articles__text {
