@@ -52,6 +52,7 @@ export class FDD_PhotoSwipe {
       shareEl: false,
       counterEl: false,
       captionEl: false,
+      loadingIndicatorDelay: 0,
       barsSize: {
         top: 0,
         bottom: 0,
