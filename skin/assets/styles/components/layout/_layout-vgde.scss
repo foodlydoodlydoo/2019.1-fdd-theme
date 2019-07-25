@@ -67,7 +67,7 @@ body.category {
  Narrow screen
  **********************************************************/
 
-@media screen and (max-width: $fdd-wide-width-pixels - 1px) {
+@media screen and (max-width: $fdd-wide-width-pixels) {
 
 body.home {
   .fdd-category {
@@ -89,13 +89,13 @@ body.category {
   }
 }
 
-} // media screen and (max-width: $fdd-wide-width-pixels - 1px)
+} // media screen and (max-width: $fdd-wide-width-pixels)
 
 /**********************************************************
   Super-narrow screen
  **********************************************************/
 
-@media screen and (max-width: $fdd-narrow-width-pixels - 1px) {
+@media screen and (max-width: $fdd-narrow-width-pixels) {
 
 body.category {
   .fdd-category {

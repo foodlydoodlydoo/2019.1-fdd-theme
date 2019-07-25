@@ -115,7 +115,7 @@ a.page-numbers.prev {
  Narrow screen
  **********************************************************/
 
-@media screen and (max-width: $fdd-wide-width-pixels - 1px) {
+@media screen and (max-width: $fdd-wide-width-pixels) {
 
   body.home {
     .more-articles__wrap {
@@ -190,7 +190,7 @@ body.search {
  Super-narrow screen
  **********************************************************/
 
-@media screen and (max-width: $fdd-narrow-width-pixels - 1px) {
+@media screen and (max-width: $fdd-narrow-width-pixels) {
 
   body.home {
     .more-articles__wrap {

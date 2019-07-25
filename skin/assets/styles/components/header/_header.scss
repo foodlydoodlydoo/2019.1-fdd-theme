@@ -122,7 +122,7 @@ body.search {
 /**********************************************************
   Medium screen
  **********************************************************/
-@media screen and (max-width: $fdd-menu-wide-screen-width - 1px) {
+@media screen and (max-width: $fdd-menu-wide-screen-width) {
   .header {
     padding: 0 $fdd-menu-wide-screen-width * .05; // =$fdd-outer-padding-wide-screen
     ul.main-navigation {
