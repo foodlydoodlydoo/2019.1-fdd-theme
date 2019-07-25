@@ -209,12 +209,15 @@ body.search {
   body.category, body.search {
     nav.navigation.posts-navigation {
       div.nav-links {
-        justify-content: space-evenly;
+        justify-content: space-around;
         flex-wrap: wrap;
-
+        
+        /*
         justify-content: center;
         flex-wrap: nowrap;
         flex-direction: column-reverse;
+        */
+        column-gap: 20px;
         a.page-numbers {
           align-self: center;
         }
@@ -248,7 +251,11 @@ body.search {
     }
   }
   a.page-numbers.next {
-    min-width: 220px;
+    min-width: 180px;
+  }
+  a.page-numbers.next:not(:only-child) {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
   }
 
 }
