@@ -326,9 +326,11 @@ body.home, body.category {
         }
       }
 
-      // to workaround missing support for `break-inside: avoid;`
-      .article-grid.last-article:only-child {
-        min-height: calc(50vw + 300px); // this comes from the height of the image which is based on vw + some space for the text
+      @supports not (break-inside: avoid-column) {
+        // to workaround missing support for `break-inside: avoid;`
+        .article-grid.last-article:only-child {
+          min-height: calc(50vw + 330px); // this comes from the height of the image which is based on vw + some space for the text
+        }
       }
     }
   }
