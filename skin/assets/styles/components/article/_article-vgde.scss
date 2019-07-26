@@ -425,7 +425,7 @@ body.home, body.category {
           flex-wrap: wrap;
           align-items: flex-start;
           .article-grid__figure {
-            width: 45%;
+            width: 38.2%;
             img {
               object-fit: cover;
               height: 100%;
@@ -433,7 +433,7 @@ body.home, body.category {
           }
           .article-grid__content {
             top: -6px; // empirical, align text and image
-            width: 55%;
+            width: 61.8%;
             margin: 0;
             padding: 0 0 0 5%;
             header h2 {
@@ -459,6 +459,27 @@ body.home {
     .oldish {
       .article-grid:first-child {
         border-top: none;
+      }
+    }
+  }
+}
+
+}
+
+@media screen and (max-width: $fdd-narrow-width-pixels - 0.1px) and (orientation: landscape) {
+
+body.home, body.category {
+  .fdd-category-grid {
+    .oldish {
+      .article-grid {
+        .article-grid-wrapper {
+          .article-grid__content {
+            top: -9px; // empirical, align text and image
+            header h2 {
+              @include text-size(big);
+            }
+          }
+        }
       }
     }
   }
