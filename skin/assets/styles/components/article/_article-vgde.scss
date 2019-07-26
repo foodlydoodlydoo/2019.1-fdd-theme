@@ -415,8 +415,9 @@ body.home, body.category {
       }
       .article-grid {
         width: 100%;
-        padding-top: 35px;
-        padding-bottom: 35px;
+        $oldish-padding-narrow: 20px;
+        padding-top: $oldish-padding-narrow;
+        padding-bottom: $oldish-padding-narrow;
         border-top: $fdd-on-gray-color 1px solid;
         min-height: unset;
         .article-grid-wrapper {
@@ -432,7 +433,9 @@ body.home, body.category {
           }
           .article-grid__content {
             top: -6px; // empirical, align text and image
-            padding: 0 0 0 10%;
+            width: 55%;
+            margin: 0;
+            padding: 0 0 0 5%;
             header h2 {
               margin-top: 0;
               @include text-size(large);
