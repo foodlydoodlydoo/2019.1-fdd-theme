@@ -416,6 +416,7 @@ body.home, body.category {
       .article-grid {
         width: 100%;
         padding-top: 35px;
+        padding-bottom: 35px;
         border-top: $fdd-on-gray-color 1px solid;
         min-height: unset;
         .article-grid-wrapper {
@@ -430,9 +431,7 @@ body.home, body.category {
             }
           }
           .article-grid__content {
-            position: static;
-            width: 55%;
-            margin: 0;
+            top: -6px; // empirical, align text and image
             padding: 0 0 0 10%;
             header h2 {
               margin-top: 0;
