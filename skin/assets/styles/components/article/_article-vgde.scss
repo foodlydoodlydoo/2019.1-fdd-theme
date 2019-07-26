@@ -183,7 +183,7 @@ body.home, body.category {
           }
           .article-grid__content {
             header {
-              @include text-size(large);
+              @include text-size(medium);
             }
           }
         }
