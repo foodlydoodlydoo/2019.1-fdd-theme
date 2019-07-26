@@ -51,7 +51,7 @@ body.search {
   Super-narrow screen
  **********************************************************/
 
-@media screen and (max-width: $fdd-narrow-width-pixels) {
+@media screen and (max-width: $fdd-narrow-width-pixels - 0.1px) {
 
 body.search {
   .article-list {

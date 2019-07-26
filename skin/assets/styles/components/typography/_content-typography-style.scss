@@ -12,7 +12,7 @@ $content-style: (
   @media screen and (min-width: $fdd-wide-width-pixels) {
     @include text-size(large);
   }
-  @media screen and (max-width: $fdd-wide-width-pixels) {
+  @media screen and (max-width: $fdd-wide-width-pixels - 0.1px) {
     @include text-size(large);
   }
   line-height: 1.7; // was 1.5!

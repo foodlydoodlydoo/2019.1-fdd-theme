@@ -32,7 +32,7 @@
   }
 }
 
-@media screen and (max-width: $fdd-narrow-width-pixels) {
+@media screen and (max-width: $fdd-narrow-width-pixels - 0.1px) {
   .footer {
     &__container {
       ul.footer-navigation {

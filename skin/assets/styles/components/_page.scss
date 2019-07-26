@@ -46,7 +46,7 @@
   Narrow screen
 **********************************************************/
 
-@media screen and (max-width: $fdd-wide-width-pixels) {
+@media screen and (max-width: $fdd-wide-width-pixels - 0.1px) {
 
 .page {
   header {
