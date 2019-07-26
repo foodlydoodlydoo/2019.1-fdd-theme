@@ -411,11 +411,12 @@ body.home, body.category {
       padding: 2.5em $fdd-category-outer-padding-super-narrow-screen 0;
       .oldish__inner {
         columns: auto;
-        width: 100%;
+        margin: 0 $fdd-category-outer-padding-super-narrow-screen;
+        padding: 0;
       }
       .article-grid {
         width: 100%;
-        $oldish-padding-narrow: 20px;
+        $oldish-padding-narrow: 45px;
         padding-top: $oldish-padding-narrow;
         padding-bottom: $oldish-padding-narrow;
         border-top: $fdd-on-gray-color 1px solid;
@@ -425,20 +426,21 @@ body.home, body.category {
           flex-wrap: wrap;
           align-items: flex-start;
           .article-grid__figure {
-            width: 45%;
+            width: 100%;
             img {
               object-fit: cover;
-              height: 100%;
+              height: 70vh;
+              max-height: 240px;
             }
           }
           .article-grid__content {
-            top: -6px; // empirical, align text and image
-            width: 55%;
+            position: static;
+            width: 100%;
             margin: 0;
-            padding: 0 0 0 5%;
+            padding: 0;
             header h2 {
-              margin-top: 0;
-              @include text-size(large);
+              margin-top: 1em !important;
+              //@include text-size(large);
               line-height: 1.5;
             }
             .article-grid__underline {

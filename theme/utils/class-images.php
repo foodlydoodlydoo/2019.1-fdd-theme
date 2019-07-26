@@ -93,7 +93,7 @@ class Images {
         return '(max-width: 640px) ' . floor(max([$ratio, 1]) * 420) . 'px, (max-width: 960px) 100vw, ' . floor($ratio * 90) . 'vh';
 
       case 'fdd:listing:oldish-article':
-        return '(max-width: 480px) 260px, (max-width: 640px) 400px, (max-width: 960px) ' . floor($ratio * 50) . 'vw, ' . floor(max([$ratio, 1]) * 22) . 'vw';
+        return '(max-width: 500px) 400px, (max-width: 800px) 640px, (max-width: 960px) ' . floor($ratio * 50) . 'vw, ' . floor(max([$ratio, 1]) * 22) . 'vw';
       } // switch $tag
 
       break;
@@ -105,7 +105,7 @@ class Images {
         return '(max-width: 640px) ' . floor(max([$ratio, 1]) * 420) . 'px, (max-width: 960px) 1000px, ' . floor($ratio * 70) . 'vh';
 
       case 'fdd:listing:oldish-article':
-        return '(max-width: 480px) 260px, (max-width: 960px) ' . floor($ratio * 50) . 'vw, ' . floor(max([$ratio, 1]) * 21) . 'vw';
+        return '(max-width: 500px) 400px, (max-width: 800px) 640px, (max-width: 960px) ' . floor($ratio * 50) . 'vw, ' . floor(max([$ratio, 1]) * 21) . 'vw';
       } // switch $tag
 
       break;
