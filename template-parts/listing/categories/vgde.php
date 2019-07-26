@@ -36,7 +36,7 @@ while ($more_posts) {
   $first_post = false;
 }
 
-$wrapper->after_grid($more_posts);
+$wrapper->after_grid($more_posts || true);
 
 ?><div class="fdd-heel"></div><?php
 
