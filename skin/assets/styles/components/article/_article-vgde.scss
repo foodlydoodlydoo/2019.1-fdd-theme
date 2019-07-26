@@ -3,7 +3,8 @@ $first-article-height-home-wide: 90vh;
 $first-article-home-tall-screen: 720px;
 $first-article-height-home-wide-max: $first-article-home-tall-screen * 0.9;
 
-$first-article-min-height-home-narrow: 60vh;
+$first-article-height-home-narrow: 60vh;
+$first-article-min-height-home-narrow: 400px;
 $first-article-max-height-home-narrow: 480px;
 
 $first-article-min-height-category-wide: 70vh;
@@ -341,7 +342,8 @@ body.home {
     > .article-grid {
       .article-grid-wrapper {
         img {
-          height: $first-article-min-height-home-narrow;
+          height: $first-article-height-home-narrow;
+          min-height: $first-article-min-height-home-narrow;
           max-height: $first-article-max-height-home-narrow;
         }
         .article-grid__content {
