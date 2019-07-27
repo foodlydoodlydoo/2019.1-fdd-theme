@@ -20,11 +20,6 @@ $article-underline-height: 3px;
 
 body.home, body.category {
   .fdd-category-grid {
-    .article-grid-wrapper:hover {
-      .article-grid__figure {
-        background-color: red;
-      }
-    }
     .article-grid__content header {
       line-height: 1.6;
     }
@@ -125,8 +120,21 @@ body.home {
   }
 }
 
-// [/global]
+@media (any-hover: hover) {
 
+body.home, body.category {
+  .fdd-category-grid {
+    .article-grid-wrapper:hover {
+      .article-grid__figure {
+        background-color: red;
+      }
+    }
+  }
+}
+
+}
+
+// [/global]
 
 
 /**********************************************************
