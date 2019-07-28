@@ -164,18 +164,17 @@ body.search {
   @include fdd-blog-descr-font();
 }
 
+/*
 body.home {
   .description {
     font-size: 30px;
     margin: 0;
 
-    text-align: center;
-    padding: 96px 25vw;
-
     text-align: right;
     padding: 96px $fdd-outer-padding-wide-screen;
   }
 }
+*/
 
 body.single, body.page {
   .description {
@@ -189,7 +188,7 @@ body.search {
   }
 }
 
-body.category, body.single, body.search, body.page {
+body.home, body.category, body.single, body.search, body.page {
   .description {
     @include text-size(largest);
     margin: 0;
