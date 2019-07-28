@@ -8,7 +8,12 @@
 $wrapper_class = "Fdd\\Theme\\vgde\\$wrapper_class";
 $wrapper = new $wrapper_class;
 
-?><div id="<?php echo esc_html($category->slug); ?>" class="fdd-category infscroll-content-selector"><?php
+?>
+
+<div id="<?php echo esc_html($category->slug); ?>" class="fdd-category infscroll-content-selector">
+<div class="fdd-category__wrap">
+
+<?php
 
 $wrapper->before_grid($category);
 
@@ -43,5 +48,6 @@ $wrapper->after_grid($more_posts || true);
 $wrapper->tail($more_posts);
 
 ?>
+</div>
 </div>
 </div>

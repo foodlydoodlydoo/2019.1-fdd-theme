@@ -42,8 +42,13 @@ body.category {
 
 body.home {
   .fdd-category {
+    .fdd-category__wrap {
+      max-width: $fdd-home-wide-max-width;
+      margin-left: auto;
+      margin-right: auto;
+    }
     .fdd-category-name {
-      margin: 0 $fdd-outer-padding-wide-screen;
+      margin: 0 $fdd-home-outer-padding-wide-screen;
       border-top: 6px solid black;
     }
     .fdd-category-grid {
@@ -54,6 +59,11 @@ body.home {
 
 body.category {
   .fdd-category {
+    .fdd-category__wrap {
+      max-width: $fdd-home-wide-max-width;
+      margin-left: auto;
+      margin-right: auto;
+    }
     .fdd-category-name {
       margin: 1em 0 1.5em;
     }

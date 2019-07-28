@@ -1,7 +1,8 @@
 $first-article-height-home-wide: 90vh;
 
-$first-article-home-tall-screen: 720px;
+$first-article-home-tall-screen: 1080px;
 $first-article-height-home-wide-max: $first-article-home-tall-screen * 0.9;
+$first-article-height-category-wide-max: $first-article-home-tall-screen * 0.7;
 
 $first-article-height-home-narrow: 60vh;
 $first-article-min-height-home-narrow: 400px;
@@ -204,7 +205,7 @@ body.home {
   .fdd-category-grid {
     > .article-grid {
       width: 50%;
-      padding: 0 $fdd-outer-padding-wide-screen / 2 0 $fdd-outer-padding-wide-screen;
+      padding: 0 $fdd-outer-padding-wide-screen / 2 0 $fdd-home-outer-padding-wide-screen;
       .article-grid-wrapper {
         max-height: $first-article-height-home-wide;
         .article-grid__content {
@@ -223,7 +224,7 @@ body.home {
     }
     .oldish {
       width: 50%;
-      padding-right: $fdd-outer-padding-wide-screen;
+      padding-right: $fdd-home-outer-padding-wide-screen;
     }
   }
 } // body.home
@@ -254,9 +255,9 @@ body.category {
   }
 } // body.category
 
-/**********************************************************
- Too high screen
- **********************************************************/
+  /**********************************************************
+  Too high screen
+  **********************************************************/
 
   @media screen and (min-height: $first-article-home-tall-screen) {
 
@@ -270,13 +271,53 @@ body.category {
           }
         }
       }
+      .oldish {
+        .article-grid__figure {
+          img {
+            min-height: 21vw;
+            object-fit: cover;
+          }
+        }
+      }
     }
   } // body.home
+
+  body.category {
+    .fdd-category-grid {
+      > .article-grid {
+        .article-grid-wrapper {
+          img {
+            min-height: $first-article-height-category-wide-max;
+            max-height: $first-article-height-category-wide-max;
+          }
+        }
+      }
+    }
+  }
 
   } // media tall screen
 
 } // media screen and (max-width: $fdd-wide-width-pixels - 0.1px)
 
+
+/**********************************************************
+Too wide screen
+**********************************************************/
+@media screen and (min-width: $fdd-home-too-wide-screen) {
+
+body.home, body.category {
+  .fdd-category-grid {
+    .oldish {
+      .article-grid__figure {
+        img {
+          min-height: $fdd-home-too-wide-screen * 0.21 !important;
+        }
+      }
+    }
+  }
+} // body.home
+
+}
 
 /**********************************************************
  Nav menu quirks
