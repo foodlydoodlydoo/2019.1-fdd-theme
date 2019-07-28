@@ -398,7 +398,7 @@ body.home {
         .article-grid__content {
           position: absolute;
           bottom: 0;
-          padding: 0 5% 3em;
+          padding: 0 15% 3em;
           header {
             @include text-size(big);
           }
@@ -452,6 +452,7 @@ body.home, body.category {
           max-height: $first-article-max-height-category-narrow;
         }
         .article-grid__content {
+          padding: 0 5% 3em;
           max-height: $first-article-max-height-category-narrow;
         }
       }
