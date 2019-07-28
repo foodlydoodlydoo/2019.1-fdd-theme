@@ -36,16 +36,24 @@ class Media {
    * @since 1.0.0
    */
   public function add_custom_image_sizes() {
-    function gen_size($size) {
+    function gen_standard_size($size) {
       add_image_size("fdd-$size", $size, $size * 1.5, false);
     }
-    gen_size(260);
-    gen_size(400);
-    gen_size(640);
-    gen_size(1000); // this size is used as 'msrc' for pswp
-    gen_size(1400);
-    gen_size(2000); // for full HD screens and retina tablets
-    // Don't forget to update max_srcset_image_width in General::add_theme_support!
+    gen_standard_size(260);
+    gen_standard_size(400);
+    gen_standard_size(640);
+    gen_standard_size(1000);
+    gen_standard_size(1400);
+    gen_standard_size(2000); // for full HD screens and retina tablets
+
+    // calculations (home/cat):
+    // vgde wide layout applies dynamically as w=(40/31)%, h=(90/70)vh between 960-1400px screen width
+    // w=(384-560/297-434)px, h-max=(972/756)px, ratio = ~1:1.75
+    function gen_portrait_lead_article_size($size) {
+      add_image_size("fdd-lead-article-$size", $size, $size * 1.75, true);
+    }
+    gen_portrait_lead_article_size(560);
+    gen_portrait_lead_article_size(440);
   }
 
   /**

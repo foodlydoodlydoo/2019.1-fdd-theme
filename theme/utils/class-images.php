@@ -35,10 +35,35 @@ class Images {
     Images::$image_sizing_mode = $mode;
   }
 
+  // All functions calling hooks accepting tag will set and reset this global
+  private static $current_tag = '';
+
   /**
    * The following code is heavilly dependent on styling for particular templates,
    * sizes are better determined empirically, by direct examination of elements on the screen.
    */
+  public static function constrain_dimensions_hook($size, $current_width, $current_height, $max_width, $max_height) {
+    // Abosolute hack - we must persuade `wp_image_matches_ratio` that we want differect aspects too, sometimes...
+
+    switch (Images::$current_tag) {
+    case 'fdd:listing:first-article':
+      // Allow `fdd-lead-article-*` sizes
+      if (in_array($size[0], [440, 560])) {
+        return array($size[0], min($size[0] * 1.75, $current_height));
+      }
+    }
+
+    return $size;
+  }
+
+  public static function srcset_attribute_hook($sources, $size_array, $image_src, $image_meta, $attachment_id) {
+    // Nothing to do here, but leave for possible future use.
+    return $sources;
+  }
+
+  private static function get_srcset_attribute($tag, $width, $height, $attachment_id, $image_meta) {
+    return wp_get_attachment_image_srcset($attachment_id, 'full_width', $image_meta);
+  }
 
   // Depending on the current mode, return the appropriate sizes filling
   // This is called for images added generically by calls to `the_content()` et al.
@@ -66,8 +91,8 @@ class Images {
       }
 
       return $landscape
-      ? '(max-width: 440px) 400px, (max-width: 960px) 90vw, ' . floor($ratio * $max_height) . 'vh'
-      : '(max-width: 440px) 400px, (max-width: 960px) ' . floor($ratio * 80) . 'vh, ' . floor($ratio * $max_height) . 'vh';
+        ? '(max-width: 440px) 400px, (max-width: 960px) 90vw, ' . floor($ratio * $max_height) . 'vh'
+        : '(max-width: 440px) 400px, (max-width: 960px) ' . floor($ratio * 80) . 'vh, ' . floor($ratio * $max_height) . 'vh';
 
     case 'page':
       // There is no way to get classes or any post-specific settings for the inserted image.
@@ -89,11 +114,12 @@ class Images {
     case 'home':
       switch ($tag) {
       case 'fdd:listing:first-article':
-        // 420 = first-article-max-height-category-narrow
-        return '(max-width: 640px) ' . floor(max([$ratio, 1]) * 420) . 'px, (max-width: 960px) 100vw, ' . floor($ratio * 90) . 'vh';
+        return $ratio < 1
+          ? '(max-width: 260px) 260px, (max-width: 400px) 400px, (max-width: 640px) 640px, (max-width: 959.9px) 960px, (max-width: 1134px) 440px, 560px'
+          : '(max-width: 640px) 640px, (max-width: 959.9px) 960px, (max-width: 1134px) 440px, 560px';
 
       case 'fdd:listing:oldish-article':
-        return '(max-width: 480px) 260px, (max-width: 640px) 400px, (max-width: 960px) ' . floor($ratio * 50) . 'vw, ' . floor(max([$ratio, 1]) * 22) . 'vw';
+        return '(max-width: 480px) ' . floor(max([$ratio, 1]) * 260) . ', (max-width: 640px) 400px, (max-width: 960px) ' . floor($ratio * 50) . 'vw, ' . floor(max([$ratio, 1]) * 22) . 'vw';
       } // switch $tag
 
       break;
@@ -101,11 +127,12 @@ class Images {
     case 'category':
       switch ($tag) {
       case 'fdd:listing:first-article':
-        // 420 = first-article-max-height-category-narrow
-        return '(max-width: 640px) ' . floor(max([$ratio, 1]) * 420) . 'px, (max-width: 960px) 1000px, ' . floor($ratio * 70) . 'vh';
+        return $ratio < 1
+          ? '(max-width: 260px) 260px, (max-width: 400px) 400px, (max-width: 880px) 640px, (max-width: 959.9px) 960px, 440px'
+          : '(max-width: 880px) 640px, (max-width: 959.9px) 960px, 440px';
 
       case 'fdd:listing:oldish-article':
-        return '(max-width: 480px) 260px, (max-width: 960px) ' . floor($ratio * 50) . 'vw, ' . floor(max([$ratio, 1]) * 21) . 'vw';
+        return '(max-width: 480px) ' . floor(max([$ratio, 1]) * 260) . 'px, (max-width: 960px) ' . floor($ratio * 50) . 'vw, ' . floor(max([$ratio, 1]) * 21) . 'vw';
       } // switch $tag
 
       break;
@@ -142,6 +169,8 @@ class Images {
       $post_id = $post->ID;
     }
 
+    Images::$current_tag = $tag;
+
     if (has_post_thumbnail($post_id)) {
       $attachment_id = get_post_thumbnail_id($post_id);
       $image_meta = wp_get_attachment_metadata($attachment_id);
@@ -149,9 +178,9 @@ class Images {
       // Deliberately passing 'full_width' to get full range of sizes,
       // we count on srcset and sizes to pick up the right one.
       $image = wp_get_attachment_image_src($attachment_id, 'full_width', $image_meta);
-      $srcset = wp_get_attachment_image_srcset($attachment_id, 'full_width', $image_meta);
 
-      // Instead of using wp_get_attachment_image_sizes, generate manually
+      // Instead of using wp_get_attachment_image_sizes/srcset, generate manually or fallback
+      $srcset = Images::get_srcset_attribute($tag, $image[1], $image[2], $attachment_id, $image_meta);
       $sizes = Images::get_sizes_attribute($tag, $image[1], $image[2], $attachment_id);
 
       $image_array = [
@@ -175,6 +204,8 @@ class Images {
         $image_array['image'] = $no_image;
       }
     }
+
+    Images::$current_tag = '';
 
     return $image_array;
   }
