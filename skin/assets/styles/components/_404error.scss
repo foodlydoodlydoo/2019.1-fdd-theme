@@ -1,0 +1,65 @@
+body.error404 {
+  main {
+    padding-top: 2em;
+  }
+
+  div.error404__wrap {
+    @include base-font-family-set();
+    @include text-size(bigger);
+    > h2 {
+      text-align: center;
+    }
+    span {
+      font-weight: bold;
+    }
+    padding: 0 $fdd-outer-padding-wide-screen;
+    margin: 1em auto 0;
+    .not-found__imagewrap {
+      text-align: center;
+      margin: 0 auto;
+      padding: 40px;
+    }
+
+    > .search-form {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      margin: 1em auto;
+      max-width: $fdd-search-result-width;
+      > label {
+        width: 100%;
+      }
+      .search-field {
+        color: $base-fdd-text-color;
+        border: solid 1px $base-fdd-text-color;
+        background: $transparent-color;
+        width: 100%;
+        padding: .5em;
+      }
+      .search-submit {
+        margin: 0;
+        border: none;
+        background: $base-fdd-text-color;
+        color: white;
+        cursor: pointer;
+      }
+    }
+
+    > div {
+      line-height: 1.7;
+    }
+  }
+
+  div.nothing-found {
+    text-align: center;
+  }
+
+  div.something-found {
+    margin: 2em auto 0;
+    &.border {
+      padding: 0 0 2em;
+      border-bottom: 1px solid $fdd-on-gray-color;
+    }
+    max-width: $fdd-search-result-width;
+  }
+}

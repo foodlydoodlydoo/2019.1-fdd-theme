@@ -1,6 +1,6 @@
 $article-underline-height: 3px;
 
-body.search {
+body.search, body.error404 {
   .article-list {
     padding: 0 $fdd-outer-padding-wide-screen;
     a {
@@ -53,7 +53,7 @@ body.search {
 
 @media screen and (max-width: $fdd-narrow-width-pixels - 0.1px) {
 
-body.search {
+body.search, body.error404 {
   .article-list {
     a .article-list__container {
       flex-wrap: wrap;

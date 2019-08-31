@@ -176,7 +176,7 @@ body.home {
 }
 */
 
-body.single, body.page {
+body.single, body.page, body.error404 {
   .description {
     border-bottom: 1px solid $header-bottom-line-color-light;
   }
@@ -188,7 +188,7 @@ body.search {
   }
 }
 
-body.home, body.category, body.single, body.search, body.page {
+body.home, body.category, body.single, body.search, body.page, body.error404 {
   .description {
     @include text-size(largest);
     margin: 0;
