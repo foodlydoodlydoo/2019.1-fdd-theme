@@ -8,5 +8,5 @@
 ?>
 
 <article class="article-empty">
-  <?php esc_html_e( 'Sorry no items found', 'fdd' ); ?>
+  <?php printf(esc_html__('We can\'t find anything for %s'), '<span>' . get_search_query() . '</span>');?>
 </article>

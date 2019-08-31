@@ -1,5 +1,11 @@
 //If there is no items in listing
 
-// .article-empty {
-
-// }
+.article-empty {
+  max-width: $fdd-home-wide-max-width;
+  padding: 20vh $fdd-outer-padding-wide-screen calc(20vh - 40px);
+  text-align: center;
+  @include text-size(huge);
+  span {
+    font-weight: bold;
+  }
+}
