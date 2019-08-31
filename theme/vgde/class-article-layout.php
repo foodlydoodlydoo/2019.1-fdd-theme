@@ -64,7 +64,7 @@ class ArticleWrappingHomepage {
 class ArticleWrappingCategory {
   private $order;
   private $oldish_open;
-  const BUCKET_SIZE = 5;
+  const BUCKET_SIZE = 7;
 
   function __construct() {
     $this->order = 0;
