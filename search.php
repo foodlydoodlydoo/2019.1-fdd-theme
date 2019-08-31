@@ -18,8 +18,7 @@ if (have_posts()) {
   <!-- Page Title -->
   <header><h1>
   <?php printf(esc_html__('Search: %s', 'fdd'), '<span>' . get_search_query() . '</span>');?>
-  </h1>
-  </header>
+  </h1></header>
 <?php }?>
 
 <!-- Listing Section -->
@@ -27,7 +26,8 @@ if (have_posts()) {
 <div class="fdd-search-list infscroll-content-selector">
 
 <?php
-if (have_posts()) {
+$had_posts = have_posts();
+if ($had_posts) {
   while (have_posts()) {
     the_post();
     get_template_part('template-parts/listing/articles/list');
@@ -42,5 +42,8 @@ if (have_posts()) {
 
 <?php
 
-Pagination::put('search results', 'More', 'Previous');
+if ($had_posts) {
+  Pagination::put('search results', 'More', 'Previous');
+}
+
 get_footer();
