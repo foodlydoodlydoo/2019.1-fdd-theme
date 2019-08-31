@@ -88,6 +88,12 @@ a.page-numbers.prev {
 
 @media screen and (min-width: $fdd-wide-width-pixels) {
 
+  body.home, body.category {
+    nav.navigation.posts-navigation {
+      max-width: $fdd-home-wide-max-width;
+    }
+  }
+
   body.category {
     nav.navigation.posts-navigation {
       margin-top: 60px;
