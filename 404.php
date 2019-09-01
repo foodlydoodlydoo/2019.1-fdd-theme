@@ -16,12 +16,16 @@ $nothing_found_img = General_Helper::get_manifest_assets_data('nothning-found.pn
 
 <div class="error404__wrap">
   <?php
-    $search = new WP_Query("s=$term_from_path&showposts=-1");
-    if ($search->found_posts > 0) {
+    $found = false;
+    if ($term_from_path) {
+      $search = new WP_Query("s=$term_from_path&showposts=2");
+      $found = $search->found_posts > 0;
+    }
+    if ($found) {
       ?>
       <h2>Page not found, but...</h2>
-      <div class="something-found border">
-      ...maybe the articles below is what you are looking for:
+      <div class="something-found">
+      ...maybe this is what you are looking for?
       </div>
       <?php
       ?>
@@ -37,7 +41,7 @@ $nothing_found_img = General_Helper::get_manifest_assets_data('nothning-found.pn
       ?></div><?php
       if ($has_more) {
         ?><div class="something-found">
-          ...and there is more:
+          And there is more, just search our site:
         </div><?php
         set_query_var("s", $term_from_path);
         get_search_form();
