@@ -18,6 +18,9 @@ body.error404 {
       text-align: center;
       margin: 0 auto;
       padding: 40px;
+      img {
+        max-width: 100%;
+      }
     }
 
     > .search-form {
