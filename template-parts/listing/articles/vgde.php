@@ -22,6 +22,8 @@ if ($is_last_post) array_push($grid_classes, "last-article");
 
 $grid_classes = join(' ', $grid_classes);
 
+$has_video = function_exists('get_field') && get_field('has_video');
+
 ?>
 
 <article class="<?php echo($grid_classes);?>">
@@ -32,6 +34,9 @@ $grid_classes = join(' ', $grid_classes);
 <img src="<?php echo esc_attr($image['image']); ?>"
      srcset="<?php echo esc_attr($image['srcset']); ?>"
      sizes="<?php echo esc_attr($image['sizes']); ?>">
+<?php if ($has_video) { ?>
+  <span class="article-grid__is-video"></span>
+<?php } ?>
 </div>
 
 <div class="article-grid__content">
