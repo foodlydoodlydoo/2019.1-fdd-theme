@@ -9,6 +9,7 @@
 namespace Fdd\Admin;
 
 use Fdd\Helpers\Object_Helper;
+use Fdd\Theme\Utils\Images;
 
 /**
  * Class Media
@@ -52,8 +53,9 @@ class Media {
     function gen_portrait_lead_article_size($size) {
       add_image_size("fdd-lead-article-$size", $size, $size * 1.75, true);
     }
-    gen_portrait_lead_article_size(560);
-    gen_portrait_lead_article_size(440);
+    foreach (Images::$portrait_lead_article_sizes as $size) {
+      gen_portrait_lead_article_size($size);
+    }
   }
 
   /**

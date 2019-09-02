@@ -12,6 +12,14 @@ $image = Images::get_post_image($is_front_post
   ? 'fdd:listing:first-article'
   : 'fdd:listing:oldish-article');
 
+$lead_picture_landscape = $is_front_post
+  ? Images::get_post_image('fdd:listing:first-article-landscape')
+  : false;
+
+$lead_picture_portrait = $is_front_post
+  ? Images::get_post_image('fdd:listing:first-article-portrait')
+  : false;
+
 $excerpt = Excerpt::get_excerpt(get_the_excerpt(), $is_front_post
   ? 22
   : 30);
@@ -31,6 +39,15 @@ $has_video = function_exists('get_field') && get_field('has_video');
 <div class="article-grid-wrapper">
 
 <div class="article-grid__figure">
+<?php 
+/* 
+$lead_picture_landscape
+$lead_picture_portrait
+
+TODO - Use <picture> with fallback to the image below for the lead article portrail/landscape optimization 
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture#The_media_attribute 
+*/
+?>
 <img src="<?php echo esc_attr($image['image']); ?>"
      srcset="<?php echo esc_attr($image['srcset']); ?>"
      sizes="<?php echo esc_attr($image['sizes']); ?>">
