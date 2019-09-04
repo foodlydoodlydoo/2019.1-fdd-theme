@@ -15,17 +15,58 @@ use Fdd\Helpers\General_Helper;
  */
 class Images {
 
+  private static $standard_sizes = [
+    200,
+    400,
+    640,
+    960,
+    1440,
+    1920
+  ];
+
   // calculations (home/cat):
   // vgde wide layout applies dynamically as w=(40/31)%, h=(90/70)vh between 960-1400px screen width
   // w=(384-560/297-434)px, h-max=(972/756)px, ratio = ~1:1.75
-  public static $portrait_lead_article_sizes = [
-    560, 
-    840, // 560 * 1.5
-    1120, // 560 * 2
+  private static $portrait_lead_article_sizes = [
     440,
-    660, // 440 * 1.5
-    880 // 440 * 2
+    560, 
+    660, // =440 * 1.5
+    880, // =440 * 2, ~560 * 1.5
+    1120, // =560 * 2
   ];
+
+  // vgde narrow layout: max-height is 480px when 640-960px (min ratio = 1.33), 420px < 640px (=1.5)
+  // mostly copy the standard_sizes listing to reuse those when fit 1.5 ratio
+  private static $landscape_lead_article_sizes = [
+    400,
+    640,
+    960, // and =640 * 1.5
+    1440, // =960 * 1.5, ~640 * 2
+    1920 // =960 * 2
+  ];
+
+  public static function register_image_sizes() {
+    function gen_standard_size($size) {
+      add_image_size("fdd-$size", $size, $size * 1.5, false);
+    }
+    foreach (Images::$standard_sizes as $size) {
+      gen_standard_size($size);
+    }
+
+    function gen_portrait_lead_article_size($size) {
+      add_image_size("fdd-lead-article-p-$size", $size, $size * 1.75, true);
+    }
+    foreach (Images::$portrait_lead_article_sizes as $size) {
+      gen_portrait_lead_article_size($size);
+    }
+
+    function gen_landscape_lead_article_size($size) {
+      add_image_size("fdd-lead-article-ls-$size", $size, ceil($size / 1.5), true);
+    }
+    foreach (Images::$landscape_lead_article_sizes as $size) {
+      gen_landscape_lead_article_size($size);
+    }
+  }
 
   /**
    * FDD Custom methods for generating the 'sizes' image attribute based
@@ -55,7 +96,11 @@ class Images {
     switch (Images::$current_tag) {
       case 'fdd:listing:first-article-portrait':
         $largest_size = max(Images::$portrait_lead_article_sizes);
-        return "fdd-lead-article-$largest_size";
+        return "fdd-lead-article-p-$largest_size";
+
+      case 'fdd:listing:first-article-landscape':
+        $largest_size = max(Images::$landscape_lead_article_sizes);
+        return "fdd-lead-article-ls-$largest_size";
     }
 
     return "full_width";

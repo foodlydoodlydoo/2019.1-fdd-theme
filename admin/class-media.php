@@ -37,25 +37,7 @@ class Media {
    * @since 1.0.0
    */
   public function add_custom_image_sizes() {
-    function gen_standard_size($size) {
-      add_image_size("fdd-$size", $size, $size * 1.5, false);
-    }
-    gen_standard_size(260);
-    gen_standard_size(400);
-    gen_standard_size(640);
-    gen_standard_size(1000);
-    gen_standard_size(1400);
-    gen_standard_size(2000); // for full HD screens and retina tablets
-
-    // calculations (home/cat):
-    // vgde wide layout applies dynamically as w=(40/31)%, h=(90/70)vh between 960-1400px screen width
-    // w=(384-560/297-434)px, h-max=(972/756)px, ratio = ~1:1.75
-    function gen_portrait_lead_article_size($size) {
-      add_image_size("fdd-lead-article-$size", $size, $size * 1.75, true);
-    }
-    foreach (Images::$portrait_lead_article_sizes as $size) {
-      gen_portrait_lead_article_size($size);
-    }
+    Images::register_image_sizes();
   }
 
   /**
