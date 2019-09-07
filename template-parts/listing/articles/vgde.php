@@ -39,18 +39,21 @@ $has_video = function_exists('get_field') && get_field('has_video');
 <div class="article-grid-wrapper">
 
 <div class="article-grid__figure">
-<?php 
-/* 
-$lead_picture_landscape
-$lead_picture_portrait
-
-TODO - Use <picture> with fallback to the image below for the lead article portrail/landscape optimization 
-https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture#The_media_attribute 
-*/
-?>
-<img src="<?php echo esc_attr($image['image']); ?>"
-     srcset="<?php echo esc_attr($image['srcset']); ?>"
-     sizes="<?php echo esc_attr($image['sizes']); ?>">
+<picture>
+<?php if ($lead_picture_portrait) { ?>
+  <source media="(min-width: 960px)" 
+          srcset="<?php echo esc_attr($lead_picture_portrait['srcset']); ?>"
+          sizes="<?php echo esc_attr($lead_picture_portrait['sizes']); ?>">
+<?php } ?>
+<?php if ($lead_picture_landscape) { ?>
+  <source media="(max-width: 959.9px)" 
+          srcset="<?php echo esc_attr($lead_picture_landscape['srcset']); ?>"
+          sizes="<?php echo esc_attr($lead_picture_landscape['sizes']); ?>">
+<?php } ?>
+  <img src="<?php echo esc_attr($image['image']); ?>"
+       srcset="<?php echo esc_attr($image['srcset']); ?>"
+       sizes="<?php echo esc_attr($image['sizes']); ?>">
+</picture>
 <?php if ($has_video) { ?>
   <span class="article-grid__is-video"></span>
 <?php } ?>

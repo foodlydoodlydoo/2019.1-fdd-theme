@@ -29,7 +29,7 @@ class Images {
   // w=(384-560/297-434)px, h-max=(972/756)px, ratio = ~1:1.75
   private static $portrait_lead_article_sizes = [
     440,
-    560, 
+    560,
     660, // =440 * 1.5
     880, // =440 * 2, ~560 * 1.5
     1120, // =560 * 2
@@ -68,39 +68,65 @@ class Images {
     }
   }
 
-  /**
-   * FDD Custom methods for generating the 'sizes' image attribute based
-   * on internal tags and/or what we are currently displaying.
-   */
-
-  private static function remap_size($tag) {
-    switch ($tag) {
-    case 'fdd:listing:first-article':return 'fdd-1000';
-    case 'fdd:listing:oldish-article':return 'fdd-640';
-    }
-
-    return $tag;
-  }
-
   // Possibly one of: "home", "category", "post", ...
   static $image_sizing_mode = '';
   public static function set_image_sizes_mode($mode) {
     Images::$image_sizing_mode = $mode;
   }
 
+  /**
+   * Private helper declarations.
+   */
+
   // All functions calling hooks accepting tag will set and reset this global
   private static $current_tag = '';
 
+  /**
+   * FDD Custom methods for generating the 'sizes' image attribute based
+   * on internal tags and/or what we are currently displaying.
+   */
+  private static function remap_size($tag) {
+    switch ($tag) {
+    case 'fdd:listing:first-article':return 'fdd-960';
+    case 'fdd:listing:first-article-landscape':return 'fdd-1440';
+    case 'fdd:listing:first-article-portrait':return 'fdd-1120';
+    case 'fdd:listing:oldish-article':return 'fdd-640';
+    }
+
+    return $tag;
+  }
+
+  private static function get_sizes_with_prefix($image_meta, $prefix) {
+    return array_filter($image_meta['sizes'], function($size_name) use ($prefix) {
+      return preg_match("/^$prefix/", $size_name);
+    }, ARRAY_FILTER_USE_KEY);
+  }
+
+  private static function find_largest_size($image_meta, $prefix) {
+    // Setup default in case we don't find anything (not expected to happen)
+    $size = "full_size";
+    
+    $sizes = Images::get_sizes_with_prefix($image_meta, $prefix);
+    $max_found = 0;
+    foreach ($sizes as $size_name => $size_meta) {
+      $width = $size_meta['width'];
+      if ($max_found < $width) {
+        $max_found = $width;
+        $size = $size_name;
+      }
+    }
+
+    return $size;
+  }
+
   // According the tag (kind of image) return the default full image size to base srcset and sizes from.
-  private static function get_largest_size() {
+  private static function get_largest_size($image_meta) {
     switch (Images::$current_tag) {
       case 'fdd:listing:first-article-portrait':
-        $largest_size = max(Images::$portrait_lead_article_sizes);
-        return "fdd-lead-article-p-$largest_size";
+        return Images::find_largest_size($image_meta, "fdd-lead-article-p-");
 
       case 'fdd:listing:first-article-landscape':
-        $largest_size = max(Images::$landscape_lead_article_sizes);
-        return "fdd-lead-article-ls-$largest_size";
+        return Images::find_largest_size($image_meta, "fdd-lead-article-ls-");
     }
 
     return "full_width";
@@ -111,45 +137,70 @@ class Images {
    * sizes are better determined empirically, by direct examination of elements on the screen.
    */
   public static function constrain_dimensions_hook($size, $current_width, $current_height, $max_width, $max_height) {
+    // *** Keeping only for reference reasons ***
+
+    /*
+    // *** We are now building the srcset attribute for this tag manually
     // Abosolute hack - we must persuade `wp_image_matches_ratio` that we want differect aspects too, sometimes...
-    
-    // TODO - This will be used only for the <picture> -> <img> fallback srcset/sizes
     switch (Images::$current_tag) {
     case 'fdd:listing:first-article':
-      // Allow `fdd-lead-article-*` sizes
+      // Allow also `fdd-lead-article-*` sizes
       if (in_array($size[0], Images::$portrait_lead_article_sizes)) {
         return array($size[0], min($size[0] * 1.75, $current_height));
       }
+      break;
     }
+    */
 
     return $size;
   }
 
   public static function srcset_attribute_hook($sources, $size_array, $image_src, $image_meta, $attachment_id) {
-    
-    // TODO - This is likely not needed, as only 'fdd:listing:first-article' tag allows
-    // different aspect ratios.  For 'fdd:listing:first-article-portrait' we ask for the largest
-    // portrait size to get all portrait sizes automatically (w/o the constrain_dimensions_hook 
-    // hack ivolved)
-    switch (Images::$current_tag) {
-    case 'fdd:listing:first-article-portrait':
-      $sources = array_filter($sources, function($size) {
-        return in_array($size, Images::$portrait_lead_article_sizes);
-      }, ARRAY_FILTER_USE_KEY);
-      break;
+    // *** Keeping only for reference reasons ***
 
-    case 'fdd:listing:first-article-landscape':
-      $sources = array_filter($sources, function($size) {
-        return !in_array($size, Images::$portrait_lead_article_sizes);
-      }, ARRAY_FILTER_USE_KEY);
-      break;
-    }
-
+    // Note: this is already filtered according the constrain_dimensions_hook
     return $sources;
   }
 
-  private static function get_srcset_attribute($tag, $width, $height, $attachment_id, $image_meta) {
-    return wp_get_attachment_image_srcset($attachment_id, Images::get_largest_size(), $image_meta);
+  private static function get_srcset_attribute($tag, $width, $height, $attachment_id, $image_meta, $large_size) {
+    $sources = array();
+    $add_source = function($size) use ($attachment_id, $image_meta, &$sources) {
+      $image = wp_get_attachment_image_src($attachment_id, $size, $image_meta);
+      $source = $image[0] . " " . $image[1] . "w";
+      array_push($sources, $source);
+    };
+    $add_sources = function($sizes) use ($add_source) {
+      foreach ($sizes as $size_name => $_) {
+        $add_source($size_name);
+      }
+    };
+
+    switch (Images::$current_tag) {
+    case 'fdd:listing:first-article':
+      $add_sources(Images::get_sizes_with_prefix($image_meta, "fdd-\d+"));
+      $add_sources(Images::get_sizes_with_prefix($image_meta, "fdd-lead-article-p-"));
+      $add_source("full_size");
+      $srcset = join(", ", $sources);
+      break;
+
+    case 'fdd:listing:first-article-portrait':
+      $add_sources(Images::get_sizes_with_prefix($image_meta, "fdd-lead-article-p-"));
+      $add_source("full_size");
+      $srcset = join(", ", $sources);
+      break;
+
+    case 'fdd:listing:first-article-landscape':
+      $add_sources(Images::get_sizes_with_prefix($image_meta, "fdd-lead-article-ls-"));
+      $add_source("full_size");
+      $srcset = join(", ", $sources);
+      break;
+
+    default:
+      $srcset = wp_get_attachment_image_srcset($attachment_id, $large_size, $image_meta);
+      break;
+    }
+
+    return $srcset;
   }
 
   // Depending on the current mode, return the appropriate sizes filling
@@ -201,16 +252,16 @@ class Images {
     case 'home':
       switch ($tag) {
       case 'fdd:listing:first-article-portrait':
-        break; // TODO
+        return '(max-width: 1134px) 440px, 560px';
 
       case 'fdd:listing:first-article-landscape':
-        break; // TODO
+        return '(min-width: 960px) 72vw, 960px';
 
-      case 'fdd:listing:first-article':  
+      case 'fdd:listing:first-article':
         return $ratio < 1
           ? '(max-width: 260px) 260px, (max-width: 400px) 400px, (max-width: 640px) 640px, (max-width: 959.9px) 960px, (max-width: 1134px) 440px, 560px'
           : '(max-width: 640px) 640px, (max-width: 959.9px) 960px, (max-width: 1134px) 440px, 560px';
-    
+
       case 'fdd:listing:oldish-article':
         return '(max-width: 480px) ' . floor(max([$ratio, 1]) * 260) . ', (max-width: 640px) 400px, (max-width: 960px) ' . floor($ratio * 50) . 'vw, ' . floor(max([$ratio, 1]) * 22) . 'vw';
       } // switch $tag
@@ -220,10 +271,10 @@ class Images {
     case 'category':
       switch ($tag) {
       case 'fdd:listing:first-article-portrait':
-        break; // TODO
+        return '440px';
 
       case 'fdd:listing:first-article-landscape':
-        break; // TODO
+        return '(min-width: 960px) 72vw, 960px';
 
       case 'fdd:listing:first-article':
         return $ratio < 1
@@ -276,10 +327,11 @@ class Images {
 
       // Deliberately passing 'full_width' or largest portrait to get full range of sizes,
       // we count on srcset and sizes to pick up the right one.
-      $image = wp_get_attachment_image_src($attachment_id, Images::get_largest_size(), $image_meta);
+      $large_size = Images::get_largest_size($image_meta);
+      $image = wp_get_attachment_image_src($attachment_id, $large_size, $image_meta);
 
       // Instead of using wp_get_attachment_image_sizes/srcset, generate manually or fallback
-      $srcset = Images::get_srcset_attribute($tag, $image[1], $image[2], $attachment_id, $image_meta);
+      $srcset = Images::get_srcset_attribute($tag, $image[1], $image[2], $attachment_id, $image_meta, $large_size);
       $sizes = Images::get_sizes_attribute($tag, $image[1], $image[2], $attachment_id);
 
       $image_array = [
