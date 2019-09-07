@@ -46,10 +46,10 @@ class Pagination {
     }
   }
 
-  private static function nav_link_markup($text, $button, $reverse) {
+  private static function nav_link_markup($text, $class, $reverse) {
       // Copies inner part of template-parts\listing\home-more-articles.php
       $text = '<span class="more-articles__text">' . $text . '</span>';
-      $button = '<span class="more-articles__button">' . $button . '</span>';
+      $button = '<span class="more-articles__button ' . $class . '"></span>';
       if ($reverse) {
         return $button . $text;
       } else {
@@ -77,13 +77,13 @@ class Pagination {
         // Only a decent 'back' markup when we can go both ways
         Pagination::posts_link($prev, 
           Pagination::pagination_link_prev_class() . ' title="' . htmlspecialchars(wp_strip_all_tags("$back $name")) . '"',
-          Pagination::nav_link_markup('', esc_html('<'), true)
+          Pagination::nav_link_markup('', 'prev', true)
         );
       } else {
         // On the last page make the back button visible
         Pagination::posts_link($prev, 
           Pagination::pagination_link_prev_class(), 
-          Pagination::nav_link_markup(esc_html($back) . " <span class=\"more-articles__text_name\">$name</span>", esc_html('<'), true)
+          Pagination::nav_link_markup(esc_html($back) . " <span class=\"more-articles__text_name\">$name</span>", 'prev', true)
         );
       }
     }
@@ -91,7 +91,7 @@ class Pagination {
     if ($next) {
       Pagination::posts_link($next, 
         Pagination::pagination_link_next_class(), 
-        Pagination::nav_link_markup(esc_html($more) . " <span class=\"more-articles__text_name\">$name</span>", esc_html('>'), false)
+        Pagination::nav_link_markup(esc_html($more) . " <span class=\"more-articles__text_name\">$name</span>", 'next', false)
       );
     }
 

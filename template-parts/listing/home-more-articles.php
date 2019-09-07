@@ -16,8 +16,7 @@
 <span class="more-articles__text">
 More <?php echo $category->name; ?>
 </span>
-<span class="more-articles__button">
-&gt;
+<span class="more-articles__button next">
 </span>
 </a>
 </div>

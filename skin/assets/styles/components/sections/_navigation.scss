@@ -50,12 +50,26 @@ a.more-articles, a.page-numbers.next, a.page-numbers.prev {
 }
 
 .more-articles__button {
+  &::before {
+    position: relative;
+    top: -1px;
+  }
   display: inline-block;
   padding: .5em .5em;
   width: 2em;
   border-radius: 50%;
   font-size: 24px;
   line-height: 1;
+}
+.more-articles__button.next {
+  &::before {
+    content: '>';
+  }
+}
+.more-articles__button.prev {
+  &::before {
+    content: '<';
+  }
 }
 
 a.more-articles, a.page-numbers.next {
