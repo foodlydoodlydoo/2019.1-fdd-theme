@@ -24,15 +24,13 @@ class Images {
     1920
   ];
 
-  // calculations (home/cat):
-  // vgde wide layout applies dynamically as w=(40/31)%, h=(90/70)vh between 960-1400px screen width
-  // w=(384-560/297-434)px, h-max=(972/756)px, ratio = ~1:1.75
+  // Empiric for wide (>960px) layout
   private static $portrait_lead_article_sizes = [
-    440,
-    560,
-    660, // =440 * 1.5
-    880, // =440 * 2, ~560 * 1.5
-    1120, // =560 * 2
+    480, // = cat max possible width on wide, and 720 / 1.5
+    720, // = home max possible width on wide
+    960, // = 480 * 2
+    1080, // = 720 * 1.5
+    1440 // = 720 * 2
   ];
 
   // vgde narrow layout: max-height is 480px when 640-960px (min ratio = 1.33), 420px < 640px (=1.5)
@@ -252,7 +250,7 @@ class Images {
     case 'home':
       switch ($tag) {
       case 'fdd:listing:first-article-portrait':
-        return '(max-width: 1134px) 440px, 560px';
+        return '(max-width: 1200px) 480px, 720px';
 
       case 'fdd:listing:first-article-landscape':
         return '(min-width: 960px) 72vw, 960px';
@@ -263,7 +261,7 @@ class Images {
           : '(max-width: 640px) 640px, (max-width: 959.9px) 960px, (max-width: 1134px) 440px, 560px';
 
       case 'fdd:listing:oldish-article':
-        return '(max-width: 480px) ' . floor(max([$ratio, 1]) * 260) . ', (max-width: 640px) 400px, (max-width: 960px) ' . floor($ratio * 50) . 'vw, ' . floor(max([$ratio, 1]) * 22) . 'vw';
+        return '(max-width: 480px) ' . floor(max([$ratio, 1]) * 260) . ', (max-width: 640px) 400px, (max-width: 960px) ' . floor($ratio * 50) . 'vw, ' . floor(max([$ratio, 1]) * 20) . 'vw';
       } // switch $tag
 
       break;
@@ -271,7 +269,7 @@ class Images {
     case 'category':
       switch ($tag) {
       case 'fdd:listing:first-article-portrait':
-        return '440px';
+        return '480px';
 
       case 'fdd:listing:first-article-landscape':
         return '(min-width: 960px) 72vw, 960px';
