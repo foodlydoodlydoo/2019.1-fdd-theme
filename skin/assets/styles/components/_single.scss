@@ -1,4 +1,6 @@
-.single {
+section.single {
+  max-width: $fdd-single-wide-max-width;
+  margin: 0 auto;
   header {
     h1.single__title {
       @include fdd-single-article-heading();
