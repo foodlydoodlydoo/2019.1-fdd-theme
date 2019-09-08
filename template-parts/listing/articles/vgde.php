@@ -62,7 +62,7 @@ $has_video = function_exists('get_field') && get_field('has_video');
 <div class="article-grid__content">
   <header>
     <h2 class="article-grid__heading">
-      <?php esc_html(the_title());?>
+      <?php echo wp_strip_all_tags(get_the_title());?>
     </h2>
     <div class="article-grid__excerpt">
       <?php echo $excerpt; ?>

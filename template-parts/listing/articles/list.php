@@ -25,11 +25,11 @@ $excerpt = Excerpt::get_excerpt(get_the_excerpt(), 9999);
         <div class="article-list__content">
           <header>
             <h2 class="article-list__heading">
-              <?php esc_html(the_title());?>
+              <?php echo highlight_search_term(wp_strip_all_tags(get_the_title())); ?>
             </h2>
           </header>
           <div class="article-list__excerpt">
-            <?php echo $excerpt;?>
+            <?php echo highlight_search_term($excerpt);?>
           </div>
           <div class="article-grid__underline"></div>
         </div>

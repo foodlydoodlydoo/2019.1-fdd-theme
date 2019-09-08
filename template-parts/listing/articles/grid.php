@@ -16,7 +16,7 @@ $image = Images::get_post_image( 'full_width' );
     <header>
     <h2 class="article-grid__heading">
       <a class="article-grid__heading-link" href="<?php the_permalink(); ?>">
-        <?php esc_html( the_title() ); ?>
+        <?php echo wp_strip_all_tags(get_the_title()); ?>
       </a>
     </h2>
     </header>

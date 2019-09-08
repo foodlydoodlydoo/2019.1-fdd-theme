@@ -1,5 +1,16 @@
 $article-underline-height: 3px;
 
+body.search {
+  span.search__highlight {
+    background: gold;
+    $surrounding: 0.15em;
+    padding-left: $surrounding;
+    padding-right: $surrounding;
+    margin-left: -$surrounding;
+    margin-right: -$surrounding;
+  }
+}
+
 body.search, body.error404 {
   .article-list {
     padding: 0 $fdd-outer-padding-wide-screen;
