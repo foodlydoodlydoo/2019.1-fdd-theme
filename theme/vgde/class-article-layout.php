@@ -55,6 +55,7 @@ class ArticleWrappingHomepage {
     if ($this->order > 1) {
       echo '</div>'; // oldish
     }
+    echo '<div class="fdd-heel"></div>';
   }
 
   public function tail($more_posts) {
@@ -77,7 +78,7 @@ class ArticleWrappingCategory {
   }
 
   public function before_grid($category) {
-    echo "<div class=\"fdd-category-name\">" . esc_html($category->name) . "</div>";
+    echo "<h1 class=\"fdd-category-name\">" . esc_html($category->name) . "</h1>";
   }
 
   public function before_article($post_order_var_name, $front_post_var_name) {
@@ -92,7 +93,7 @@ class ArticleWrappingCategory {
     if ($this->is_front_post()) {
       $this->close_bucket();
       if ($this->order) {
-        echo '<div class="fdd-category-grid infscroll-item-selector">';
+        echo '</div><div class="fdd-category-grid infscroll-item-selector">';
       }
       $this->bucket_open = true;
       $this->order = 0;
@@ -126,7 +127,7 @@ class ArticleWrappingCategory {
 
   private function close_bucket() {
     if ($this->bucket_open) {
-      echo '<div class="fdd-heel"></div></div>';
+      echo '<div class="fdd-heel"></div>';
       $this->bucket_open = false;
     }
   }

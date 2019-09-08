@@ -42,9 +42,6 @@ while ($more_posts) {
 }
 
 $wrapper->after_grid($more_posts || true);
-
-?><div class="fdd-heel"></div><?php
-
 $wrapper->tail($more_posts);
 
 ?>
