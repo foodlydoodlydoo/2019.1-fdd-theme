@@ -381,7 +381,7 @@ body.home, body.category {
     .oldish {
       width: 100%;
       .oldish__inner {
-        @include oldish-masonry-ttb($fdd-outer-padding-wide-screen);
+        @include oldish-masonry-ttb(24px);
       }
       padding: 7em $fdd-home-outer-padding-narrow-screen 0 $fdd-home-outer-padding-narrow-screen;
       .article-grid {
