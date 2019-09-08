@@ -35,7 +35,7 @@ export class FDD_PhotoSwipe {
       const w = parseInt(anch.attr('data-width'), 10);
       const h = parseInt(anch.attr('data-height'), 10);
       const src = anch.attr('href');
-      const msrc = src.replace(/(\.\w+$)/, `-${anch.attr('thumb')}$1`);
+      const msrc = src.replace(/(\.\w+$)/, `-${anch.attr('data-thumb')}$1`);
 
       return { src, msrc, w, h, };
     });

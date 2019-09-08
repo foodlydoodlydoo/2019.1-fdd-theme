@@ -20,7 +20,7 @@ class PSWP {
       $thumb = $image_meta['sizes']['fdd-400'];
 
       $addition .= ' data-width="' . $width . '" data-height="' . $height . '"';
-      $addition .= ' thumb="' . $thumb['width'] . 'x' . $thumb['height'] . '"';
+      $addition .= ' data-thumb="' . $thumb['width'] . 'x' . $thumb['height'] . '"';
     }
 
     return $matches[1] . $matches[2] . $matches[3] . $matches[4] . $addition . $matches[5];
