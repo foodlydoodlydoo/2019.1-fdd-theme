@@ -164,33 +164,48 @@ class Images {
     $sources = array();
     $add_source = function($size) use ($attachment_id, $image_meta, &$sources) {
       $image = wp_get_attachment_image_src($attachment_id, $size, $image_meta);
-      $source = $image[0] . " " . $image[1] . "w";
-      array_push($sources, $source);
+      array_push($sources, [$image[0], $image[1]]);
     };
     $add_sources = function($sizes) use ($add_source) {
       foreach ($sizes as $size_name => $_) {
         $add_source($size_name);
       }
     };
+    $sources_to_srcset = function($sources) {
+      $widths = [];
+      $sources = array_filter($sources, function($source) use (&$widths) {
+        $width = $source[1];
+        if (in_array($width, $widths)) {
+          // remove duplicate widths, first occurence has a priority
+          return false;
+        }
+        array_push($widths, $width);
+        return true;
+      });
+      $sources = array_map(function($source) {
+        return $source[0] . " " . $source[1] . "w";
+      }, $sources);
+      return join(", ", $sources);
+    };
 
     switch (Images::$current_tag) {
     case 'fdd:listing:first-article':
-      $add_sources(Images::get_sizes_with_prefix($image_meta, "fdd-\d+"));
       $add_sources(Images::get_sizes_with_prefix($image_meta, "fdd-lead-article-p-"));
+      $add_sources(Images::get_sizes_with_prefix($image_meta, "fdd-\d+"));
       $add_source("full_size");
-      $srcset = join(", ", $sources);
+      $srcset = $sources_to_srcset($sources);
       break;
 
     case 'fdd:listing:first-article-portrait':
       $add_sources(Images::get_sizes_with_prefix($image_meta, "fdd-lead-article-p-"));
       $add_source("full_size");
-      $srcset = join(", ", $sources);
+      $srcset = $sources_to_srcset($sources);
       break;
 
     case 'fdd:listing:first-article-landscape':
       $add_sources(Images::get_sizes_with_prefix($image_meta, "fdd-lead-article-ls-"));
       $add_source("full_size");
-      $srcset = join(", ", $sources);
+      $srcset = $sources_to_srcset($sources);
       break;
 
     default:
@@ -261,7 +276,7 @@ class Images {
           : '(max-width: 640px) 640px, (max-width: 959.9px) 960px, (max-width: 1134px) 440px, 560px';
 
       case 'fdd:listing:oldish-article':
-        return '(max-width: 480px) ' . floor(max([$ratio, 1]) * 260) . ', (max-width: 640px) 400px, (max-width: 960px) ' . floor($ratio * 50) . 'vw, ' . floor(max([$ratio, 1]) * 20) . 'vw';
+        return '(max-width: 480px) ' . floor(max([$ratio, 1]) * 260) . 'px, (max-width: 640px) 400px, (max-width: 960px) ' . floor($ratio * 50) . 'vw, ' . floor(max([$ratio, 1]) * 20) . 'vw';
       } // switch $tag
 
       break;
