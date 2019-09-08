@@ -16,7 +16,7 @@ $logo_img = General_Helper::get_manifest_assets_data('foodly-doodly-doo-logo-m.p
 
 ?>
 <div id="fullscreen-menu">
-<img class="fullscreen-menu__logo-img" src="<?php echo esc_url($logo_img); ?>">
+<img class="fullscreen-menu__logo-img" src="<?php echo esc_url($logo_img); ?>" alt="<?php echo esc_attr($header_logo_info); ?>">
 <span id="fullscreen-menu__close-button">&times;</span>
 <?php echo esc_html($main_menu->bem_menu('fullscreen_nav', 'fs-navigation')); ?>
 </div>
