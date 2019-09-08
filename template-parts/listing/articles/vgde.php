@@ -52,7 +52,8 @@ $has_video = function_exists('get_field') && get_field('has_video');
 <?php } ?>
   <img src="<?php echo esc_attr($image['image']); ?>"
        srcset="<?php echo esc_attr($image['srcset']); ?>"
-       sizes="<?php echo esc_attr($image['sizes']); ?>">
+       sizes="<?php echo esc_attr($image['sizes']); ?>"
+       alt="<?php echo esc_attr(wp_strip_all_tags(get_the_title()));?>">
 </picture>
 <?php if ($has_video) { ?>
   <span class="article-grid__is-video"></span>

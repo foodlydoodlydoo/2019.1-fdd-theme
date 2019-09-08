@@ -20,7 +20,8 @@ $excerpt = Excerpt::get_excerpt(get_the_excerpt(), 9999);
         <div class="article-list__image">
           <img src="<?php echo esc_attr($image['image']); ?>"
               srcset="<?php echo esc_attr($image['srcset']); ?>"
-              sizes="<?php echo esc_attr($image['sizes']); ?>">
+              sizes="<?php echo esc_attr($image['sizes']); ?>"
+              alt="<?php echo esc_attr(wp_strip_all_tags(get_the_title()));?>">
         </div>
         <div class="article-list__content">
           <header>
