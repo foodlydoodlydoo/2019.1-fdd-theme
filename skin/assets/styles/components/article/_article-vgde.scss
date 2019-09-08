@@ -334,7 +334,7 @@ body.home, body.category {
     .oldish {
       .article-grid__figure {
         > picture > img {
-          min-height: $fdd-home-too-wide-screen * 0.21 !important;
+          min-height: 328px !important; // empiric: maximum width on wide, we want squares
         }
       }
     }

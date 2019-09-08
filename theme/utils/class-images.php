@@ -208,6 +208,12 @@ class Images {
       $srcset = $sources_to_srcset($sources);
       break;
 
+    case 'fdd:listing:search-article':
+      $add_sources(Images::get_sizes_with_prefix($image_meta, "fdd-lead-article-ls-"));
+      $add_source("full_size");
+      $srcset = $sources_to_srcset($sources);
+      break;
+
     default:
       $srcset = wp_get_attachment_image_srcset($attachment_id, $large_size, $image_meta);
       break;
@@ -276,7 +282,7 @@ class Images {
           : '(max-width: 640px) 640px, (max-width: 959.9px) 960px, (max-width: 1134px) 440px, 560px';
 
       case 'fdd:listing:oldish-article':
-        return '(max-width: 480px) ' . floor(max([$ratio, 1]) * 260) . 'px, (max-width: 640px) 400px, (max-width: 960px) ' . floor($ratio * 50) . 'vw, ' . floor(max([$ratio, 1]) * 20) . 'vw';
+        return '(max-width: 480px) ' . floor(max([$ratio, 1]) * 260) . 'px, (max-width: 640px) 400px, (max-width: 960px) ' . floor($ratio * 50) . 'vw, ' . floor(max([$ratio, 1]) * 328) . 'px';
       } // switch $tag
 
       break;
@@ -295,7 +301,7 @@ class Images {
           : '(max-width: 880px) 640px, (max-width: 959.9px) 960px, 440px';
 
       case 'fdd:listing:oldish-article':
-        return '(max-width: 480px) ' . floor(max([$ratio, 1]) * 260) . 'px, (max-width: 960px) ' . floor($ratio * 50) . 'vw, ' . floor(max([$ratio, 1]) * 21) . 'vw';
+        return '(max-width: 480px) ' . floor(max([$ratio, 1]) * 260) . 'px, (max-width: 960px) ' . floor($ratio * 50) . 'vw, ' . floor(max([$ratio, 1]) * 300) . 'px';
       } // switch $tag
 
       break;
@@ -303,7 +309,6 @@ class Images {
     case 'search':
       switch ($tag) {
       case 'fdd:listing:search-article':
-        // so far a copy from home/oldish
         return '(max-width: 400px) 400px, (max-width: 640px) 640px, 400px';
       } // switch $tag
       break;
