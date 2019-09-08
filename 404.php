@@ -9,15 +9,18 @@ use Fdd\Helpers\General_Helper;
 
 get_header();
 
-$term_from_path = trim(preg_replace("/[^\w\d]/", " ", $_SERVER['REQUEST_URI']));
+$term_from_path = trim(preg_replace("/[^\w\d]/", " ", urldecode($_SERVER['REQUEST_URI'])));
 $nothing_found_img = General_Helper::get_manifest_assets_data('nothning-found.png');
+
+// listing/articles/list requires one
+function highlight_search_term($input) { return $input; }
 
 ?>
 
 <div class="error404__wrap">
   <?php
     $found = false;
-    if ($term_from_path) {
+    if ($term_from_path && strlen($term_from_path) >= 3) {
       $search = new WP_Query("s=$term_from_path&showposts=2");
       $found = $search->found_posts > 0;
     }
