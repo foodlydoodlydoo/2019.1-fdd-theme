@@ -242,9 +242,9 @@ class Images {
 
     case 'recipes':
       if (Images::$recipe_image_order++ == 0) {
-        $max_height = 65;
+        $max_height = 77; // == $recipe-first-image-max-height @ recipe block style
       } else {
-        $max_height = 10;
+        $max_height = 10; // == $recipe-second-and-on-image-max-height @ recipe block style
       }
 
       return $landscape
