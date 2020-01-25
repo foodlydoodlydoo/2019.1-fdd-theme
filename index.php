@@ -7,15 +7,7 @@
 
 Fdd\Theme\Utils\Images::set_image_sizes_mode('home');
 
-get_header();
-
-$categories = [
-  'recipes',
-  'food-art',
-  'behind-the-scenes',
-];
-
-foreach ($categories as $category_slug) {
+function print_category($category_slug) {
   $category = get_category_by_slug($category_slug);
   query_posts("cat=$category->term_id");
 
@@ -27,5 +19,12 @@ foreach ($categories as $category_slug) {
     get_template_part('template-parts/listing/categories/vgde');
   }
 }
+
+get_header();
+
+print_category('recipes');
+echo do_shortcode('[fdd_aweber_form name="subscribe-inline-1" title="Hunger for news? Subscribe&nbsp;here!"]');
+print_category('food-art');
+print_category('behind-the-scenes');
 
 get_footer();
