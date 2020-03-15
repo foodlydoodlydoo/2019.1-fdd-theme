@@ -37,7 +37,7 @@ $header-menu-shift-margin: 7px; // Empiric
       padding: 30px 0 0 0;
     }
   }
-  
+
   /*
   .header__logo {
     @if ($fdd-sticky-menu == true) {
@@ -65,7 +65,7 @@ $header-menu-shift-margin: 7px; // Empiric
     padding: 0;
     li {
       display: inline-block;
-      padding:  0;
+      padding: 0;
       height: 37px; // empiric
       @if ($fdd-sticky-menu == false) {
         margin: $header-top-bottom-padding 0;
@@ -82,14 +82,14 @@ body.search {
   header h1 {
     @include fdd-home-category-name(giant);
     color: $fdd-title-color;
-    padding: .5em $fdd-outer-padding-wide-screen 0;
+    padding: 0.5em $fdd-outer-padding-wide-screen 0;
     text-align: center;
-    > span { // the search term...
+    > span {
+      // the search term...
       @include font-italic-serif();
     }
   }
 }
-
 
 /**********************************************************
   Wide screen
@@ -111,7 +111,8 @@ body.search {
       li.main-navigation__item--sandwitch {
         font-size: 27px;
       }
-      > li:hover, > li.main-navigation__item--active {
+      > li:hover,
+      > li.main-navigation__item--active {
         border-bottom: $header-menu-item-hover-border solid black;
         margin-bottom: -$header-menu-item-hover-border;
       }
@@ -124,7 +125,7 @@ body.search {
  **********************************************************/
 @media screen and (max-width: $fdd-menu-wide-screen-width - 0.1px) {
   .header {
-    padding: 0 $fdd-menu-wide-screen-width * .05; // =$fdd-outer-padding-wide-screen
+    padding: 0 $fdd-menu-wide-screen-width * 0.05; // =$fdd-outer-padding-wide-screen
     ul.main-navigation {
       li.main-navigation__item--sandwitch {
         font-size: 50px;
@@ -149,7 +150,6 @@ body.search {
     }
   }
 }
-
 
 @if ($header-bottom-line == true and $header-sticky-bottom-line == false) {
   .header__bottom-border {
@@ -176,7 +176,9 @@ body.home {
 }
 */
 
-body.single, body.page, body.error404 {
+body.single,
+body.page,
+body.error404 {
   .description {
     border-bottom: 1px solid $header-bottom-line-color-light;
   }
@@ -188,7 +190,12 @@ body.search {
   }
 }
 
-body.home, body.category, body.single, body.search, body.page, body.error404 {
+body.home,
+body.category,
+body.single,
+body.search,
+body.page,
+body.error404 {
   .description {
     @include text-size(largest);
     margin: 0;
