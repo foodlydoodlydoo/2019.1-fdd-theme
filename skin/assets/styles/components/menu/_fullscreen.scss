@@ -136,7 +136,7 @@
   #fullscreen-menu {
     &__close-button {
       right: $fdd-menu-wide-screen-width * 0.05; //=$fdd-outer-padding-wide-screen
-      top: 50px;
+      top: 66px;
       font-size: 56px; // &times;
     }
     img.fullscreen-menu__logo-img {
@@ -176,7 +176,7 @@
 
     &__close-button {
       right: $fdd-home-outer-padding-narrow-screen;
-      top: 20px;
+      top: 40px;
       font-size: 56px;
     }
 
