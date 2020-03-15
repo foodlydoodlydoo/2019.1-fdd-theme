@@ -50,7 +50,7 @@
       display: block;
       font-weight: 400;
       a {
-        padding: .25em 0;
+        padding: 0.25em 0;
         color: white;
       }
       &.fs-navigation__item--underline {
@@ -110,7 +110,7 @@
       clear: left;
       text-align: left;
       font-size: 45px;
-      padding: .125em 0 !important;
+      padding: 0.125em 0 !important;
     }
 
     li.fs-navigation__item--group-separator {
@@ -121,7 +121,7 @@
       div.menu-items-separator {
         height: 9em;
         width: 1px;
-      } 
+      }
     }
   }
 }
@@ -129,30 +129,38 @@
 /**********************************************************
   Medium screen
  **********************************************************/
-@media screen and (max-width: $fdd-menu-wide-screen-width - 1) {
+
+@media screen and (max-width: $fdd-menu-wide-screen-width - 1) and (min-width: $fdd-menu-narrow-screen-width) {
+  // Separated items that are changed for narrow.  Stupid composer doesn't order media conditions
+
   #fullscreen-menu {
     &__close-button {
-      right: $fdd-menu-wide-screen-width * .05; //=$fdd-outer-padding-wide-screen
+      right: $fdd-menu-wide-screen-width * 0.05; //=$fdd-outer-padding-wide-screen
       top: 50px;
       font-size: 56px; // &times;
     }
-
     img.fullscreen-menu__logo-img {
-      left: $fdd-menu-wide-screen-width * .05; //=$fdd-outer-padding-wide-screen
+      left: $fdd-menu-wide-screen-width * 0.05; //=$fdd-outer-padding-wide-screen
     }
-
     ul.fs-navigation {
-      font-size: 24px;
-      text-align: center;
-      width: 80vw;
       li {
         padding: 1em 0;
       }
     }
+  }
+}
+
+@media screen and (max-width: $fdd-menu-wide-screen-width - 1) {
+  #fullscreen-menu {
+    ul.fs-navigation {
+      font-size: 24px;
+      text-align: center;
+      width: 80vw;
+    }
 
     li.fs-navigation__item--menu-item-object-category {
       font-size: 40px;
-      padding: .5em 0 !important;
+      padding: 0.5em 0 !important;
     }
   }
 }
@@ -162,7 +170,7 @@
  **********************************************************/
 @media screen and (max-width: $fdd-menu-narrow-screen-width) {
   #fullscreen-menu {
-    input[type=submit] {
+    input[type="submit"] {
       display: none;
     }
 
