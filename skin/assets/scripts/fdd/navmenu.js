@@ -6,9 +6,9 @@ export class FDD_FullscreenMenu {
       onHidden(menu);
     };
 
-    $(`.header .main-navigation .main-navigation__item--${item} > a`).click(() => {
+    $(`.header .main-navigation .main-navigation__item--${item} > a`).click(event => {
       menu.addClass('open');
-      onRevealed(menu, close);
+      onRevealed(menu, close, $(event.target).parent());
     });
     $(`${target}__close-button`).click(close);
   }

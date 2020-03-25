@@ -24,9 +24,11 @@ $(function () {
 
   // Instantiate the fullscreen menu hooks
   new FDD_FullscreenMenu('sandwitch', '#fullscreen-menu',
-    (menu, close) => {
+    (menu, close, item) => {
+      const is_search_invoke =
+        item.hasClass("main-navigation__item--search");
       const search_field = menu.find(".search-field");
-      if (!isTouchCapable) {
+      if (!isTouchCapable || is_search_invoke) {
         search_field.focus();
       }
       search_field.keydown((e) => {
@@ -40,6 +42,5 @@ $(function () {
       const search_field = menu.find(".search-field");
       search_field.off('keydown');
       $('body').removeClass('noscroll');
-    }
-  );
+    });
 });
