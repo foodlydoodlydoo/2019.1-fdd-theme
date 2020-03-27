@@ -23,7 +23,7 @@ function print_category($category_slug) {
 get_header();
 
 print_category('recipes');
-echo do_shortcode('[fdd_aweber_form name="subscribe-inline-1" title="Hunger for news? Subscribe&nbsp;here!"]');
+echo do_shortcode('[fdd_aweber_form name="subscribe-inline-1" title="Hungry for news? Subscribe&nbsp;here!"]');
 print_category('food-art');
 print_category('behind-the-scenes');
 
