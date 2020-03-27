@@ -16,7 +16,8 @@ $(function () {
   if (is_recipe) {
     // Instantiate the recipe images carousel
     // 960 = $fdd-wide-width-pixels value from _common.scss
-    new FDD_Carousel('main section .single__content', '.fdd-recipe--media figure a', '(min-width: 960px)',
+    new FDD_Carousel('main section .single__content', '.fdd-recipe--media figure a',
+      '.fdd-recipe--media #arrow_left', '.fdd-recipe--media #arrow_right', '(min-width: 960px)',
       new FDD_PhotoSwipe());
   }
   if (is_art) {

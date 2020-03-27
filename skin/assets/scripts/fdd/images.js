@@ -72,13 +72,19 @@ export class FDD_PhotoSwipe {
 }
 
 export class FDD_Carousel {
-  constructor(selector_outer, selector_inner, media_query, forward = null) {
+  constructor(selector_outer, selector_inner, selector_left, selector_right, media_query, forward = null) {
     $(selector_outer).on("click", selector_inner, (e) => {
       const target = $(e.target);
       if (this.click(target) || (forward && forward.click(target))) {
         e.stopPropagation();
         e.preventDefault();
       }
+    });
+    $(selector_outer).on("click", selector_left, (e) => {
+      this.clickRelative(-1);
+    });
+    $(selector_outer).on("click", selector_right, (e) => {
+      this.clickRelative(+1);
     });
 
     this.media_query = media_query;
@@ -92,24 +98,36 @@ export class FDD_Carousel {
       return;
     }
 
+    $(`${selector_outer} ${selector_left}`).addClass('active');
+    $(`${selector_outer} ${selector_right}`).addClass('active');
+
     this.first_image_sizes = this.images[0].prop('sizes');
     this.thumb_image_sizes = this.images[1].prop('sizes');
 
     this.active_image_index = 0;
   }
 
-  click(image) {
+  clickRelative(shift) {
+    let index = this.active_image_index + shift;
+    if (index < 0) index = this.images.length - 1;
+    if (index >= this.images.length) index = 0;
+
+    this.click(this.images[index], true);
+  }
+
+  click(image, rotate = false) {
     const query = window.matchMedia(this.media_query);
     if (!query.matches) {
       return false;
     }
 
     let target = image.parent().parent(); // 'figure a img'
-    if (!target.prev().length) {
+    if (!rotate && !target.prev().length) {
+      // Prevents the carousels action on the first image and forwards to pswp, if assigned
       return false;
     }
 
-    this.active_image_index = image.data('index');
+    this.active_image_index = parseInt(image.data('index'));
     image.prop('sizes', this.first_image_sizes);
     $(target).hide().prependTo(target.parent()).fadeIn();
 
