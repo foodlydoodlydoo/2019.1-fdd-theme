@@ -1,6 +1,6 @@
 // Global
 
-$fullscreen-menu-items-min-from-top-vh: 0.15;
+$fullscreen-menu-items-min-from-top-vh: 0.12;
 $fullscreen-menu-items-min-from-top-screen-h: 760px;
 
 #fullscreen-menu.open {
@@ -182,7 +182,7 @@ $fullscreen-menu-items-min-from-top-screen-h: 760px;
     }
 
     ul.fs-navigation {
-      padding: 45px 0 0;
+      padding: 1em 0 0;
       li {
         padding: 1em 0;
       }
