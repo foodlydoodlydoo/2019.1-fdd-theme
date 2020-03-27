@@ -12,7 +12,7 @@
 </a-->
 <?php wp_footer();?>
 
-<?php if (is_single()) {
+<?php if (is_single() || is_page()) {
   get_template_part('template-parts/parts/pswp');
 }
 ?>

@@ -9,6 +9,7 @@ $(function () {
     window.navigator.msMaxTouchPoints > 0;
 
   const section = $('main section div.single__content');
+  const is_page = $('body').hasClass('page');
   const is_recipe = section.find('.fdd-recipe--page').length > 0;
   const is_art = section.find('.fdd-art--page').length > 0;
 
@@ -20,6 +21,9 @@ $(function () {
   }
   if (is_art) {
     new FDD_PhotoSwipe('main section .single__content', '.fdd-art--page figure a');
+  }
+  if (is_page) {
+    new FDD_PhotoSwipe('main section .single__content', 'figure a');
   }
 
   // Instantiate the fullscreen menu hooks
