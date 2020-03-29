@@ -4,11 +4,14 @@
   @include box-sizing(border-box);
 }
 
-html { // stylelint-disable-line selector-no-type
+html {
+  // stylelint-disable-line selector-no-type
   @include text-size(large);
+  scroll-behavior: smooth;
 }
 
-body { /* stylelint-disable-line selector-no-type */
+body {
+  /* stylelint-disable-line selector-no-type */
   @include font-smoothing;
   @include base-font-family-set();
   color: $base-text-color;
