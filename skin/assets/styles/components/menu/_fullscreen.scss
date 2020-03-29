@@ -85,7 +85,7 @@ $fullscreen-menu-items-min-from-top-screen-h: 760px;
 /**********************************************************
   Wide screen
  **********************************************************/
-@media screen and (min-width: $fdd-menu-wide-screen-width) {
+@media screen and (min-width: $fdd-fullscreen-menu-wide-screen-width) {
   #fullscreen-menu {
     &__close-button {
       font-size: 56px; // &times;
@@ -131,7 +131,7 @@ $fullscreen-menu-items-min-from-top-screen-h: 760px;
   Medium screen
  **********************************************************/
 
-@media screen and (max-width: $fdd-menu-wide-screen-width - 1) and (min-width: $fdd-menu-narrow-screen-width) {
+@media screen and (max-width: $fdd-fullscreen-menu-wide-screen-width - 1) and (min-width: $fdd-fullscreen-menu-narrow-screen-width) {
   // Separated items that are changed for narrow.  Stupid composer doesn't order media conditions
 
   #fullscreen-menu {
@@ -146,7 +146,7 @@ $fullscreen-menu-items-min-from-top-screen-h: 760px;
   }
 }
 
-@media screen and (max-width: $fdd-menu-wide-screen-width - 1) {
+@media screen and (max-width: $fdd-fullscreen-menu-wide-screen-width - 1) {
   #fullscreen-menu {
     ul.fs-navigation {
       font-size: 24px;
@@ -164,7 +164,7 @@ $fullscreen-menu-items-min-from-top-screen-h: 760px;
 /**********************************************************
   Narrow screen
  **********************************************************/
-@media screen and (max-width: $fdd-menu-narrow-screen-width) {
+@media screen and (max-width: $fdd-fullscreen-menu-narrow-screen-width) {
   #fullscreen-menu {
     .fullscreen-menu__header-wrapper {
       padding: 30px $fdd-home-outer-padding-narrow-screen 0;
