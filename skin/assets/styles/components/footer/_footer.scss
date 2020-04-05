@@ -6,7 +6,7 @@
 
   position: sticky;
   top: 100vh;
-  
+
   &__container {
     @include font-standard-sans();
     @include text-size(large);
@@ -22,7 +22,7 @@
       padding: 0;
       li {
         display: inline-block;
-        padding:  0;
+        padding: 0;
         margin: 0 0 0 2em;
         a {
           color: $fdd-on-gray-color;
@@ -45,6 +45,23 @@
           width: 100%;
         }
       }
+    }
+  }
+}
+
+// GDPR Cookie Compliance
+@media screen and (min-width: 786px) {
+  .footer {
+    &__container {
+      padding-bottom: 80px;
+    }
+  }
+}
+
+@media screen and (max-width: 786px) {
+  .footer {
+    &__container {
+      padding-bottom: 100px;
     }
   }
 }
