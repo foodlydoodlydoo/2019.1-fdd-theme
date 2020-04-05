@@ -37,7 +37,7 @@
   &__logo_container {
     padding: 0 $fdd-outer-padding-wide-screen;
     background: #2b2b2b; // empiric
-    line-height: 0;
+    line-height: 1;
   }
   &__logo {
     filter: invert(1);
