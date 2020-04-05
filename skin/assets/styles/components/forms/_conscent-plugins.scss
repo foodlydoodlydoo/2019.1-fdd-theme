@@ -1,0 +1,60 @@
+/******************************************************************************
+// GDPR Cookie Consent plugin
+// http://www.cookielawinfo.com/user-guide/
+
+#cookie-law-info-bar {
+  padding: 10px 10px !important;
+  width: 333px !important;
+}
+#cookie-law-info-bar,
+#cookie-law-info-again {
+  @include font-standard-sans-important();
+}
+*/
+
+/******************************************************************************
+// Beautiful Cookie Consent Banner
+
+.cc-revoke,
+.cc-window {
+  position: sticky !important;
+  z-index: 50 !important; // to let the fullscreen menu overlay
+}
+*/
+
+//*****************************************************************************
+// GDPR Cookie Compliance
+
+#moove_gdpr_cookie_info_bar {
+  padding: 10px;
+  min-height: auto !important;
+  border: none !important;
+  background: $fdd-gray-elements-color-moretrans !important;
+  box-shadow: black 0px 3px 20px;
+  .moove-gdpr-info-bar-container {
+    padding: 0 !important;
+  }
+  .mgbutton {
+    padding: 4px 20px !important;
+    margin: 0 !important;
+  }
+  p {
+    font-weight: 300 !important;
+  }
+}
+
+@media screen and (min-width: 786px) {
+  .footer {
+    &__container {
+      padding-bottom: 80px;
+    }
+  }
+}
+
+@media screen and (max-width: 786px) {
+  .footer {
+    &__container {
+      padding-bottom: 100px;
+    }
+  }
+}
