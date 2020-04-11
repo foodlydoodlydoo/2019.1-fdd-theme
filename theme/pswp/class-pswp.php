@@ -18,8 +18,10 @@ class PSWP {
       $height = $image[2];
 
       if (!is_array($image_meta) || !array_key_exists('sizes', $image_meta)) {
-        print("Missing image at $url");
-        return $matches;
+        if (!is_admin()) {
+          print("Missing image at $url");
+        }
+        return join($matches);
       }
 
       $thumb = $image_meta['sizes']['fdd-400'];
