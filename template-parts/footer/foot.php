@@ -15,6 +15,7 @@
 <?php if (is_single() || is_page()) {
   get_template_part('template-parts/parts/pswp');
 }
+get_template_part('template-parts/parts/footer-scripties');
 ?>
 
 </body>
