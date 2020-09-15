@@ -63,6 +63,12 @@ export class FDD_PhotoSwipe {
       const pswp = document.querySelectorAll('.pswp')[0];
       this.gallery = new PhotoSwipe(pswp, PhotoSwipeUI_Default, this.images, options);
       this.gallery.init();
+      this.gallery.listen('mouseUsed', _ => {
+        $(".pswp__scroll-wrap").on("contextmenu", function (event) {
+          event.preventDefault();
+          return false;
+        });
+      });
     } catch (e) {
       console.error(e);
     }
