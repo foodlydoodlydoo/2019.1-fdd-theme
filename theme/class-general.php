@@ -71,6 +71,18 @@ class General {
     add_filter('jpeg_quality', create_function('', 'return 85;'));
 
     add_filter('walker_nav_menu_start_el', 'FDD\Theme\menu_special_tags', 10, 4);
+  
+    // WooCommerce
+    add_filter('woocommerce_short_description', '__return_null', 100);
+    
+    remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10);
+    add_action( 'woocommerce_after_single_product_summary', function() {
+      echo '<div class="fdd-woocommerce_after_single_product_summary"></div>';
+    }, 100);
+    
+    add_filter('woocommerce_related_products', function() {
+      return array();
+    }, 100);
   }
 
 }
