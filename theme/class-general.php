@@ -83,6 +83,12 @@ class General {
     add_filter('woocommerce_related_products', function() {
       return array();
     }, 100);
+
+    add_filter('woocommerce_account_downloads_columns', function($columns) {
+      unset($columns['download-remaining']);
+      unset($columns['download-expires']);
+      return $columns;
+    }, 100);
   }
 
 }
