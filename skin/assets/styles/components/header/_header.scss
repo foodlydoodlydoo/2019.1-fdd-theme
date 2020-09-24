@@ -83,6 +83,11 @@ $header-menu-shift-margin: 7px; // Empiric
       left: 13%; // to align at center 13 ~ (100-75)/2
       width: 75%;
     }
+    li.main-navigation__item--shop-menu-item > a {
+      background: $fdd-red-color;
+      padding: 0 4px;
+      color: white;
+    }
   }
 }
 
@@ -132,6 +137,9 @@ body.search {
       > li.main-navigation__item--active {
         border-bottom: $header-menu-item-hover-border solid black;
         margin-bottom: -$header-menu-item-hover-border;
+        &.main-navigation__item--shop-menu-item {
+          border-color: $fdd-red-color;
+        }
       }
     }
   }
