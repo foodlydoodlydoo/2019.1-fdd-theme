@@ -35,8 +35,8 @@ class Widgets {
           'name'          => esc_html__( 'Shop ad in Recipes, Food Art pages', 'fdd' ),
           'id'            => 'shop-pages-call-to-action',
           'description'   => esc_html__( 'This is what we show in individual recipes/art pages', 'fdd' ),
-          'before_widget' => '<div class="single-call-to-action--wrap"><div class="single-call-to-action shop">',
-          'after_widget'  => '</div></div>',
+          'before_widget' => '',
+          'after_widget'  => '',
           'before_title'  => '',
           'after_title'   => '',
       )
