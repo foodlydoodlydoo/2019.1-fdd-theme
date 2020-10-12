@@ -6,6 +6,7 @@ template-parts
 theme
 vendor/autoload.php
 vendor/composer
+woocommerce
 style.css
 404.php
 category.php
