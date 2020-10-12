@@ -1,3 +1,5 @@
+$shop-footer-item-padding: 5px;
+
 .footer {
   clear: both;
   width: 100%;
@@ -31,6 +33,15 @@
           }
         }
       }
+      li.footer-navigation__item--shop a {
+        background: $fdd-red-color;
+        padding: $shop-footer-item-padding;
+        margin-top: -$shop-footer-item-padding;
+        color: white;
+        &:hover {
+          border: none;
+        }
+      }
     }
   }
 
@@ -52,8 +63,11 @@
       ul.footer-navigation {
         display: block;
         li {
-          margin: 1.5em 0 0;
+          margin: 1.5em 0 0 !important;
           width: 100%;
+        }
+        li.footer-navigation__item--shop a {
+          margin-left: -$shop-footer-item-padding !important;
         }
       }
     }
