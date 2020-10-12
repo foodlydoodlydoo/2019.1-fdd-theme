@@ -85,7 +85,7 @@ $header-menu-shift-margin: 7px; // Empiric
       display: none; // by default hidden
       a {
         content: url(../images/shopping-cart.svg);
-        top: 1px;
+        top: 0px;
       }
     }
     li.main-navigation__item--search > a,
