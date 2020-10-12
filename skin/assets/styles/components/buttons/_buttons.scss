@@ -29,3 +29,48 @@
     display: flex;
   }
 }
+
+span.button.spacer {
+  display: inline-block;
+  margin: 0 12px;
+}
+div.button.red {
+  background: $fdd-red-color;
+  display: inline-block;
+}
+a.button.red {
+  padding: 12px 40px;
+  width: 100%;
+  margin: 0;
+  color: white;
+  font-family: sans-serif;
+  font-size: 16px;
+  display: inline-block;
+}
+
+@media screen and (max-width: $fdd-wide-width-pixels - 0.1px) {
+  body.home {
+    span.button.spacer {
+      display: block;
+      margin: 24px 0;
+    }
+    div.button.red {
+      display: block;
+      width: 100%;
+      max-width: 480px;
+      margin: auto;
+    }
+  }
+}
+
+/*
+@media screen and (max-width: $fdd-narrow-width-pixels - 0.1px) {
+  div.single-call-to-action {
+    div.button.red {
+      display: block;
+      width: 100%;
+      margin: auto;
+    }
+  }
+}
+*/
