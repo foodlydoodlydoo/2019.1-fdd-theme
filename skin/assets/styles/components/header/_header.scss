@@ -76,12 +76,22 @@ $header-menu-shift-margin: 7px; // Empiric
       text-transform: lowercase;
     }
     li.main-navigation__item--search > a {
-      position: relative;
       content: url(../images/search.svg);
-      opacity: 0.75;
+      width: 75%;
       top: -3px;
       left: 13%; // to align at center 13 ~ (100-75)/2
-      width: 75%;
+    }
+    li.main-navigation__item--shop-cart {
+      display: none; // by default hidden
+      a {
+        content: url(../images/shopping-cart.svg);
+        top: 1px;
+      }
+    }
+    li.main-navigation__item--search > a,
+    li.main-navigation__item--shop-cart > a {
+      position: relative;
+      opacity: 0.75;
     }
     li.main-navigation__item--shop-menu-item > a {
       background: $fdd-red-color;
@@ -126,7 +136,7 @@ body.search {
 
     ul.main-navigation {
       // width: 36%; empiric to align with recipe text width
-      width: 600px;
+      width: 630px;
       font-size: 21px;
       li.main-navigation__item--sandwitch {
         position: relative;
@@ -157,17 +167,28 @@ body.search {
 @media screen and (max-width: $fdd-menu-wide-screen-width - 0.1px) {
   .header {
     ul.main-navigation {
-      width: 6em;
+      li {
+        margin-left: 1em;
+      }
       li.main-navigation__item--sandwitch {
         font-size: 50px;
       }
       li.main-navigation__item--wide-screen-only {
         display: none !important;
       }
+      li.main-navigation__item--search > a,
+      li.main-navigation__item--shop-cart > a {
+        width: auto;
+      }
+      // all below is empyric
       li.main-navigation__item--search > a {
         top: -3px;
         height: 80%;
-        width: auto;
+      }
+      li.main-navigation__item--shop-cart > a {
+        top: 6px;
+        left: 20px;
+        height: 112%;
       }
     }
   }
@@ -197,8 +218,11 @@ body.search {
     ul.main-navigation {
       position: relative;
       top: -4px;
-      //width: 1em; // ?
-      li.main-navigation__item--search > a {
+      li {
+        margin-left: 0;
+      }
+      li.main-navigation__item--search > a,
+      li.main-navigation__item--shop-cart > a {
         display: none;
       }
     }
