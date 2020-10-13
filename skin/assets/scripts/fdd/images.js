@@ -103,11 +103,14 @@ export class FDD_Carousel {
       return;
     }
 
-    $(`${selector_outer} ${selector_left}`).addClass('active');
-    $(`${selector_outer} ${selector_right}`).addClass('active');
+    this.left = $(`${selector_outer} ${selector_left}`).addClass('active');
+    this.right = $(`${selector_outer} ${selector_right}`).addClass('active');
 
     this.first_image_sizes = this.images[0].prop('sizes');
     this.thumb_image_sizes = this.images[1].prop('sizes');
+
+    const figure = this.images[0].parent().parent();
+    this.respositionNav(figure);
 
     this.active_image_index = 0;
   }
@@ -143,8 +146,14 @@ export class FDD_Carousel {
 
       image.prop('sizes', this.thumb_image_sizes);
       $(image.parent().parent()).insertAfter(target);
+      this.respositionNav(target);
     }
 
     return true;
+  }
+
+  respositionNav(figure) {
+    figure.append(this.left);
+    figure.append(this.right);
   }
 }
