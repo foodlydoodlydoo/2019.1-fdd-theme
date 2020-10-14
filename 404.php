@@ -26,7 +26,10 @@ function highlight_search_term($input) { return $input; }
     }
     if ($found) {
       ?>
-      <h2>Page not found, but...</h2>
+      <div class="heading-wrap">
+        <h1>404:</h1>
+        <h2>Page not found, but...</h2>
+      </div>
       <div class="something-found">
       ...maybe this is what you are looking for?
       </div>
@@ -51,7 +54,10 @@ function highlight_search_term($input) { return $input; }
       }
     } else {
       ?>
-      <h2>Page not found :(</h2>
+      <div class="heading-wrap">
+        <h1>404:</h1>
+        <h2>Page not found :(</h2>
+      </div>
       <div class="nothing-found">
       <div class="not-found__imagewrap"><img src="<?php echo $nothing_found_img;?>" alt="Nothing found"/></div>
       Sorry, we can't find this page or anything resemblimg it on <span class="site"><?php echo get_bloginfo('name'); ?></span>.

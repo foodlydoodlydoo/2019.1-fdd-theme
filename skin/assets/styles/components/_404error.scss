@@ -6,8 +6,21 @@ body.error404 {
   div.error404__wrap {
     @include base-font-family-set();
     @include text-size(bigger);
-    > h2 {
-      text-align: center;
+    .heading-wrap {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: first baseline;
+      margin: auto;
+      > h2,
+      > h1 {
+        line-height: 1;
+        margin: 0 0.125em;
+        padding: 0;
+      }
+      > h1 {
+        font-size: 60px;
+      }
     }
     span {
       font-weight: bold;
@@ -37,7 +50,7 @@ body.error404 {
         border: solid 1px $base-fdd-text-color;
         background: $transparent-color;
         width: 100%;
-        padding: .5em;
+        padding: 0.5em;
       }
       .search-submit {
         margin: 0;
