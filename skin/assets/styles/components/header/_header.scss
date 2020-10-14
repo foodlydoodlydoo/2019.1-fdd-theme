@@ -136,7 +136,8 @@ body.search {
 
     ul.main-navigation {
       // width: 36%; empiric to align with recipe text width
-      width: 630px;
+      width: 630px; // @shop-enable
+      width: 600px;
       font-size: 21px;
       li.main-navigation__item--sandwitch {
         position: relative;
