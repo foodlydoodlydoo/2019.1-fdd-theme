@@ -242,7 +242,7 @@ class Images {
 
     case 'recipes':
       if (Images::$recipe_image_order++ == 0) {
-        $max_height = 77; // == $recipe-first-image-max-height @ recipe block style
+        $max_height = 60; // == $recipe-first-image-max-height @ recipe block style
       } else {
         $max_height = 10; // == $recipe-second-and-on-image-max-height @ recipe block style
       }
