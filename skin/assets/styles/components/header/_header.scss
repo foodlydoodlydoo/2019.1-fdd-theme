@@ -169,7 +169,8 @@ body.search {
   .header {
     ul.main-navigation {
       li {
-        margin-left: 1em;
+        margin-left: 1em; // @shop-enable
+        margin-left: 37px;
       }
       li.main-navigation__item--sandwitch {
         font-size: 50px;
