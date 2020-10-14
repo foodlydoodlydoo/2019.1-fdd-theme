@@ -19,7 +19,7 @@ class PSWP {
 
       if (!is_array($image_meta) || !array_key_exists('sizes', $image_meta)) {
         if (!is_admin()) {
-          print("Missing image at $url");
+          print("<script>console.error('Missing media for `$url`');</script><span style='position: absolute; color: lightgray'>!!!</span>");
         }
         return join($matches);
       }
