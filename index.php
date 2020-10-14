@@ -23,9 +23,13 @@ function print_category($category_slug) {
 get_header();
 
 print_category('recipes');
-dynamic_sidebar("shop-home-call-to-action");
-print_category('food-art');
+// When the shop is turned on:
+// dynamic_sidebar("shop-home-call-to-action");
+// When the shop is turned off:
 echo do_shortcode('[fdd_aweber_form name="subscribe-inline-1" title="Hungry for news? Subscribe&nbsp;here!"]');
+print_category('food-art');
+// When the shop is turned on:
+//echo do_shortcode('[fdd_aweber_form name="subscribe-inline-1" title="Hungry for news? Subscribe&nbsp;here!"]');
 print_category('behind-the-scenes');
 
 get_footer();

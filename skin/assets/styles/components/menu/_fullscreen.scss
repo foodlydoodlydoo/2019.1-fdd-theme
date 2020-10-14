@@ -118,11 +118,13 @@ $fullscreen-menu-items-min-from-top-screen-h: 760px;
 
     li.fs-navigation__item--group-separator {
       position: relative;
-      top: -9.7em;
+      top: -9.7em; // for the full setup menu with shopping items
+      top: -6em;
       margin-left: 5%;
       float: left;
       div.menu-items-separator {
-        height: 15em;
+        height: 15em; // for the full setup menu with shopping items
+        height: 9em;
         width: 1px;
       }
     }
