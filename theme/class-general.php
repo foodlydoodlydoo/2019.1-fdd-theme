@@ -71,7 +71,9 @@ class General {
     add_filter('jpeg_quality', create_function('', 'return 85;'));
 
     add_filter('walker_nav_menu_start_el', 'FDD\Theme\menu_special_tags', 10, 4);
-  
+
+    update_option('image_default_link_type', 'media');
+
     // WooCommerce
     add_filter('woocommerce_short_description', '__return_null', 100);
     
