@@ -82,7 +82,7 @@ $header-menu-shift-margin: 7px; // Empiric
       left: 13%; // to align at center 13 ~ (100-75)/2
     }
     li.main-navigation__item--shop-cart {
-      display: none; // by default hidden
+      //display: none; // by default hidden; issue: no JS API for cart, only PHP, collides with the cache.
       a {
         content: url(../images/shopping-cart.svg);
         top: 0px;
@@ -147,8 +147,7 @@ body.search {
       > li.main-navigation__item--active {
         border-bottom: $header-menu-item-hover-border solid black;
         margin-bottom: -$header-menu-item-hover-border;
-        &.main-navigation__item--shop-menu-item,
-        &.main-navigation__item--shop-cart {
+        &.main-navigation__item--shop-menu-item {
           border-color: $fdd-red-color;
         }
       }
