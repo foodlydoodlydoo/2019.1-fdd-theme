@@ -91,6 +91,12 @@ class General {
       unset($columns['download-expires']);
       return $columns;
     }, 100);
+
+    add_filter('woocommerce_single_product_carousel_options', function($args) {
+      // https://github.com/woocommerce/FlexSlider/
+      // $args['itemWidth'] = 600; // causes the next image to interfere; this slider is pretty shitty.
+      return $args;
+    }, 100);
   }
 
 }
