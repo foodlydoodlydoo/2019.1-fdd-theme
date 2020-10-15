@@ -20,7 +20,7 @@ class Pagination {
    *
    * @since 1.0.0
    */
-  public function pagination_link_next_class() {
+  public static function pagination_link_next_class() {
     return 'class="page-numbers next"';
   }
 
@@ -31,7 +31,7 @@ class Pagination {
    *
    * @since 1.0.0
    */
-  public function pagination_link_prev_class() {
+  public static function pagination_link_prev_class() {
     return 'class="page-numbers prev"';
   }
 

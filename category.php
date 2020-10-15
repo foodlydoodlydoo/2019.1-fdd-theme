@@ -15,6 +15,7 @@ if (have_posts()) {
   $category = get_queried_object();
   set_query_var("category", $category);
   set_query_var("wrapper_class", "ArticleWrappingCategory");
+  set_query_var("article_limit", 0);
 
   get_template_part('template-parts/listing/categories/vgde');
 

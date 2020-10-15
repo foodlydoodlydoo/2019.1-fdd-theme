@@ -68,7 +68,7 @@ class General {
 
     add_filter('the_content', 'Fdd\Theme\PSWP::add_image_sizes_to_content');
 
-    add_filter('jpeg_quality', create_function('', 'return 85;'));
+    add_filter('jpeg_quality', function() { return 85; });
 
     add_filter('walker_nav_menu_start_el', 'FDD\Theme\menu_special_tags', 10, 4);
 
