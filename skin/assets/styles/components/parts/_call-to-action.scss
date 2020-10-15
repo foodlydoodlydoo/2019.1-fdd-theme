@@ -86,6 +86,8 @@ div.fdd-recipe--page {
   div.fdd-recipe--cta-shop-top {
     width: 100%;
     margin: 0 0 32px;
+    // needs care...
+    padding: 0 $fdd-inner-padding-wide-screen;
     div.single-call-to-action--wrap {
       margin-top: 0;
     }
@@ -102,6 +104,7 @@ div.fdd-recipe--page {
 }
 
 div.fdd-recipe--cta-shop-top {
+  // layout currenly broken.
   display: none;
 }
 
