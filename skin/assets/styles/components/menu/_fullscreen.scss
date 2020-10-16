@@ -53,6 +53,7 @@ $fullscreen-menu-items-min-from-top-screen-h: 760px;
     padding: 100vh * $fullscreen-menu-items-min-from-top-vh 0 0;
     li {
       text-transform: lowercase;
+      padding: 0.6em 0; // @shop-enable
       padding: 0.75em 0;
       display: block;
       font-weight: 400;
@@ -74,6 +75,15 @@ $fullscreen-menu-items-min-from-top-screen-h: 760px;
     a {
       padding: 0 !important;
     }
+  }
+
+  li.fs-navigation__item--inline {
+    display: inline-block !important;
+  }
+  li.fs-navigation__item--inline + li.fs-navigation__item--inline::before {
+    content: "● ";
+    color: white;
+    padding: 0.5em;
   }
 
   .menu-items-separator {
@@ -118,7 +128,7 @@ $fullscreen-menu-items-min-from-top-screen-h: 760px;
 
     li.fs-navigation__item--group-separator {
       position: relative;
-      top: -9.7em; // @shop-enable
+      top: -9.3em; // @shop-enable
       top: -6em;
       margin-left: 5%;
       float: left;
