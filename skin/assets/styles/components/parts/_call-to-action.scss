@@ -17,8 +17,6 @@ div.single-call-to-action--wrap {
     margin-top: 40px;
     text-align: center;
     div.single-call-to-action {
-      //max-width: 90%;
-      //width: 100%;
       margin: auto;
       padding-top: 20px;
       padding: 1em 0 2.5em;
@@ -31,16 +29,7 @@ div.single-call-to-action--wrap {
   }
   &.cta2 {
     div.single-call-to-action {
-      // VER 1
-      //border-top: solid 1px #d9d9d9;
       padding: 10px 0;
-      // VER 2
-      //padding: 20px;
-      //background: $fdd-gray-elements-color;
-      //color: white;
-      // VER 3
-      //border: solid 1px;
-      //padding: 20px;
       max-width: 80%;
       margin: auto;
       display: flex;
@@ -60,7 +49,6 @@ div.single-call-to-action--wrap {
       padding: 15px;
       margin-right: 16px;
       font-size: 16px;
-      //border-radius: 50%;
     }
     .download {
       border-bottom: 2px solid white;
@@ -97,9 +85,6 @@ div.fdd-recipe--page {
     width: 100%;
     div.single-call-to-action--wrap.cta2 {
       padding-top: 1em;
-    }
-    div.single-call-to-action {
-      //padding-bottom: 0;
     }
   }
 }
@@ -156,10 +141,6 @@ div.fdd-art--description {
     max-width: 100% !important;
   }
   div.fdd-recipe--cta-shop-bottom {
-    div.single-call-to-action {
-      // VER 1
-      //border-top: none !important;
-    }
     div.single-call-to-action--wrap {
       padding-top: 3em !important;
     }
