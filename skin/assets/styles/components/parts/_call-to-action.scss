@@ -59,6 +59,7 @@ div.single-call-to-action--wrap {
       height: 50px;
       padding: 15px;
       margin-right: 16px;
+      font-size: 16px;
       //border-radius: 50%;
     }
     .download {
@@ -106,6 +107,33 @@ div.fdd-recipe--page {
 div.fdd-recipe--cta-shop-top {
   // layout currenly broken.
   display: none;
+}
+
+div.fdd-call-to-action-inline--wrap {
+  padding: 1.5em 0;
+  font-size: 16px;
+  text-align: left;
+  div.single-call-to-action--wrap {
+    &.cta2 {
+      div.single-call-to-action {
+        max-width: 100%;
+      }
+    }
+  }
+}
+div.fdd-art--page {
+  figure + div.fdd-call-to-action-inline--wrap {
+    padding: 1em 0 2em;
+  }
+}
+div.fdd-art--description {
+  p + div.fdd-call-to-action-inline--wrap {
+    border-top: solid 1px $fdd-gray-elements-color;
+  }
+  div.fdd-call-to-action-inline--wrap + p {
+    border-top: solid 1px $fdd-gray-elements-color;
+    padding-top: 35px;
+  }
 }
 
 @media screen and (min-width: $fdd-wide-width-pixels) {
