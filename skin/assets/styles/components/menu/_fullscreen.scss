@@ -81,9 +81,9 @@ $fullscreen-menu-items-min-from-top-screen-h: 760px;
     display: inline-block !important;
   }
   li.fs-navigation__item--inline + li.fs-navigation__item--inline::before {
-    content: "● ";
+    content: "●";
     color: white;
-    padding: 0.5em;
+    padding: 0.62em;
   }
 
   .menu-items-separator {
