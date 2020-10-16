@@ -74,6 +74,10 @@ class General {
 
     update_option('image_default_link_type', 'media');
 
+    add_filter('widget_title', function($title, $instance, $id_base) {
+      return null;
+    }, 100, 3);
+
     // WooCommerce
     add_filter('woocommerce_short_description', '__return_null', 100);
     
