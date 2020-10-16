@@ -101,6 +101,13 @@ class General {
       // $args['itemWidth'] = 600; // causes the next image to interfere; this slider is pretty shitty.
       return $args;
     }, 100);
+
+    remove_action("woocommerce_single_product_summary", "woocommerce_template_single_excerpt");
+    add_action("woocommerce_single_product_summary", function() {
+      echo '<div class="single_product__excerpt">';
+      the_excerpt();
+      echo '</div>';
+    }, 35);
   }
 
 }

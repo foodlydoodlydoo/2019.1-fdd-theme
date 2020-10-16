@@ -35,7 +35,13 @@ $category_slug_classes = join(' ', array_map(function ($cat) {
     </h1>
     <div class="single__title_excerpt_div"></div>
     <div class="single__excerpt">
-      <?php the_excerpt();?>
+      <?php
+        // Poduct exceprt (== short description) is printed
+        // via "woocommerce_single_product_summary" action registration
+        if (get_post()->post_type != "product") {
+          the_excerpt();
+        }
+      ?>
     </div>
   </header>
   <div class="single__content content-style content-media-style">
