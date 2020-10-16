@@ -26,7 +26,8 @@
 // GDPR Cookie Compliance
 
 #moove_gdpr_cookie_info_bar {
-  padding: 10px;
+  //padding: 10px; // for the tinner banner
+  padding: 40px 5vw;
   min-height: auto !important;
   border: none !important;
   background: $fdd-gray-elements-color-moretrans !important;
@@ -38,8 +39,16 @@
     padding: 4px 20px !important;
     margin: 0 !important;
   }
-  p {
+  p,
+  p > a {
     font-weight: 300 !important;
+  }
+  // this block makes the cookie bar much bigger.
+  p,
+  p > a,
+  button {
+    font-size: 20px !important;
+    line-height: 1.5em !important;
   }
 }
 
