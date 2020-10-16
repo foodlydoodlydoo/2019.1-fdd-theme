@@ -105,7 +105,9 @@ class General {
     remove_action("woocommerce_single_product_summary", "woocommerce_template_single_excerpt");
     add_action("woocommerce_single_product_summary", function() {
       echo '<div class="single_product__excerpt">';
+      add_filter("get_the_excerpt", "Fdd\Theme\Utils\Excerpt::single_product_excerpt_tweaks", 100, 1);
       the_excerpt();
+      remove_filter("get_the_excerpt", "Fdd\Theme\Utils\Excerpt::single_product_excerpt_tweaks");
       echo '</div>';
     }, 35);
   }

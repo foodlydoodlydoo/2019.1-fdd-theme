@@ -57,4 +57,10 @@ class Excerpt {
     return $output;
   }
 
+  public static function single_product_excerpt_tweaks($excerpt) {
+    $excerpt = preg_replace(
+      "/^(.*)\: (.*)$/m", "$1: <span class=\"bold\">$2</span>", $excerpt
+    );
+    return $excerpt;
+  }
 }
