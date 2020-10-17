@@ -11,4 +11,9 @@
       }
     }
   }
+  table.form-table {
+    td > textarea {
+      width: 100%;
+    }
+  }
 }
