@@ -1,3 +1,5 @@
+// Homepage CtA
+
 body.home {
   div.home-call-to-action--wrap {
     @include home-call-to-action();
@@ -9,124 +11,6 @@ body.home {
     display: inline;
   }
 }
-
-div.single-call-to-action--wrap {
-  width: 100%;
-  color: black;
-  font-size: 16px;
-  text-align: left;
-  &.cta1 {
-    margin-top: 40px;
-    text-align: center;
-    div.single-call-to-action {
-      margin: auto;
-      padding-top: 20px;
-      padding: 1em 0 2.5em;
-      border-top: solid 1px #ddd;
-      display: inline-block;
-      p:last-of-type {
-        padding-bottom: 20px;
-      }
-    }
-  }
-  &.cta2 {
-    div.single-call-to-action {
-      padding: 10px 0;
-      max-width: 80%;
-      margin: auto;
-      display: flex;
-      flex-wrap: nowrap;
-      align-items: center;
-      justify-content: center;
-    }
-    a.button {
-      color: $fdd-red-color;
-      text-decoration: underline;
-    }
-    .download--wrap {
-      flex-shrink: 0;
-      background: $fdd-red-color;
-      width: 50px;
-      height: 50px;
-      padding: 15px;
-      margin-right: 16px;
-      font-size: 16px;
-    }
-    .download {
-      border-bottom: 2px solid white;
-    }
-  }
-  &.cta3 {
-    text-align: center;
-    div.single-call-to-action {
-      margin: auto;
-    }
-    a.button {
-      color: $fdd-red-color;
-      text-decoration: underline;
-    }
-  }
-}
-
-span.cta-text-icon {
-  font-size: 40px;
-  float: left;
-}
-
-div.fdd-recipe--page {
-  div.fdd-recipe--cta-shop-top {
-    width: 100%;
-    margin: 0 0 32px;
-    // needs care...
-    padding: 0 $fdd-inner-padding-wide-screen;
-    div.single-call-to-action--wrap {
-      margin-top: 0;
-    }
-  }
-  div.fdd-recipe--cta-shop-bottom {
-    width: 100%;
-    div.single-call-to-action--wrap.cta2 {
-      padding-top: 1em;
-    }
-  }
-}
-
-div.fdd-recipe--cta-shop-top {
-  // layout currenly broken.
-  display: none;
-}
-
-div.fdd-art--page {
-  .single-call-to-action--wrap {
-    padding: 2em 0;
-  }
-  figure + .textwidget > .single-call-to-action--wrap {
-    padding: 0 0 2em;
-  }
-  .single-call-to-action--wrap {
-    &.cta2 {
-      div.single-call-to-action {
-        max-width: 100%;
-      }
-    }
-  }
-}
-div.fdd-art--description {
-  p + .textwidget > .single-call-to-action--wrap {
-    border-top: solid 1px $fdd-gray-elements-color;
-  }
-  .textwidget + p {
-    border-top: solid 1px $fdd-gray-elements-color;
-    padding-top: 35px;
-  }
-}
-
-@media screen and (min-width: $fdd-wide-width-pixels) {
-  div.fdd-recipe--cta-shop-top {
-    display: none;
-  }
-}
-
 @media screen and (max-width: $fdd-wide-width-pixels - 0.1px) {
   body.home {
     div.home-call-to-action {
@@ -135,14 +19,103 @@ div.fdd-art--description {
   }
 }
 
+// Post CtA
+
+div.single-call-to-action--wrap {
+  width: 100%;
+  color: black;
+  font-size: 16px;
+  text-align: left;
+  &.var-1 {
+    div.single-call-to-action.shop {
+      padding: 10px 0;
+      margin: auto;
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: center;
+      a.button {
+        color: $fdd-red-color;
+        text-decoration: underline;
+      }
+      .download--wrap {
+        flex-shrink: 0;
+        background: $fdd-red-color;
+        width: 50px;
+        height: 50px;
+        padding: 15px;
+        margin-right: 16px;
+        font-size: 16px;
+      }
+      .download {
+        border-bottom: 2px solid white;
+      }
+    }
+  }
+}
 @media screen and (max-width: $fdd-wide-width-pixels - 0.1px) {
   div.single-call-to-action {
     width: 100% !important;
     max-width: 100% !important;
   }
+}
+
+// Recipe specific CtA
+
+div.fdd-recipe--page {
+  /*
+  div.fdd-recipe--cta-shop-top {
+    display: none;
+    width: 100%;
+    margin: 0 0 32px;
+    // needs care...
+    padding: 0 $fdd-inner-padding-wide-screen;
+    div.single-call-to-action--wrap {
+      margin-top: 0;
+    }
+  }
+  */
+  div.fdd-recipe--cta-shop-bottom {
+    width: 100%;
+    div.single-call-to-action--wrap.var-1 {
+      padding-top: 1em;
+    }
+  }
+}
+/*
+@media screen and (min-width: $fdd-wide-width-pixels) {
+  div.fdd-recipe--cta-shop-top {
+    display: none;
+  }
+}
+*/
+@media screen and (max-width: $fdd-wide-width-pixels - 0.1px) {
   div.fdd-recipe--cta-shop-bottom {
     div.single-call-to-action--wrap {
       padding-top: 3em !important;
     }
+  }
+}
+
+// Food Art specific CtA
+
+div.fdd-art--page {
+  .single-call-to-action--wrap {
+    padding: 2em 0;
+  }
+  .single-call-to-action--wrap + .fdd-art--description {
+    margin-top: 1em;
+  }
+  figure + .single-call-to-action--wrap {
+    padding: 0 0 2em;
+  }
+}
+div.fdd-art--description {
+  p + .single-call-to-action--wrap {
+    border-top: solid 1px $fdd-gray-elements-color;
+  }
+  .single-call-to-action--wrap + p {
+    border-top: solid 1px $fdd-gray-elements-color;
+    padding-top: 35px;
   }
 }
