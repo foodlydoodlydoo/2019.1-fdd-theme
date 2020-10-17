@@ -59,6 +59,20 @@ div.pswp {
 span.bold {
   font-weight: bold;
 }
+span.underline {
+  text-decoration: underline;
+}
+span.italic {
+  @include font-italic-serif();
+}
+span.red {
+  color: $fdd-red-color;
+}
+.home-call-to-action--wrap {
+  span.red {
+    color: $fdd-red-color-on-gray;
+  }
+}
 
 li.main-navigation__item--hidden,
 li.footer-navigation__item--hidden,
