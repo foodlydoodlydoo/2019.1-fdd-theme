@@ -272,7 +272,7 @@ class Images {
 
       $ratio = max($ratio, 1);
       return $_get(640, 80) . $_get(880, 30 * $ratio) . $_get(1080, 20 * $ratio) .
-             $_get(1440, 15 * $ratio) . floor(1440 / (100 / 15 * $ratio)) . 'px';
+             $_get(1440, 15 * $ratio) . floor((1440 / (100 / 15)) * $ratio) . 'px';
 
     } // switch $mode
 
