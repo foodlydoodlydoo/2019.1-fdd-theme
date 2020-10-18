@@ -49,6 +49,23 @@
 }
 
 /**********************************************************
+  To wide screen 
+**********************************************************/
+
+@media screen and (min-width: $fdd-single-wide-max-width) {
+  .page {
+    .single__content {
+      // section.single is not wider than $fdd-single-wide-max-width
+      // but .single__content (it's child) calcs its padding from viewport.
+      // we need start calculating it from the parent, but just for this
+      // particular element; $fdd-outer-padding-wide-screen has too wide
+      // influnece on everything.
+      padding: 0 $fdd-outer-padding-wide-screen-parent-based;
+    }
+  }
+}
+
+/**********************************************************
   Narrow screen
 **********************************************************/
 
