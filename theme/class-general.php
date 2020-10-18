@@ -81,10 +81,12 @@ class General {
     // WooCommerce
     add_filter('woocommerce_short_description', '__return_null', 100);
     
-    remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10);
+    remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10);
     add_action( 'woocommerce_after_single_product_summary', function() {
       echo '<div class="fdd-woocommerce_after_single_product_summary"></div>';
     }, 100);
+
+    remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart');
     
     add_filter('woocommerce_related_products', function() {
       return array();
@@ -110,6 +112,16 @@ class General {
       remove_filter("get_the_excerpt", "Fdd\Theme\Utils\Excerpt::single_product_excerpt_tweaks");
       echo '</div>';
     }, 35);
+
+    add_filter('single_product_archive_thumbnail_size', function($size) {
+      return 'fdd-640';
+    });
+
+    add_filter('woocommerce_product_get_image', function($image, $prod, $size, $attr, $placeholder, $foo) {
+      $image = preg_replace("/\s?width=\"\d+\"/", "", $image);
+      $image = preg_replace("/\s?height=\"\d+\"/", "", $image);
+      return $image;
+    }, 100, 6);
   }
 
 }
