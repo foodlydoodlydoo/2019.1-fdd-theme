@@ -258,22 +258,21 @@ class Images {
       return '(max-width: 959px) 90vw, 44vw';
 
     case 'shop-loop':
-      $_result = function($ratio, $landscape, $height) {
-        $_get = function($screen, $width) {
-          return '(max-width: ' . floor($screen) . 'px) ' . floor($width) . 'vw, ';
-        };
-        $current_listing_image = Images::$product_listing_image_order++;
-        if ($current_listing_image == 0) {
-          return $landscape ? $_get(640, 80) . ' 40vw' : floor(70 * $ratio) . 'vh';
-        }
-        if (false && $landscape && $current_listing_image % 9 == 0) {
-          return $landscape ? '40vw' : floor(70 * $ratio) . 'vh';
-        }
-        $ratio = max($ratio, 1);
-        return $_get(640, 80) . $_get(880, 30 * $ratio) . $_get(1080, 20 * $ratio) . 
-               $_get(1440, 15 * $ratio) . floor(1440 / (100 / 15 * $ratio)) . 'px';
+      $_get = function($screen, $width) {
+        return '(max-width: ' . $screen . 'px) ' . floor($width) . 'vw, ';
       };
-      return $_result($ratio, $landscape, $height);
+
+      $current_listing_image = Images::$product_listing_image_order++;
+      if ($current_listing_image == 0) {
+        return $landscape ? $_get(640, 80) . ' 40vw' : floor(70 * $ratio) . 'vh';
+      }
+      if (false && $landscape && $current_listing_image % 9 == 0) {
+        return $landscape ? '40vw' : floor(70 * $ratio) . 'vh';
+      }
+
+      $ratio = max($ratio, 1);
+      return $_get(640, 80) . $_get(880, 30 * $ratio) . $_get(1080, 20 * $ratio) . 
+             $_get(1440, 15 * $ratio) . floor(1440 / (100 / 15 * $ratio)) . 'px';
 
     } // switch $mode
 
