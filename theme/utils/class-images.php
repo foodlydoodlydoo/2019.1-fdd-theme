@@ -103,7 +103,7 @@ class Images {
   private static function find_largest_size($image_meta, $prefix) {
     // Setup default in case we don't find anything (not expected to happen)
     $size = "full_size";
-    
+
     $sizes = Images::get_sizes_with_prefix($image_meta, $prefix);
     $max_found = 0;
     foreach ($sizes as $size_name => $size_meta) {
@@ -271,7 +271,7 @@ class Images {
       }
 
       $ratio = max($ratio, 1);
-      return $_get(640, 80) . $_get(880, 30 * $ratio) . $_get(1080, 20 * $ratio) . 
+      return $_get(640, 80) . $_get(880, 30 * $ratio) . $_get(1080, 20 * $ratio) .
              $_get(1440, 15 * $ratio) . floor(1440 / (100 / 15 * $ratio)) . 'px';
 
     } // switch $mode
@@ -334,6 +334,30 @@ class Images {
     } // switch $mode
 
     return wp_get_attachment_image_sizes($attachment_id, Images::remap_size($tag));
+  }
+
+  public static function add_orientation_class_hook($attr, $attachment) {
+    $metadata = wp_get_attachment_metadata($attachment->ID);
+
+    // Sanity check: we need both width and height to add the orientation class.
+    // If either are missing, we should return the attributes.
+    if (empty($metadata['width']) || empty($metadata['height'])) {
+      return $attr;
+    }
+
+    // Sanity check x2: class should be set by now, but another filter could have cleared it out.
+    if (!isset($metadata['class'])) {
+      $metadata['class'] = '';
+    }
+
+    if ($metadata['width'] > $metadata['height']) {
+      $attr['class'] .= ' landscape';
+    } else {
+      $attr['class'] .= ' portrait';
+    }
+
+    // Return the attributes.
+    return $attr;
   }
 
   /**

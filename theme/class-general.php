@@ -65,6 +65,7 @@ class General {
     add_filter('wp_calculate_image_srcset', 'Fdd\Theme\Utils\Images::srcset_attribute_hook', 100, 5);
     add_filter('wp_calculate_image_sizes', 'Fdd\Theme\Utils\Images::sizes_attribute_hook', 100, 5);
     add_filter('wp_constrain_dimensions', 'Fdd\Theme\Utils\Images::constrain_dimensions_hook', 100, 5);
+    add_filter('wp_get_attachment_image_attributes', 'Fdd\Theme\Utils\Images::add_orientation_class_hook', 10, 2);
 
     add_filter('the_content', 'Fdd\Theme\PSWP::add_image_sizes_to_content');
 
