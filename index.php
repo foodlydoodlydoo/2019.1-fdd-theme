@@ -22,6 +22,7 @@ function print_category($category_slug) {
 
 get_header();
 
+// @shop-enable
 print_category('recipes');
 echo FDD\Core\get_custom_content("shop_cta_on_homepage");
 print_category('food-art');

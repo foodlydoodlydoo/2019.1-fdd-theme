@@ -53,8 +53,7 @@ $fullscreen-menu-items-min-from-top-screen-h: 760px;
     padding: 100vh * $fullscreen-menu-items-min-from-top-vh 0 0;
     li {
       text-transform: lowercase;
-      padding: 0.6em 0; // @shop-enable
-      padding: 0.75em 0;
+      padding: 0.7em 0;
       display: block;
       font-weight: 400;
       a {
@@ -129,12 +128,12 @@ $fullscreen-menu-items-min-from-top-screen-h: 760px;
     li.fs-navigation__item--group-separator {
       position: relative;
       top: -9.3em; // @shop-enable
-      top: -6em;
+      //top: -6em;
       margin-left: 5%;
       float: left;
       div.menu-items-separator {
-        height: 15em; // @shop-enable
-        height: 9em;
+        height: 11.3em; // @shop-enable
+        //height: 9em;
         width: 1px;
       }
     }
