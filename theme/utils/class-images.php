@@ -263,7 +263,7 @@ class Images {
       };
 
       $current_listing_image = Images::$product_listing_image_order++;
-      if ($current_listing_image == 0) {
+      if (false && $current_listing_image == 0) {
         return $landscape 
           ? $_get(640, 80) . $_get(880, 30 * $ratio) . ' 40vw' 
           : $_get(640, 80) . $_get(880, 30) . floor(70 * $ratio) . 'vh';
