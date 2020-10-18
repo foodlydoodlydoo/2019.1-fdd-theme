@@ -81,12 +81,13 @@ class General {
     // WooCommerce
     add_filter('woocommerce_short_description', '__return_null', 100);
     
-    remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10);
+    remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs');
     add_action( 'woocommerce_after_single_product_summary', function() {
       echo '<div class="fdd-woocommerce_after_single_product_summary"></div>';
     }, 100);
 
     remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart');
+    add_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 1);
     
     add_filter('woocommerce_related_products', function() {
       return array();
