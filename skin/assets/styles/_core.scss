@@ -73,6 +73,10 @@ span.red {
     color: $fdd-red-color-on-gray;
   }
 }
+span.nowrap {
+  white-space: nowrap;
+  overflow: hidden;
+}
 
 li.main-navigation__item--hidden,
 li.footer-navigation__item--hidden,
