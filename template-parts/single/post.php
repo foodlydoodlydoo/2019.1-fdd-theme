@@ -31,14 +31,21 @@ $category_slug_classes = join(' ', array_map(function ($cat) {
   <header>
     <div class="single__pre_title"></div>
     <h1 class="single__title">
-      <?php the_title();?>
+      <?php 
+        if (get_post()->post_type == "product") {
+          echo FDD\Core\get_custom_content("single_product_pretitle");
+        }
+        the_title();
+      ?>
     </h1>
     <div class="single__title_excerpt_div"></div>
     <div class="single__excerpt">
       <?php
-        // Poduct exceprt (== short description) is printed
-        // via "woocommerce_single_product_summary" action registration
-        if (get_post()->post_type != "product") {
+        if (get_post()->post_type == "product") {
+          // Poduct exceprt (== short description) is printed
+          // via "woocommerce_single_product_summary" action registration
+          echo FDD\Core\get_custom_content("single_product_subtitle");
+        } else {
           the_excerpt();
         }
       ?>
