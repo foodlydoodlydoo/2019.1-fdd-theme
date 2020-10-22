@@ -280,6 +280,9 @@ class Images {
              $_get(1440, $wide_perc * $ratio) .
              floor((1440 / (100 / $wide_perc)) * $ratio) . 'px';
 
+    case 'shop-cart':
+      return '128px';
+
     } // switch $mode
 
     return $sizes;

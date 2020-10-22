@@ -124,6 +124,10 @@ class General {
       $image = preg_replace("/\s?height=\"\d+\"/", "", $image);
       return $image;
     }, 100, 6);
+
+    add_action('woocommerce_before_cart', function() {
+      Utils\Images::set_image_sizes_mode('shop-cart');
+    }, 1);
   }
 
 }
