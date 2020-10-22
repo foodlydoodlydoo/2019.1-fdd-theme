@@ -128,6 +128,9 @@ class General {
     add_action('woocommerce_before_cart', function() {
       Utils\Images::set_image_sizes_mode('shop-cart');
     }, 1);
+
+    // This makes clicking the T&C link open the page instead of showing the empty div
+    remove_action( 'woocommerce_checkout_terms_and_conditions', 'wc_terms_and_conditions_page_content', 30 ); 
   }
 
 }
