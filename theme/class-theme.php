@@ -47,9 +47,12 @@ class Theme extends Config {
     wp_register_script(static::THEME_NAME . '-scripts', General_Helper::get_manifest_assets_data('application.js'), array(static::THEME_NAME . '-scripts-vendors'), static::THEME_VERSION, true);
     wp_enqueue_script(static::THEME_NAME . '-scripts');
 
+    /*
+    // Will use admin ajax api 
     if (function_exists("WC") && WC()->cart->get_cart_contents_count()) {
       wp_add_inline_script(static::THEME_NAME . '-scripts', 'jQuery(".main-navigation__item--shop-cart").css({"display": "unset"});');
     }
+    */
 
     // Glbal variables for ajax and translations.
     wp_localize_script(
