@@ -1,10 +1,10 @@
 //Some stuff here is out of BEM because it is used inside WP as helpers or modifiers
 // Text sizes are refines via mixins as utility helpers
 $content-style: (
-  'text-color': $base-fdd-text-color,
-  'default-padding': 35px,
-  'table-bg-color': $base-white-color,
-  'table-border-color': $base-silver-color,
+  "text-color": $base-fdd-text-color,
+  "default-padding": 35px,
+  "table-bg-color": $base-white-color,
+  "table-border-color": $base-silver-color,
 );
 
 /* stylelint-disable selector-no-type */
@@ -16,13 +16,13 @@ $content-style: (
     @include text-size(large);
   }
   line-height: 1.7; // was 1.5!
-  color: map-get($content-style, 'text-color');
+  color: map-get($content-style, "text-color");
 
   p,
   ul,
   ol {
     @extend %paragraph-reset;
-    padding-bottom: map-get($content-style, 'default-padding');
+    padding-bottom: map-get($content-style, "default-padding");
 
     &.clear-spacing,
     &:last-child {
@@ -133,9 +133,9 @@ $content-style: (
   table {
     width: 100% !important; //stylelint-disable-line declaration-no-important
     height: auto !important; //stylelint-disable-line declaration-no-important
-    border-top: 1px solid map-get($content-style, 'table-border-color');
-    border-left: 1px solid map-get($content-style, 'table-border-color');
-    margin-bottom: map-get($content-style, 'default-padding');
+    border-top: 1px solid map-get($content-style, "table-border-color");
+    border-left: 1px solid map-get($content-style, "table-border-color");
+    margin-bottom: map-get($content-style, "default-padding");
     border-collapse: collapse;
 
     &:last-child {
@@ -145,10 +145,10 @@ $content-style: (
     tr {
       td,
       th {
-        @include text-size(medium);
+        @include text-size(large);
         border: none;
-        border-right: 1px solid map-get($content-style, 'table-border-color');
-        border-bottom: 1px solid map-get($content-style, 'table-border-color');
+        border-right: 1px solid map-get($content-style, "table-border-color");
+        border-bottom: 1px solid map-get($content-style, "table-border-color");
         height: auto !important; //stylelint-disable-line declaration-no-important
         padding: 15px 10px;
       }
