@@ -23,6 +23,3 @@ Fdd\Theme\Utils\Images::set_image_sizes_mode('shop-loop');
 
 ?>
 <div class="fdd products columns-<?php echo esc_attr( wc_get_loop_prop( 'columns' ) ); ?>">
-<div class="shop-page--text">
-	<?php echo FDD\Core\get_custom_content("shop_page_message"); ?>
-</div>

@@ -18,5 +18,9 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+// @prerovsky1
 ?>
+<div class="shop-page--text">
+	<?php echo FDD\Core\get_custom_content("shop_page_message"); ?>
+</div>
 </div>
