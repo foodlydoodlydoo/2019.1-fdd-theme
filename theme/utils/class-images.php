@@ -275,7 +275,7 @@ class Images {
       $ratio = max($ratio, 1);
       $wide_perc = 18;
       return $_get(640, 80) .
-             $_get(880, 30 * $ratio) .
+             $_get(880, 26 * $ratio) .
              $_get(1080, $wide_perc * $ratio) .
              $_get(1440, $wide_perc * $ratio) .
              floor((1440 / (100 / $wide_perc)) * $ratio) . 'px';
