@@ -131,6 +131,16 @@ class General {
 
     // This makes clicking the T&C link open the page instead of showing the empty div
     remove_action( 'woocommerce_checkout_terms_and_conditions', 'wc_terms_and_conditions_page_content', 30 ); 
+
+    // WP Menu Cart
+    add_filter('wpmenucart_menu_item_a_content', function($menu_item_a_content, $menu_item_icon, $cart_contents, $item_data) {
+      $menu_item_a_content = preg_replace(
+        "/<span class=\"(.*)\">(\d+).*<\/span>/", 
+        "<span class=\"$1\"><span class=\"cartcontents-amount\">$2</span></span>", 
+        $menu_item_a_content);
+
+      return $menu_item_a_content;
+    }, 4, 100);
   }
 
 }

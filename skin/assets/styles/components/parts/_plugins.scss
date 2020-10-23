@@ -1,0 +1,47 @@
+// WP Menu Cart, in connection to the 'wpmenucart_menu_item_a_content' filter
+
+.main-navigation {
+  .cartcontents {
+    position: relative;
+  }
+  .cartcontents-amount {
+    position: absolute !important;
+    right: -2px;
+    bottom: 6px;
+    min-width: 1.2em;
+    height: 1.2em;
+    color: white;
+    background: $fdd-red-color;
+    border-radius: 0.6em;
+    text-align: center;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: $fdd-menu-wide-screen-width - 0.1px) {
+  .header {
+    ul.main-navigation {
+      li#wpmenucartli {
+        font-size: 36px;
+        > a {
+          position: relative;
+          top: 5px;
+          left: -3px;
+        }
+      }
+    }
+  }
+  .cartcontents-amount {
+    bottom: 14px !important;
+  }
+}
+
+@media screen and (max-width: $fdd-menu-narrow-screen-width) {
+  .header {
+    ul.main-navigation {
+      li#wpmenucartli {
+        display: none;
+      }
+    }
+  }
+}
