@@ -1,4 +1,5 @@
 // WP Menu Cart, in connection to the 'wpmenucart_menu_item_a_content' filter
+// https://wordpress.org/plugins/woocommerce-menu-bar-cart/
 
 .header ul.main-navigation {
   .cartcontents {
@@ -42,5 +43,13 @@
     li#wpmenucartli {
       display: none;
     }
+  }
+}
+
+// ReCaptcha (https://wordpress.org/plugins/wp-recaptcha-integration/)
+.woocommerce-checkout-payment {
+  div.g-recaptcha {
+    margin: 0 0 1em 0;
+    float: left;
   }
 }
