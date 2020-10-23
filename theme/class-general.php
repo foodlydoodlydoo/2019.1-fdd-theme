@@ -141,6 +141,14 @@ class General {
 
       return $menu_item_a_content;
     }, 4, 100);
+
+    // Advanced noCaptcha
+    if (class_exists('\anr_captcha_class')) {
+      $captcha_instance = \anr_captcha_class::init();
+      remove_action('woocommerce_checkout_after_order_review', array( $captcha_instance, 'wc_form_field'));
+      // This makes the captcha form disappear (be deleted) after order review form refresh...
+      add_action('woocommerce_review_order_before_submit', array( $captcha_instance, 'wc_form_field' ), 10, 2);
+    }
   }
 
 }
