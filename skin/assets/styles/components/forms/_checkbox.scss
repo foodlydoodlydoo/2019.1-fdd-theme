@@ -98,7 +98,7 @@ label > input[type="checkbox"] + span::before {
   font-size: 30px;
   position: relative;
   top: 0.125em;
-  margin: 0 12px 0 -0.1em;
+  margin: 0 12px 0 -3px;
   line-height: 1;
 }
 label > input:checked + span::before {
