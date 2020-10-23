@@ -281,7 +281,7 @@ class Images {
              floor((1440 / (100 / $wide_perc)) * $ratio) . 'px';
 
     case 'shop-cart':
-      return '128px';
+      return '96px';
 
     } // switch $mode
 
