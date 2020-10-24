@@ -3,12 +3,29 @@
 body.home {
   div.home-call-to-action--wrap {
     @include home-call-to-action();
-    text-align: center;
-  }
-  div.home-call-to-action {
-    color: white;
-    margin: 0 auto;
-    display: inline;
+    div.home-call-to-action {
+      color: white;
+      margin: 0 auto;
+    }
+    &.var-1 {
+      display: inline;
+      text-align: center;
+    }
+    &.var-2 {
+      div.home-call-to-action {
+        position: relative;
+        max-width: $fdd-home-cta-max-width;
+        .shop-home-cta-title {
+          display: block;
+        }
+        .shop-home-cta-message {
+          margin: 0.5em auto 1em;
+          display: block;
+          font-size: 14px;
+          line-height: 1.5em;
+        }
+      }
+    }
   }
 }
 @media screen and (max-width: $fdd-wide-width-pixels - 0.1px) {
