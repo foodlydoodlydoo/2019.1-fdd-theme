@@ -39,13 +39,14 @@ div.button.red {
   display: inline-block;
 }
 a.button.red {
-  padding: 8px 40px;
+  padding: 12px 40px;
   width: 100%;
   margin: 0;
   color: white;
   font-family: sans-serif;
   font-size: 16px;
   display: inline-block;
+  text-align: center;
 }
 
 @media screen and (max-width: $fdd-wide-width-pixels - 0.1px) {
@@ -57,7 +58,7 @@ a.button.red {
     div.button.red {
       display: block;
       width: 100%;
-      max-width: 480px;
+      max-width: $fdd-home-cta-max-width;
       margin: auto;
     }
   }
