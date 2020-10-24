@@ -14,7 +14,7 @@ $logo_img = General_Helper::get_manifest_assets_data('foodly-doodly-doo-logo-mcr
 
 <footer class="footer">
   <div class="footer__container">
-    <span>© FoodlyDoodlyDoo 2019</span>
+    <span>© FoodlyDoodlyDoo 2019-2020</span>
     <?php echo esc_html($footer_menu->bem_menu('footer_main_nav', 'footer-navigation')); ?>
   </div>
   <div class="footer__logo_container">

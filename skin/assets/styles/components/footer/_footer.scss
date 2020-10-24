@@ -57,7 +57,7 @@ $shop-footer-item-padding: 5px;
   }
 }
 
-@media screen and (max-width: $fdd-narrow-width-pixels - 0.1px) {
+@media screen and (max-width: $fdd-footer-narrow-width-pixels - 0.1px) {
   .footer {
     &__container {
       ul.footer-navigation {
