@@ -56,6 +56,9 @@ class General {
    * @since 1.0.0
    */
   public function add_theme_support() {
+    // =============================================================================================
+    // General filters
+
     add_theme_support('title-tag', 'html5', 'search-form', 'responsive-embeds');
 
     add_filter('wp_get_attachment_metadata', 'Fdd\Theme\get_attachment_metadata_hook', 100, 2);
@@ -79,9 +82,11 @@ class General {
       return null;
     }, 100, 3);
 
+    // =============================================================================================
     // WooCommerce
+
     add_filter('woocommerce_short_description', '__return_null', 100);
-    
+
     remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs');
     add_action( 'woocommerce_after_single_product_summary', function() {
       echo '<div class="fdd-woocommerce_after_single_product_summary"></div>';
@@ -89,7 +94,7 @@ class General {
 
     remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart');
     add_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 1);
-    
+
     add_filter('woocommerce_related_products', function() {
       return array();
     }, 100);
@@ -130,13 +135,24 @@ class General {
     }, 1);
 
     // This makes clicking the T&C link open the page instead of showing the empty div
-    remove_action( 'woocommerce_checkout_terms_and_conditions', 'wc_terms_and_conditions_page_content', 30 ); 
+    remove_action('woocommerce_checkout_terms_and_conditions', 'wc_terms_and_conditions_page_content', 30 );
 
+    // This makes `Checkout Field Editor and Manager for WooCommerce` plugin unnecessary
+    // All other options we need are in Appearance/Customize/WooCommerce/Checkout
+    add_filter('woocommerce_default_address_fields', function($fields) {
+      $fields['address_1']['label'] = "Street address and number";
+      unset($fields['address_1']['placeholder']);
+
+      return $fields;
+    }, 10000);
+
+    // =============================================================================================
     // WP Menu Cart
+
     add_filter('wpmenucart_menu_item_a_content', function($menu_item_a_content, $menu_item_icon, $cart_contents, $item_data) {
       $menu_item_a_content = preg_replace(
-        "/<span class=\"(.*)\">(\d+).*<\/span>/", 
-        "<span class=\"$1\"><span class=\"cartcontents-amount\">$2</span></span>", 
+        "/<span class=\"(.*)\">(\d+).*<\/span>/",
+        "<span class=\"$1\"><span class=\"cartcontents-amount\">$2</span></span>",
         $menu_item_a_content);
 
       return $menu_item_a_content;
