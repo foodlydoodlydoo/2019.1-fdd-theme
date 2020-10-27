@@ -25,7 +25,7 @@ function get_attachment_metadata_hook($data, $postid) {
 
 function intermediate_image_sizes_hook($sizes) {
   return array_filter($sizes, function ($size) {
-    return !in_array($size, ['large', 'thumbnail', 'medium', 'medium_large']);
+    return !in_array($size, ['large', 'thumbnail', 'medium', 'medium_large', '1536x1536', '2048x2048']);
   });
 }
 
