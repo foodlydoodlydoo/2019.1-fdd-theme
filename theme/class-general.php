@@ -19,6 +19,8 @@ function get_attachment_metadata_hook($data, $postid) {
     unset($data["sizes"]['thumbnail']);
     unset($data["sizes"]['medium']);
     unset($data["sizes"]['medium_large']);
+    unset($data["sizes"]['1536x1536']);
+    unset($data["sizes"]['2048x2048']);
   }
   return $data;
 }
