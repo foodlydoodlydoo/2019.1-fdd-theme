@@ -78,7 +78,8 @@ class General {
 
     add_filter('walker_nav_menu_start_el', 'FDD\Theme\menu_special_tags', 10, 4);
 
-    update_option('image_default_link_type', 'media');
+    update_option('image_default_link_type', 'file');
+    update_option('image_default_align', 'none');
 
     add_filter('widget_title', function($title, $instance, $id_base) {
       return null;
