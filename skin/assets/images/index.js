@@ -5,3 +5,4 @@ import './nothning-found.png';
 import './play-button.svg';
 import './search.svg';
 import './shopping-cart.svg';
+import './instagram-icon-128.png';

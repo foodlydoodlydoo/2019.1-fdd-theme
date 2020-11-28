@@ -42,6 +42,21 @@ $shop-footer-item-padding: 5px;
           border: none;
         }
       }
+      li.footer-navigation__item--instagram {
+        margin-right: 48px;
+        & a::after {
+          background-image: url(../images/instagram-icon-128.png);
+          background-size: 32px 32px;
+          background-repeat: no-repeat;
+          display: inline-block;
+          width: 32px;
+          height: 32px;
+          content: "";
+          position: absolute;
+          margin-top: -7px;
+          margin-left: 16px;
+        }
+      }
     }
   }
 
