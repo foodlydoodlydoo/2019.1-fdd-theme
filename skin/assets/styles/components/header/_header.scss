@@ -68,7 +68,8 @@ $header-menu-shift-margin: 7px; // Empiric
       padding: 0;
       height: 37px; // empiric
       @if ($fdd-sticky-menu == false) {
-        margin: $header-top-bottom-padding 0;
+        //margin: $header-top-bottom-padding 0;
+        margin: $header-top-bottom-padding 0 0;
       }
       @if ($fdd-sticky-menu == true) {
         margin: $header-menu-shift-margin 0;
@@ -138,7 +139,7 @@ body.search {
       // width: 36%; empiric to align with recipe text width
       width: 630px; // @shop-enable
       //width: 600px;
-      font-size: 21px;
+      font-size: 18px;
       li.main-navigation__item--sandwitch {
         position: relative;
         font-size: 27px;
