@@ -28,7 +28,7 @@ $logo_img = General_Helper::get_manifest_assets_data('foodly-doodly-doo-logo-m.p
   </a>
 <?php echo esc_html($main_menu->bem_menu('header_main_nav', 'main-navigation')); ?>
 </div>
-<div class="header__bottom-border"></div>
 <div class="description">
   <div><?php echo esc_html($blog_description); ?></div>
 </div>
+<div class="header__bottom-border"></div>

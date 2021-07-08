@@ -106,7 +106,7 @@ $header-menu-shift-margin: 7px; // Empiric
   @include fdd-blog-descr-font();
   @include text-size(largest);
   margin: 0;
-  padding: 10px $fdd-outer-padding-wide-screen 30px;
+  padding: 10px $fdd-outer-padding-wide-screen 40px;
 }
 
 body.search {
@@ -168,6 +168,8 @@ body.search {
 
 @media screen and (max-width: $fdd-menu-wide-screen-width - 0.1px) {
   .header {
+    padding-bottom: 12px;
+
     ul.main-navigation {
       li {
         margin-left: 37px;
@@ -204,7 +206,7 @@ body.search {
     padding: 10px $fdd-home-outer-padding-wide-screen 30px;
   }
   .header {
-    padding: 0 $fdd-home-outer-padding-wide-screen;
+    padding: 0 $fdd-home-outer-padding-wide-screen 12px;
   }
 }
 
@@ -216,7 +218,7 @@ body.search {
     padding: 10px $fdd-home-outer-padding-narrow-screen 30px;
   }
   .header {
-    padding: 0 $fdd-home-outer-padding-narrow-screen;
+    padding: 0 $fdd-home-outer-padding-narrow-screen 12px;
     ul.main-navigation {
       position: relative;
       top: -4px;
