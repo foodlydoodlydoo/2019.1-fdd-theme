@@ -1,4 +1,5 @@
 $shop-footer-item-padding: 5px;
+$fdd-footer-text-color: #666666;
 
 .footer {
   clear: both;
@@ -13,8 +14,10 @@ $shop-footer-item-padding: 5px;
     @include font-standard-sans();
     @include text-size(large);
     padding: 2.5rem $fdd-outer-padding-wide-screen;
-    background: $fdd-gray-elements-color;
-    color: $fdd-on-gray-color;
+    //background: $fdd-gray-elements-color;
+    //color: $fdd-on-gray-color;
+    background: $fdd-light-gray;
+    color: $fdd-footer-text-color;
     ul.footer-navigation {
       list-style-type: none;
       display: inline-flex;
@@ -28,6 +31,7 @@ $shop-footer-item-padding: 5px;
         margin: 0 0 0 2em;
         a {
           color: $fdd-on-gray-color;
+          color: $fdd-footer-text-color;
           &:hover {
             border-bottom: 5px solid $fdd-on-gray-color;
           }
