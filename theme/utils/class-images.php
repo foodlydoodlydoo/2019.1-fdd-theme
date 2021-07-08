@@ -310,6 +310,9 @@ class Images {
 
       case 'fdd:listing:oldish-article':
         return '(max-width: 480px) ' . floor(max([$ratio, 1]) * 260) . 'px, (max-width: 640px) 400px, (max-width: 960px) ' . floor($ratio * 50) . 'vw, ' . floor(max([$ratio, 1]) * 328) . 'px';
+
+      case 'fdd:listing:sticky-article':
+        return '480px';
       } // switch $tag
 
       break;
