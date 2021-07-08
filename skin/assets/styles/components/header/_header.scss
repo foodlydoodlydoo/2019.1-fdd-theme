@@ -105,6 +105,7 @@ $header-menu-shift-margin: 7px; // Empiric
 .description {
   @include fdd-blog-descr-font();
   @include text-size(largest);
+  font-weight: bold;
   margin: 0;
   padding: 10px $fdd-outer-padding-wide-screen 40px;
   color: $fdd-green-color-dark;
