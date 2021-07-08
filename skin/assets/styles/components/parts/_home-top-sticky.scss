@@ -9,7 +9,7 @@ body.home {
     flex-flow: row;
     justify-content: center;
     width: 100%;
-    padding: 0 $fdd-outer-padding-wide-screen 40px;
+    padding: 0 $fdd-outer-padding-wide-screen 60px;
 
     .home-top-sticky-post {
       position: relative;
@@ -32,6 +32,7 @@ body.home {
         width: 100%;
         @include font-standard-sans();
         font-size: 24px;
+        text-transform: uppercase;
       }
     }
     .home-top-sticky-post:first-child {
