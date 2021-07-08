@@ -20,6 +20,17 @@
   }
 }
 
+@media screen and (min-width: $fdd-menu-wide-screen-width) {
+  .header ul.main-navigation {
+    li#wpmenucartli {
+      > a {
+        position: relative;
+        top: -6px;
+      }
+    }
+  }
+}
+
 @media screen and (max-width: $fdd-menu-wide-screen-width - 0.1px) {
   .header ul.main-navigation {
     li#wpmenucartli {
