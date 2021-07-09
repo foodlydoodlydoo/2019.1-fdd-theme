@@ -1,6 +1,10 @@
 $fdd-home-sticky-posts-count: 3;
 $fdd-home-sticky-posts-space: 24px;
 $fdd-home-sticky-posts-narrow-screen: 920px;
+// Either ($fdd-wide-width-pixels / $fdd-home-sticky-posts-count) - $fdd-home-sticky-posts-space, or...
+// an empiric value to fit an optimized size image (fdd-lead-article-p-480: 480×840 pixels):
+$fdd-home-sticky-posts-image-max-width: 280px;
+$fdd-home-sticky-posts-image-min-height: $fdd-home-sticky-posts-image-max-width * 1.5;
 
 body.home {
   .home-top-sticky-posts__wrap {
@@ -18,9 +22,10 @@ body.home {
         line-height: 0;
       }
       img {
-        max-width: ($fdd-wide-width-pixels / $fdd-home-sticky-posts-count) - $fdd-home-sticky-posts-space;
+        max-width: $fdd-home-sticky-posts-image-max-width;
         object-fit: cover;
         min-height: 420px;
+        min-height: $fdd-home-sticky-posts-image-min-height;
       }
       .home-top-sticky-grid__content {
         position: absolute;
@@ -61,8 +66,8 @@ body.home {
       .home-top-sticky-post {
         margin-bottom: 48px;
         img {
+          min-width: $fdd-home-sticky-posts-image-max-width;
           width: 100%;
-          min-height: 420px;
         }
       }
       .home-top-sticky-post,
