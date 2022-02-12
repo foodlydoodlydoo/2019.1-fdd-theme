@@ -22,8 +22,32 @@ body.home {
         .shop-home-cta-message {
           margin: 0.5em auto 1em;
           display: block;
-          font-size: 14px;
+          font-size: 16px;
           line-height: 1.5em;
+        }
+      }
+    }
+    &.var-3 {
+      div.home-call-to-action {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        max-width: $fdd-home-cta-max-width + 240;
+        .shop-home-cta-title {
+          display: block;
+        }
+        .shop-home-cta-body {
+          padding: 0 1em;
+        }
+        .shop-home-cta-message {
+          margin: 0.5em auto 1em;
+          display: block;
+          font-size: 16px;
+          line-height: 1.5em;
+        }
+        img {
+          max-width: 140px;
         }
       }
     }
