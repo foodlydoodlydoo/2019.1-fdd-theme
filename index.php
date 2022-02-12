@@ -52,11 +52,11 @@ print_sticky_post('food-art');
 
 <?php
 
-echo FDD\Core\get_custom_content("work_with_us_cta_on_homepage");
+echo FDD\Core\get_custom_content("shop_cta_on_homepage");
 
 print_category('recipes');
 
-echo FDD\Core\get_custom_content("shop_cta_on_homepage");
+echo FDD\Core\get_custom_content("work_with_us_cta_on_homepage");
 
 print_category('food-art');
 
