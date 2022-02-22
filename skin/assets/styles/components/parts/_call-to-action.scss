@@ -48,6 +48,9 @@ body.home {
         }
         img {
           max-width: 140px;
+          //box-shadow: white 0 0 15px 15px;
+          border: 14px solid white;
+          border-radius: 50%;
         }
       }
     }
@@ -57,6 +60,20 @@ body.home {
   body.home {
     div.home-call-to-action {
       line-height: 1.5;
+    }
+  }
+}
+@media screen and (max-width: 800px) {
+  body.home {
+    div.home-call-to-action--wrap {
+      &.var-3 {
+        div.home-call-to-action {
+          flex-flow: column;
+          .shop-home-cta-body {
+            padding: 1em 0;
+          }
+        }
+      }
     }
   }
 }
